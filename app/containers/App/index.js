@@ -15,6 +15,7 @@ import 'sanitize.css/sanitize.css';
 import Img from 'components/Img';
 import Footer from 'components/Footer';
 import StateSelect from 'components/StateSelect';
+import CheckRegistrationForm from 'components/CheckRegistrationForm';
 import { IndexLink, Link } from 'react-router';
 import styles from './styles.css';
 
@@ -57,12 +58,12 @@ function App(props) {
         </div>
       </nav>
       <StateSelect />
+      <CheckRegistrationForm />
       {props.children}
       <Footer />
     </div>
   );
 }
-
 App.propTypes = {
   children: React.PropTypes.node,
 };
