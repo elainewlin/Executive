@@ -1,10 +1,7 @@
-/**
- * A link to a certain page, an anchor tag
- */
-
 import React, { PropTypes } from 'react';
 
 import styles from './styles.css';
+import CheckRegistrationField from 'components/CheckRegistrationField';
 
 function CheckRegistrationForm(props) {
   //hardcoding formFields for the time being, get from props.formFields after the API is hooked up
@@ -13,7 +10,7 @@ function CheckRegistrationForm(props) {
   var entries = [];
   for (var i=0; i < fields.length; i++) {
     var field = fields[i];
-    entries.push(<div key={field.name_attr}/>);
+    entries.push(<CheckRegistrationField />);
   }
 
   var handleSubmit = function(e) {
