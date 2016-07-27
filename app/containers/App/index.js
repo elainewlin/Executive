@@ -14,9 +14,7 @@ import 'sanitize.css/sanitize.css';
 
 import Img from 'components/Img';
 import Footer from 'components/Footer';
-import Banner from './banner-metal.jpg';
-import A from 'components/A';
-
+import StateSelect from 'components/StateSelect';
 import { IndexLink, Link } from 'react-router';
 import styles from './styles.css';
 
@@ -59,6 +57,7 @@ function App(props) {
         </div>
       </nav>
       {props.children}
+      <StateSelect />
       <Footer />
     </div>
   );
