@@ -10,13 +10,13 @@ function CheckRegistrationForm(props) {
   var entries = [];
   for (var i=0; i < fields.length; i++) {
     var field = fields[i];
-    entries.push(<CheckRegistrationField />);
+    entries.push(<CheckRegistrationField field={field} key={field.name_attr}/>);
   }
 
   var handleSubmit = function(e) {
-
     e.nativeEvent.preventDefault();
-    props.submitForm();
+    console.log('form submitted');
+    // props.submitForm();
   }
 
   return (

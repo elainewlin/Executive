@@ -16,10 +16,10 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
   var select = 'SELECT';
   var check = 'CHECK';
 
-  // var label = props.field.label;
-  // var fieldType = props.field.type;
-  // var conf = props.field.conf; 
-  // var fieldWidth = props.field.width;
+  var label = props.field.label;
+  var fieldType = props.field.type;
+  var conf = props.field.conf; 
+  var fieldWidth = props.field.width;
 
   var parseConfOptions = function(conf) {
     var splitConf = conf.split(',');
@@ -33,11 +33,11 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
     return options;
   }
 
-  // var formField;
-  // if (fieldType == text) {
-  //   formField = 
-  //   <input type='text' className='form-control' id={label} placeholder={label}/>
-  // }
+  var formField;
+  if (fieldType == text) {
+    formField = 
+    <input type='text' className='form-control' id={label} placeholder={label}/>
+  }
   // if (fieldType == select) {
   //   formField =     
   //   <Select
@@ -50,14 +50,14 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
   // }
 
   return (
-    <div className='form-group col-md-4'>
-      I'm still a check registration field, but with more code! But the code is hidden... spookyyyyy.
+    <div className={`form-group col-md-${fieldWidth}`}>
+      {formField}
     </div>
   );
 }
 
-// CheckRegistrationField.propTypes = {
-//   field: React.PropTypes.object.isRequired
-// }
+CheckRegistrationField.propTypes = {
+  field: React.PropTypes.object.isRequired
+}
 
 export default CheckRegistrationField;
