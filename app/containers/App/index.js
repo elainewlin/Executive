@@ -17,7 +17,7 @@ import Footer from 'components/Footer';
 import Banner from './banner-metal.jpg';
 import A from 'components/A';
 
-import { IndexLink, Link } from 'react-router'
+import { IndexLink, Link } from 'react-router';
 import styles from './styles.css';
 
 function App(props) {
@@ -30,27 +30,27 @@ function App(props) {
           { name: 'description', content: 'A React.js Boilerplate application' },
         ]}
       />
-      <nav className='navbar navbar-inverse navbar-fixed-top'>
-        <div className='container'>
-          <div className='navbar-header'>
-            <IndexLink to='/' className='navbar-brand' activeClassName='activeRoute'>
+      <nav className="navbar navbar-inverse navbar-fixed-top">
+        <div className="container">
+          <div className="navbar-header">
+            <IndexLink to="/" className="navbar-brand" activeClassName="activeRoute">
               VoteMate
             </IndexLink>
           </div>
-          <div id='navbar' className='collapse navbar-collapse'>
-            <ul className='nav navbar-nav'>
+          <div id="navbar" className="collapse navbar-collapse">
+            <ul className="nav navbar-nav">
               <li>
-                <Link to='/check' activeClassName='activeRoute'>
+                <Link to="/check" activeClassName="activeRoute">
                   Check
                 </Link>
               </li>
               <li>
-                <Link to='/no' activeClassName='activeRoute'>
+                <Link to="/no" activeClassName="activeRoute">
                   No
                 </Link>
               </li>
               <li>
-                <Link to='/yes' activeClassName='activeRoute'>
+                <Link to="/yes" activeClassName="activeRoute">
                   Yes
                 </Link>
               </li>

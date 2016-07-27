@@ -91,6 +91,7 @@
       }
     },
     "rules": {
+      "no-unused-vars": 1,
       "import/no-unresolved": 2,
       "comma-dangle": [2, "always-multiline"],
       "indent": [2, 2, { "SwitchCase": 1 }],
