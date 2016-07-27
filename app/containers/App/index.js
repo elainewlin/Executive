@@ -56,8 +56,8 @@ function App(props) {
           </div>
         </div>
       </nav>
-      {props.children}
       <StateSelect />
+      {props.children}
       <Footer />
     </div>
   );
