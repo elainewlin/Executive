@@ -16,6 +16,7 @@ import Img from 'components/Img';
 import Footer from 'components/Footer';
 import StateSelect from 'components/StateSelect';
 import CheckRegistrationForm from 'components/CheckRegistrationForm';
+import CheckRegistrationField from 'components/CheckRegistrationField';
 import { IndexLink, Link } from 'react-router';
 import styles from './styles.css';
 
@@ -59,6 +60,7 @@ function App(props) {
       </nav>
       <StateSelect />
       <CheckRegistrationForm />
+      <CheckRegistrationField />
       {props.children}
       <Footer />
     </div>
