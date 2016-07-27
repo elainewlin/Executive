@@ -3,27 +3,19 @@ import React from 'react';
 import styles from './styles.css';
 
 function StateSelect(props) {
-  var options = require('./states.json');
-  console.log(options);
-  // return (
-  //   <div className={classes.select}>
-  //     <Select
-  //     value={props.selectedState}
-  //     options={options}
-  //     placeholder='Select a state'
-  //     onChange={e => props.changeState(e.value)}
-  //     clearable={false}
-  //     />
-  //   </div>
-  // );
+  var allStates = require('./states.json');
+  
   return (
     <div>
         State Select here!
         <h1{...props} />
         <select className="selectpicker">
-          <option>Mustard</option>
-          <option>Ketchup</option>
-          <option>Relish</option>
+          {
+            allStates.map(function(state) {
+              return <option key={state.abbreviation}
+                value={state.abbreviation}>{state.stateName}</option>;
+            })
+          }
         </select>
     </div>
   );
