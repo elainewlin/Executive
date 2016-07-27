@@ -21,7 +21,6 @@ function CheckRegistrationForm(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      Hi! I'm a check registration form. I need to put check registration fields here. :)
       {entries}
       <button type="submit" className="submit btn btn-default">Check now</button>
     </form>
