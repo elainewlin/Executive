@@ -20,6 +20,11 @@ function StateSelect(props) {
     <div>
         State Select here!
         <h1{...props} />
+        <select className="selectpicker">
+          <option>Mustard</option>
+          <option>Ketchup</option>
+          <option>Relish</option>
+        </select>
     </div>
   );
 }
