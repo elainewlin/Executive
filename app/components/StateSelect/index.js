@@ -3,17 +3,17 @@ import React from 'react';
 import styles from './styles.css';
 
 function StateSelect(props) {
-  var allStates = require('./states.json');
-  
+  let options;
+  if (props.items) {
+    options = props.items.map((state, index) => (
+      <option key={`state-${index}`} value={state.code}>{state.label}</option>
+    ));
+  }
   return (
-    <div>
-      <select className='selectpicker'>
-        {
-          allStates.map(function(state) {
-            return <option key={state.abbreviation}
-              value={state.abbreviation}>{state.stateName}</option>;
-          })
-        }
+    <div className='form-group'>
+      <label htmlFor='state'>Select your state</label>
+      <select className='form-control'>
+        {options}
       </select>
     </div>
   );
