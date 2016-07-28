@@ -5,7 +5,6 @@ html {
 html,
 body {
   margin: 0;
-  padding: 50px;
   height: 100%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -14,27 +13,4 @@ body {
 *::before,
 *::after {
   box-sizing: inherit;
-}
-
-.checkScreenDiv + .checkScreenDiv {
-  margin-top: 20px;
-}
-
-form {
-  max-width: 60%;
-  margin: auto;
-}
-
-h1,
-h2 {
-  text-align: center;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-.submit {
-  display: block;
-  margin: auto;
 }
