@@ -34,13 +34,13 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
 
   let formField;
   if (fieldType === text) {
-    formField = <input type="text" className="form-control" id={fieldLabel} placeholder={fieldLabel} />;
+    formField = <input type='text' className='form-control' id={fieldLabel} placeholder={fieldLabel} />;
   }
   if (fieldType == select) {
     formField =     
-      <select className="selectpicker">
+      <select className='form-control'>
         {
-          parseConfOptions(conf).map(function(state) {
+          parseConfOptions(fieldConf).map(function(state) {
             return <option key={state.value}
               value={state.value}>{state.label}</option>;
           })
