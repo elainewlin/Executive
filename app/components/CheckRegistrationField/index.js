@@ -6,7 +6,6 @@
 
 import React from 'react';
 
-// import { FormattedMessage } from 'react-intl';
 import styles from './styles.css';
 import ToggleOption from '../ToggleOption';
 
@@ -31,24 +30,26 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
 
     return options;
   }
+  var allStates = [{stateName: 'blah', abbreviation: 'blah'}]
 
   let formField;
   if (fieldType === text) {
-    formField = <input type="text" className="form-control" id={fieldLabel} placeholder={fieldLabel} />;
+    formField = <input type='text' className='form-control' id={fieldLabel} placeholder={fieldLabel} />;
   }
-  // if (fieldType == select) {
-  //   formField =
-  //   <Select
-  //     value='one'
-  //     options={parseConfOptions(conf)}
-  //     placeholder={label}
-  //     onChange={e => console.log(e.value)}
-  //     clearable={false}
-  //   />
-  // }
-
+  if (fieldType == select) {
+    formField =     
+      <select className='form-control'>
+        {
+          parseConfOptions(fieldConf).map(function(state) {
+            return <option key={state.value}
+              value={state.value}>{state.label}</option>;
+          })
+        }
+      </select>
+  }
+ 
   return (
-    <div className={`form-group col-md-${fieldWidth}`}>
+    <div className={`form-group col-xs-${fieldWidth}`}>
       {formField}
     </div>
   );

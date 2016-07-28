@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
+import CheckRegistrationForm from 'components/CheckRegistrationForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -27,6 +28,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         <form>
           <StateSelect items={this.props.states} />
         </form>
+        <CheckRegistrationForm></CheckRegistrationForm>
       </div>
     );
   }

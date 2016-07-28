@@ -14,6 +14,8 @@ import { IndexLink, Link } from 'react-router';
 import styles from './styles.css';
 
 function App(props) {
+
+  //Clean up site navigation later
   return (
     <div>
       <Helmet

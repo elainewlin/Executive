@@ -10,9 +10,9 @@ function StateSelect(props) {
     ));
   }
   return (
-    <div className="form-group">
-      <label htmlFor="state">Select your state</label>
-      <select className="form-control">
+    <div className='form-group'>
+      <label htmlFor='state'>Select your state</label>
+      <select className='form-control'>
         {options}
       </select>
     </div>
