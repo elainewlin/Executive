@@ -19,7 +19,29 @@ export default function createRoutes(store) {
   return [
     {
       path: '/',
-      name: 'home',
+      name: 'checkregpage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/CheckRegPage/reducer'),
+          System.import('containers/CheckRegPage/sagas'),
+          System.import('containers/CheckRegPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('checkRegPage', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },
+    {
+      path: '/gh',
+      name: 'github',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/HomePage/reducer'),

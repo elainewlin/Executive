@@ -1,0 +1,30 @@
+/**
+*
+* Header
+*
+*/
+
+import React from 'react';
+import { IndexLink, Link } from 'react-router';
+
+
+import { FormattedMessage } from 'react-intl';
+import messages from './messages';
+
+import styles from './styles.css';
+
+function Header() {
+  return (
+    <nav className="navbar navbar-default">
+      <div className="container">
+        <div className="navbar-header">
+          <Link to="/" className="navbar-brand" activeClassName="activeRoute">
+            VoteMate
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+export default Header;
