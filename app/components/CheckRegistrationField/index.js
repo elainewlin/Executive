@@ -10,33 +10,31 @@ import styles from './styles.css';
 import ToggleOption from '../ToggleOption';
 
 function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-stateless-function
+  const text = 'TEXT';
+  const select = 'SELECT';
+  const check = 'CHECK';
 
-  var text = 'TEXT';
-  var select = 'SELECT';
-  var check = 'CHECK';
+  const fieldLabel = props.field.label;
+  const fieldType = props.field.type;
+  const fieldConf = props.field.conf;
+  const fieldWidth = props.field.width;
 
-  var label = props.field.label;
-  var fieldType = props.field.type;
-  var conf = props.field.conf; 
-  var fieldWidth = props.field.width;
+  function parseConfOptions(conf) {
+    const splitConf = conf.split(',');
+    const options = [];
 
-  var parseConfOptions = function(conf) {
-    var splitConf = conf.split(',');
-    var options = [];
-
-    for(var i = 1; i < splitConf.length; i++) {
-      var temp = splitConf[i].split(':');
-      options.push({label: temp[0], value: temp[1]});
+    for (let i = 1; i < splitConf.length; i++) {
+      const temp = splitConf[i].split(':');
+      options.push({ label: temp[0], value: temp[1] });
     }
 
     return options;
   }
   var allStates = [{stateName: 'blah', abbreviation: 'blah'}]
 
-  var formField;
-  if (fieldType == text) {
-    formField = 
-    <input type='text' className='form-control' id={label} placeholder={label}/>
+  let formField;
+  if (fieldType === text) {
+    formField = <input type="text" className="form-control" id={fieldLabel} placeholder={fieldLabel} />;
   }
   if (fieldType == select) {
     formField =     
@@ -58,7 +56,7 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
 }
 
 CheckRegistrationField.propTypes = {
-  field: React.PropTypes.object.isRequired
-}
+  field: React.PropTypes.object.isRequired,
+};
 
 export default CheckRegistrationField;
