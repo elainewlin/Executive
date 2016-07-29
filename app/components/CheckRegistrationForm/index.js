@@ -79,8 +79,8 @@ function CheckRegistrationForm(props) {
   return (
     <form onSubmit={handleSubmit}>
       {entries}
-      <div className='form-group col-xs-12'>
-        <button type='submit' className='submit btn btn-default'>Check now</button>
+      <div className="form-group col-xs-12">
+        <button type="submit" className="submit btn btn-default">Check now</button>
       </div>
     </form>
   );

@@ -19,6 +19,8 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
   const fieldConf = props.field.conf;
   const fieldWidth = props.field.width;
 
+  const allStates = [{ stateName: 'blah', abbreviation: 'blah' }];
+
   function parseConfOptions(conf) {
     const splitConf = conf.split(',');
     const options = [];
@@ -30,24 +32,28 @@ function CheckRegistrationField(props) {  // eslint-disable-line react/prefer-st
 
     return options;
   }
-  var allStates = [{stateName: 'blah', abbreviation: 'blah'}]
 
   let formField;
   if (fieldType === text) {
-    formField = <input type='text' className='form-control' id={fieldLabel} placeholder={fieldLabel} />;
+    formField = <input type="text" className="form-control" id={fieldLabel} placeholder={fieldLabel} />;
   }
-  if (fieldType == select) {
-    formField =     
-      <select className='form-control'>
+  if (fieldType === select) {
+    formField = (
+      <select className="form-control">
         {
-          parseConfOptions(fieldConf).map(function(state) {
-            return <option key={state.value}
-              value={state.value}>{state.label}</option>;
-          })
+          parseConfOptions(fieldConf).map((state) => (
+            <option
+              key={state.value}
+              value={state.value}
+            >
+              {state.label}
+            </option>
+          ))
         }
       </select>
+    );
   }
- 
+
   return (
     <div className={`form-group col-xs-${fieldWidth}`}>
       {formField}

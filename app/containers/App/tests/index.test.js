@@ -15,11 +15,4 @@ describe('<App />', () => {
     );
     expect(renderedComponent.contains(children)).toEqual(true);
   });
-
-  it('should render the footer', () => {
-    const renderedComponent = shallow(
-      <App />
-    );
-    expect(renderedComponent.find(Footer).length).toEqual(1);
-  });
 });
