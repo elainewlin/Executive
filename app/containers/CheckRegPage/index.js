@@ -33,7 +33,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           case c.TEXT_FIELD:
             formBody.push((
               <TextField
-                key={`field-${field.order}`}
+                key={field.name_attr}
                 label={field.label}
                 name={field.name_attr}
                 width={field.width}
@@ -47,7 +47,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             );
             formBody.push((
               <SelectField
-                key={`field-${field.order}`}
+                key={field.name_attr}
                 label={field.label}
                 name={field.name_attr}
                 width={field.width}
@@ -59,7 +59,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           case c.CHECK_FIELD:
             formBody.push((
               <CheckField
-                key={`field-${field.order}`}
+                key={field.name_attr}
                 label={field.label}
                 name={field.name_attr}
                 width={field.width}
@@ -70,7 +70,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           case c.HIDDEN_FIELD:
             formBody.push((
               <HiddenField
-                key={`field-${field.order}`}
+                key={field.name_attr}
                 name={field.name}
                 value={field.conf}
               />
@@ -94,7 +94,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       }
       formBody.push((
         <input
-          key="field-submit"
+          key={this.props.formData.submit_name_attr}
           type="submit"
           className="btn btn-default"
           name={this.props.formData.submit_name_attr}
