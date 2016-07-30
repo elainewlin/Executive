@@ -71,7 +71,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             formBody.push((
               <HiddenField
                 key={field.name_attr}
-                name={field.name}
+                name={field.name_attr}
                 value={field.conf}
               />
             ));
