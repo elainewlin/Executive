@@ -6,10 +6,10 @@
 
 import React from 'react';
 
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
 
-import styles from './styles.css';
+// import styles from './styles.css';
 
 function CheckField(props) {
   return (
@@ -21,5 +21,12 @@ function CheckField(props) {
     </div>
   );
 }
+
+CheckField.propTypes = {
+  name: React.PropTypes.string,
+  label: React.PropTypes.string,
+  description: React.PropTypes.string,
+  width: React.PropTypes.number,
+};
 
 export default CheckField;

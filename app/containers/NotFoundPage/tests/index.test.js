@@ -1,12 +1,7 @@
-/**
- * Testing the NotFoundPage
- */
+// import { NotFound } from '../index';
 
-import expect from 'expect';
-import { shallow, mount } from 'enzyme';
-import React from 'react';
-
-import { IntlProvider, FormattedMessage } from 'react-intl';
-import { NotFound } from '../index';
+// import expect from 'expect';
+// import { shallow } from 'enzyme';
+// import React from 'react';
 
 // No tests yet

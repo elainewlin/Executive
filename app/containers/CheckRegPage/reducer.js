@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import * as c from './constants';
 
 const initialState = fromJS({
-  states: [],
+  states: false,
   currentState: false,
   formData: false,
 });

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import styles from './styles.css';
+// import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
@@ -112,7 +112,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
         <form method="POST" action={this.props.formData.form_url} className="row">
           <div className="col-xs-12">
-            <StateSelect items={this.props.states} onChange={this.props.onChangeState} />
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
           </div>
           {this.buildFormBody()}
         </form>
@@ -120,6 +120,19 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     );
   }
 }
+
+CheckRegPage.propTypes = {
+  formData: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.bool,
+  ]),
+  states: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.bool,
+  ]),
+  onChangeState: React.PropTypes.func,
+  dispatch: React.PropTypes.func,
+};
 
 const mapStateToProps = createStructuredSelector({
   states: selectors.selectStates(),
