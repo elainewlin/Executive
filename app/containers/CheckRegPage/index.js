@@ -94,10 +94,9 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       }
       formBody.push((
         <input
-          key={this.props.formData.submit_name_attr}
+          key="form-submit"
           type="submit"
           className="btn btn-default"
-          name={this.props.formData.submit_name_attr}
           value="Submit"
         />
       ));
