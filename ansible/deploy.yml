@@ -12,15 +12,13 @@
 - name: Copy static site to host
   hosts: all
   gather_facts: no
-  vars:
-    name: executive
-    build_dir: build/
-    ansible_ssh_user: president
+  vars_files:
+    - vars.yml
   tasks:
     - name: Copy build directory
       copy:
         src: "{{ build_dir }}"
-        dest: /srv/{{name}}
+        dest: "{{ app_dir }}"
       become: yes
   tags:
     - copy
