@@ -6,7 +6,7 @@ apt_packages:
 motd_file: executive-motd
 app_name: executive
 app_dir: /srv/{{ app_name }}/
-build_dir: build/
+build_dir: ../build/
 
 # LET'S ENCRYPT
 letsencrypt_cert_domains:
