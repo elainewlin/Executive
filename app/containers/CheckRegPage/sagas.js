@@ -1,27 +1,42 @@
 import { takeEvery } from 'redux-saga';
-import { call, fork, put } from 'redux-saga/effects';
-import request from 'utils/request';
+import { fork, put, select } from 'redux-saga/effects';
+import request from 'superagent';
+import * as selectors from './selectors';
 import * as actions from './actions';
 import * as c from './constants';
 
 export function* fetchStates() {
-  const states = yield call(request, c.FETCH_STATES_URL);
-  if (!states.err) {
-    yield put(actions.loadStates(states.data));
+  const states = yield request.get(c.FETCH_STATES_URL).accept('json');
+  if (states.status === 200) {
+    yield put(actions.loadStates(states.body));
   }
 }
 
 export function* changeState(action) {
   const url = `${c.FETCH_STATES_URL}${action.state}/`;
-  const stateFormResponse = yield call(request, url);
-  if (!stateFormResponse.err) {
-    yield put(actions.loadStateForm(stateFormResponse.data));
+  const stateFormResponse = yield request.get(url).accept('json');
+  if (stateFormResponse.status === 200) {
+    yield put(actions.loadStateForm(stateFormResponse.body));
+  }
+}
+
+export function* submitForm() {
+  const state = yield select(selectors.selectCurrentState());
+  const url = `${c.FETCH_STATES_URL}${state}/`;
+  const formValues = yield select(selectors.selectFormValues());
+  const submitFormResponse = yield request.post(url)
+                                          .type('form')
+                                          .send(formValues)
+                                          .accept('json');
+  if (submitFormResponse.status === 200) {
+    yield put(actions.loadResults(submitFormResponse.body));
   }
 }
 
 export function* checkRegSaga() {
   yield fork(takeEvery, c.FETCH_STATES, fetchStates);
   yield fork(takeEvery, c.CHANGE_STATE, changeState);
+  yield fork(takeEvery, c.SUBMIT_FORM, submitForm);
 }
 
 // All sagas to be loaded

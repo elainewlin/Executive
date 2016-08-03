@@ -10,9 +10,19 @@ const selectStates = () => createSelector(
   (checkRegState) => checkRegState.get('states')
 );
 
+const selectCurrentState = () => createSelector(
+  selectCheckRegPageDomain(),
+  (checkRegState) => checkRegState.get('currentState')
+);
+
 const selectFormData = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('formData')
+);
+
+const selectResults = () => createSelector(
+  selectCheckRegPageDomain(),
+  (checkRegState) => checkRegState.get('results')
 );
 
 const selectLoading = () => createSelector(
@@ -20,8 +30,18 @@ const selectLoading = () => createSelector(
   (checkRegState) => checkRegState.get('loading')
 );
 
+const selectFormDomain = () => (state) => state.get('form');
+
+const selectFormValues = () => createSelector(
+  selectFormDomain(),
+  (formDomain) => formDomain.CheckRegForm.values
+);
+
 export {
   selectStates,
+  selectCurrentState,
   selectFormData,
+  selectResults,
   selectLoading,
+  selectFormValues,
 };

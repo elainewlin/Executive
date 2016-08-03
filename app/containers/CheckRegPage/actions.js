@@ -32,3 +32,16 @@ export function loadStateForm(stateFormData) {
     stateFormData,
   };
 }
+
+export function submitForm() {
+  return {
+    type: c.SUBMIT_FORM,
+  };
+}
+
+export function loadResults(results) {
+  return {
+    type: c.LOAD_RESULTS,
+    results,
+  };
+}

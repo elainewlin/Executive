@@ -11,7 +11,6 @@ import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
 import CheckField from 'components/CheckField';
-import HiddenField from 'components/HiddenField';
 import * as c from './constants';
 
 export class CheckRegForm extends React.Component { // eslint-disable-line react/prefer-stateless-
@@ -66,29 +65,9 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
             />
           ));
           break;
-        case c.HIDDEN_FIELD:
-          formBody.push((
-            <HiddenField
-              key={field.name_attr}
-              name={field.name_attr}
-              value={field.conf}
-            />
-          ));
-          break;
         default:
           // do nothing
           break;
-      }
-    }
-    if (this.props.hidden_fields) {
-      for (const name of Object.keys(this.props.hidden_fields)) {
-        formBody.push((
-          <HiddenField
-            key={name}
-            name={name}
-            value={this.props.hidden_fields[name]}
-          />
-        ));
       }
     }
     formBody.push((
@@ -104,7 +83,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
 
   render() {
     return (
-      <form>
+      <form id="checkregform" onSubmit={this.props.onSubmit}>
         {this.buildFormBody()}
       </form>
     );
@@ -115,6 +94,10 @@ CheckRegForm.propTypes = {
   fields: React.PropTypes.array,
   hidden_fields: React.PropTypes.object,
   dispatch: React.PropTypes.func,
+  onSubmit: React.PropTypes.func,
 };
 
-export default reduxForm({ form: 'CheckRegForm' })(CheckRegForm);
+export default reduxForm({
+  form: 'CheckRegForm',
+  destroyOnUnmount: false,
+})(CheckRegForm);
