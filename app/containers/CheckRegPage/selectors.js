@@ -15,7 +15,13 @@ const selectFormData = () => createSelector(
   (checkRegState) => checkRegState.get('formData')
 );
 
+const selectLoading = () => createSelector(
+  selectCheckRegPageDomain(),
+  (checkRegState) => checkRegState.get('loading')
+);
+
 export {
   selectStates,
   selectFormData,
+  selectLoading,
 };

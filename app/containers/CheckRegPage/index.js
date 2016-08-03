@@ -27,7 +27,9 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   buildFormBody() {
     const formBody = [];
     const formData = this.props.formData;
-    if (formData) {
+    if (this.props.loading) {
+      formBody.push(<p className="col-xs-12">Loading...</p>);
+    } else if (formData) {
       for (const field of formData.fields) {
         switch (field.type) {
           case c.TEXT_FIELD:
@@ -130,6 +132,7 @@ CheckRegPage.propTypes = {
     React.PropTypes.array,
     React.PropTypes.bool,
   ]),
+  loading: React.PropTypes.bool,
   onChangeState: React.PropTypes.func,
   dispatch: React.PropTypes.func,
 };
@@ -137,6 +140,7 @@ CheckRegPage.propTypes = {
 const mapStateToProps = createStructuredSelector({
   states: selectors.selectStates(),
   formData: selectors.selectFormData(),
+  loading: selectors.selectLoading(),
 });
 
 function mapDispatchToProps(dispatch) {
