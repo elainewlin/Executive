@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Field } from 'redux-form';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -15,7 +16,7 @@ function CheckField(props) {
   return (
     <div className={`checkbox col-xs-${props.width}`}>
       <label htmlFor={props.name}>
-        <input type="checkbox" name={props.name} />
+        <Field name={props.name} component="input" type="checkbox" />
         {props.description}
       </label>
     </div>

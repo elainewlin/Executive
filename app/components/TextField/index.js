@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Field } from 'redux-form';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -14,7 +15,7 @@ import React from 'react';
 function TextField(props) {
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <input type="text" className="form-control" name={props.name} placeholder={props.label} />
+      <Field type="text" className="form-control" name={props.name} placeholder={props.label} component="input" />
     </div>
   );
 }

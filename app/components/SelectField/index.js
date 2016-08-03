@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Field } from 'redux-form';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -20,10 +21,10 @@ function SelectField(props) {
   }
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <select className="form-control" name={props.name}>
+      <Field className="form-control" name={props.name} component="select">
         <option key="option-default" value="">{props.label}</option>
         {options}
-      </select>
+      </Field>
     </div>
   );
 }

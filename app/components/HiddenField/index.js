@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Field } from 'redux-form';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
@@ -13,7 +14,7 @@ import React from 'react';
 
 function HiddenField(props) {
   return (
-    <input type="hidden" name={props.name} value={props.value || ''} />
+    <Field name={props.name} component="input" type="hidden" />
   );
 }
 
