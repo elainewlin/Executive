@@ -1,3 +1,6 @@
 .checkRegPage {  /* stylelint-ignore */
-
+    background-color: #FFAAAA;
+    padding: 10px;
+    border-radius: 25px;
+    border-top: 20px;
 }

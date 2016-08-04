@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-// import styles from './styles.css';
+import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
@@ -41,11 +41,13 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         <div className="page-header">
           <h1><FormattedMessage {...messages.header} /></h1>
         </div>
-        <div className="col-xs-12">
-          <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+        <div className={styles.checkRegPage}>
+          <div className="col-xs-12">
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+          </div>
+          {formBody}
+          <pre>{formResults}</pre>
         </div>
-        {formBody}
-        <pre>{formResults}</pre>
       </div>
     );
   }
