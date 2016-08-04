@@ -23,6 +23,13 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   render() {
     let formBody;
     let formResults;
+    formBody = (
+      <form>
+      <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="First" disabled></input></div>
+      <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="Last" disabled></input></div>
+      <div className="form-group col-xs-12"><input type="text" className="form-control" placeholder="Birthday (mm/dd/yyyy)" disabled></input></div>
+      </form>
+    )
     if (this.props.loading) {
       formBody = <p className="col-xs-12">Loading...</p>;
     } else if (this.props.formData) {
@@ -47,6 +54,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           </div>
           {formBody}
           <pre>{formResults}</pre>
+
         </div>
       </div>
     );
