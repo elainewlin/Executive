@@ -13,6 +13,7 @@ import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
 import flag from './flag.jpg';
+import logo from './logo.png';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -56,6 +57,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     }
     return (
       <div>
+        <img className={styles.logo} src={logo}/>
         <div className={styles.header}>
           <FormattedMessage {...messages.header} />
         </div>

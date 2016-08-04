@@ -1,5 +1,5 @@
 .header {
-    padding-top:15%;
+    padding-top:5%;
     padding-bottom:3%;
     text-align:center;
     font-size: 5vw;
@@ -21,8 +21,13 @@
     padding-right: 5px !important;
 }
 
+.logo {
+    max-width:200px;
+    display:block;
+    margin:auto;
+}
 .flag {
-    width:30%;
+    width:25%;
     position:absolute;
     left:0px;
     bottom:0px;
