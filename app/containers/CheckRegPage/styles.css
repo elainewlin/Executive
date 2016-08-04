@@ -1,6 +1,10 @@
 .checkRegPage {  /* stylelint-ignore */
-    background-color: #FFAAAA;
+    background-color: #e6f7ff;
     padding: 10px;
     border-radius: 25px;
-    border-top: 20px;
+}
+
+#button {
+    display:block;
+    margin:auto;
 }

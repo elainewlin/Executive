@@ -23,11 +23,20 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   render() {
     let formBody;
     let formResults;
+
+    // hardcoding a default form body, TO-DO: create using CheckRegForm
     formBody = (
       <form>
       <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="First" disabled></input></div>
       <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="Last" disabled></input></div>
       <div className="form-group col-xs-12"><input type="text" className="form-control" placeholder="Birthday (mm/dd/yyyy)" disabled></input></div>
+      <input
+      className={`btn btn-default ${styles.button}`}
+      type="submit"
+      id={styles.button}
+      value="Check Now"
+      disabled
+      />
       </form>
     )
     if (this.props.loading) {

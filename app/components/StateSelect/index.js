@@ -11,8 +11,8 @@ function StateSelect(props) {
   }
   return (
     <div className="form-group">
-      <select className="form-control" onChange={props.onChange}>
-        <option key={"state-default"} value="" disabled selected>Select your state</option>
+      <select className="form-control" onChange={props.onChange} value="">
+        <option key={"state-default"} value="" disabled>Select your state</option>
         {options}
       </select>
     </div>
