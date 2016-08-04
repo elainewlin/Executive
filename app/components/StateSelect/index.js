@@ -1,6 +1,5 @@
 import React from 'react';
-
-// import styles from './styles.css';
+import styles from './styles.css';
 
 function StateSelect(props) {
   let options;
@@ -11,8 +10,8 @@ function StateSelect(props) {
   }
   return (
     <div className="form-group">
-      <select className="form-control" onChange={props.onChange} defaultValue="">
-        <option key={"state-default"} value="" disabled>Select your state</option>
+      <select className={styles.stateSelect} onChange={props.onChange} defaultValue="">
+        <option key={"state-default"} value="" className={styles.default} disabled>Select your state</option>
         {options}
       </select>
     </div>

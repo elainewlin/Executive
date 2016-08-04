@@ -6,6 +6,8 @@
     border-color: #000080;
     display:block;
     margin:auto;
+    height:40px;
+    width:40%;
 }
 
 #button:hover {

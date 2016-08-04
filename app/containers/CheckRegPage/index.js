@@ -56,15 +56,11 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     return (
       <div>
         <div className={styles.header}>
-          <span>Are you registered to </span>
-          <span className={styles.vote}>vote</span>
-          ?
+          <FormattedMessage {...messages.header} />
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
           <div className={styles.checkRegPage}>
-            <div className="col-xs-12">
-              <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
-            </div>
             {formBody}
             <pre>{formResults}</pre>
 
