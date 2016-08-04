@@ -21,15 +21,13 @@
     padding-right: 5px !important;
 }
 
-.logo {
-    max-width:200px;
-    display:block;
-    margin:auto;
-}
+/* splash image */
 .flag {
-    width:25%;
-    position:absolute;
-    left:0px;
-    bottom:0px;
-    opacity:0.5;
+    width:85%;
+    opacity:.05;
+    z-index: -1;
+    position: fixed;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

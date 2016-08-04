@@ -1,7 +1,7 @@
 /* StateSelect styles */
 .stateSelect {
-    border: 2px solid blue;
-    background-color: #fff;
+    background-color: #000080;
+    color: #fff;
     font-weight: bold;
     font-size: 16px;
     height:50px;

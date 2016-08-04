@@ -13,7 +13,6 @@ import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
 import flag from './flag.jpg';
-import logo from './logo.png';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -36,7 +35,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         className={`btn btn-default ${styles.button}`}
         type="submit"
         id={styles.button}
-        value="Check Now"
+        value="Check Registration"
         disabled
         />
       </form>
@@ -57,19 +56,21 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     }
     return (
       <div>
-        <img className={styles.logo} src={logo}/>
         <div className={styles.header}>
           <FormattedMessage {...messages.header} />
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
           <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+
           <div className={styles.checkRegPage}>
             {formBody}
+            If you know you're not registered, <a href="google.com">download registration form</a>!
             <pre>{formResults}</pre>
 
           </div>
         </div>
         <img className={styles.flag} src={flag}/>
+        
       </div>
     );
   }

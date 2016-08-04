@@ -3,7 +3,8 @@
 }
 
 #button {
-    border-color: #000080;
+    background-color:#cc0000;
+    color:white;
     display:block;
     margin:auto;
     height:40px;
@@ -11,6 +12,5 @@
 }
 
 #button:hover {
-    background-color: #eef7fa;
-    color: #000080;
+    background-color: #ff3232;
 }

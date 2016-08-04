@@ -76,7 +76,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
         type="submit"
         className={`btn btn-default ${styles.button}`}
         id={styles.button}
-        value="Check Now"
+        value="Check Registration"
       />
     ));
     return formBody;
