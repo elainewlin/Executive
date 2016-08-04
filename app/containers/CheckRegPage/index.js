@@ -56,6 +56,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     return (
       <div>
         <div className={styles.header}>
+        asdfasdf
           <h1><FormattedMessage {...messages.header} /></h1>
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
