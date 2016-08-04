@@ -39,7 +39,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         />
       </form>
     )
-    
+
     if (this.props.loading) {
       formBody = <p className="col-xs-12">Loading...</p>;
     } else if (this.props.formData) {
@@ -54,17 +54,19 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       formResults = JSON.stringify(this.props.results, null, 2);
     }
     return (
-      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <div className="page-header">
+      <div>
+        <div className={styles.header}>
           <h1><FormattedMessage {...messages.header} /></h1>
         </div>
-        <div className={styles.checkRegPage}>
-          <div className="col-xs-12">
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
-          </div>
-          {formBody}
-          <pre>{formResults}</pre>
+        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          <div className={styles.checkRegPage}>
+            <div className="col-xs-12">
+              <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+            </div>
+            {formBody}
+            <pre>{formResults}</pre>
 
+          </div>
         </div>
       </div>
     );
