@@ -64,13 +64,15 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
 
           <div className={styles.checkRegPage}>
             {formBody}
-            If you know you're not registered, <a href="google.com">download registration form</a>!
+            <div className={styles.message}>
+              If you are not registered, then download your <a href="google.com" className={styles.link}> registration form</a>!
+            </div>
             <pre>{formResults}</pre>
 
           </div>
         </div>
         <img className={styles.flag} src={flag}/>
-        
+
       </div>
     );
   }
