@@ -6,7 +6,7 @@
 
 import React from 'react';
 // import { connect } from 'react-redux';
-// import styles from './styles.css';
+import styles from './styles.css';
 import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
@@ -74,8 +74,9 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
       <input
         key="form-submit"
         type="submit"
-        className="btn btn-default"
-        value="Submit"
+        className={`btn btn-default ${styles.button}`}
+        id={styles.button}
+        value="Check Now"
       />
     ));
     return formBody;
