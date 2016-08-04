@@ -12,6 +12,7 @@ import messages from './messages';
 import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
+import flag from './flag.jpg';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -66,6 +67,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
 
           </div>
         </div>
+        <img className={styles.flag} src={flag}/>
       </div>
     );
   }
