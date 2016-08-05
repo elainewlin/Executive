@@ -22,11 +22,12 @@ function StateSelect(props) {
           var state = address.filter(function(address, i) {
             return address.types.indexOf('administrative_area_level_1') > -1;
           });
-          console.log(state[0].long_name);
+          console.log(state[0].short_name);
         });
       });
     });
   });
+
   return (
     <div className="form-group">
       <select className={styles.stateSelect} onChange={props.onChange} defaultValue="">
