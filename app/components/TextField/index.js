@@ -15,7 +15,7 @@ import { Field } from 'redux-form';
 function TextField(props) {
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <Field type="text" className="form-control" name={props.name} placeholder={props.label} component="input" />
+      <Field type="text" name={props.name} placeholder={props.label} component="input" />
     </div>
   );
 }
