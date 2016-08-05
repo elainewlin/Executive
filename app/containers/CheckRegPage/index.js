@@ -25,22 +25,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let formBody;
     let formResults;
 
-    // hardcoding a default form body, TO-DO: create using CheckRegForm
-    formBody = (
-      <form>
-        <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="First" disabled></input></div>
-        <div className="form-group col-xs-6"><input type="text" className="form-control" placeholder="Last" disabled></input></div>
-        <div className="form-group col-xs-12"><input type="text" className="form-control" placeholder="Birthday (mm/dd/yyyy)" disabled></input></div>
-        <input
-        className={`btn btn-default ${styles.button}`}
-        type="submit"
-        id={styles.button}
-        value="Check Registration"
-        disabled
-        />
-      </form>
-    )
-
     if (this.props.loading) {
       formBody = <p className="col-xs-12">Loading...</p>;
     } else if (this.props.formData) {
@@ -60,14 +44,12 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <FormattedMessage {...messages.header} />
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
-
           <div className={styles.checkRegPage}>
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
             {formBody}
             <div className={styles.message}>
               If you are not registered, then download your <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
             </div>
-            <pre>{formResults}</pre>
 
           </div>
         </div>
