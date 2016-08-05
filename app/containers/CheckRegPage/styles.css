@@ -21,8 +21,8 @@
 }
 
 [class*="col-"] {
-    padding-left: 0 !important;
-    padding-right: 5px !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
 }
 
 .link {
