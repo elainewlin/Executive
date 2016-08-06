@@ -54,7 +54,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           </div>
           <pre>{formResults}</pre>
         </div>
-        <img className={styles.flag} src={flag}/>
+        <img className={styles.flag} src={flag} role="presentation" />
 
       </div>
     );
