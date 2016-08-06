@@ -1,0 +1,7 @@
+[app]
+staging.votemate.us 
+
+[all:vars]
+ansible_ssh_user=president
+domain_name=staging.votemate.us
+ssl=yes

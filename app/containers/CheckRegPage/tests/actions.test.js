@@ -1,18 +1,5 @@
-import expect from 'expect';
-import {
-  defaultAction,
-} from '../actions';
-import {
-  DEFAULT_ACTION,
-} from '../constants';
+// import expect from 'expect';
+// import * as actions from '../actions';
+// import * as c from '../constants';
 
-describe('CheckRegPage actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION,
-      };
-      expect(defaultAction()).toEqual(expected);
-    });
-  });
-});
+// No tests yet

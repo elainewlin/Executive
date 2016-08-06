@@ -1,0 +1,17 @@
+---
+apt_packages:
+  - htop            # Handy for performance monitoring
+
+# GENERAL
+motd_file: executive-motd
+app_name: executive
+app_dir: /srv/{{ app_name }}/
+build_dir: ../build/
+
+# LET'S ENCRYPT
+letsencrypt_cert_domains:
+  - "{{ domain_name }}"
+letsencrypt_webroot_path: "{{ app_dir }}"
+letsencrypt_authenticator: standalone
+letsencrypt_email: "team@votemate.us"
+letsencrypt_renewal_command_args: '--pre-hook "service nginx stop" --post-hook "service nginx start"'

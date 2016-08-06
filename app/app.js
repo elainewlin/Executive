@@ -8,9 +8,8 @@
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
 
-// Load the favicon, the manifest.json file and the .htaccess file
+// Load the manifest.json file
 import '!file?name=[name].[ext]!./manifest.json';
-import 'file?name=[name].[ext]!./.htaccess';
 
 // Import all the third party stuff
 import React from 'react';
@@ -18,24 +17,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import FontFaceObserver from 'fontfaceobserver';
 import useScroll from 'react-router-scroll';
 import configureStore from './store';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
-
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-import styles from 'containers/App/styles.css';
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add(styles.fontLoaded);
-}, () => {
-  document.body.classList.remove(styles.fontLoaded);
-});
 
 // Import i18n messages
 import { translationMessages } from './i18n';
@@ -110,5 +96,5 @@ if (!window.Intl) {
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
-import { install } from 'offline-plugin/runtime';
-install();
+// import { install } from 'offline-plugin/runtime';
+// install();

@@ -1,0 +1,24 @@
+---
+- name: Build static site locally
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Build react-redux site
+      command: npm run build
+  tags:
+    - build
+
+- name: Copy static site to host
+  hosts: all
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  tasks:
+    - name: Copy build directory
+      copy:
+        src: "{{ build_dir }}"
+        dest: "{{ app_dir }}"
+      become: yes
+  tags:
+    - copy

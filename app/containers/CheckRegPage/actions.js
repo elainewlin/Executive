@@ -18,3 +18,30 @@ export function loadStates(states) {
     states,
   };
 }
+
+export function changeState(state) {
+  return {
+    type: c.CHANGE_STATE,
+    state,
+  };
+}
+
+export function loadStateForm(stateFormData) {
+  return {
+    type: c.LOAD_STATE_FORM,
+    stateFormData,
+  };
+}
+
+export function submitForm() {
+  return {
+    type: c.SUBMIT_FORM,
+  };
+}
+
+export function loadResults(results) {
+  return {
+    type: c.LOAD_RESULTS,
+    results,
+  };
+}

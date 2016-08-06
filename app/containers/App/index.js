@@ -10,19 +10,16 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Header from 'components/Header';
-import { IndexLink, Link } from 'react-router';
-import styles from './styles.css';
+// import styles from './styles.css';
 
 function App(props) {
-
-  //Clean up site navigation later
   return (
     <div>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - VoteMate"
+        defaultTitle="VoteMate"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: 'A guide to the voting process' },
         ]}
       />
       <Header />
