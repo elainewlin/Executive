@@ -14,7 +14,7 @@ const selectCurrentState = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('currentState')
 );
- 
+
 const selectFormData = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('formData')
@@ -30,11 +30,6 @@ const selectLoading = () => createSelector(
   (checkRegState) => checkRegState.get('loading')
 );
 
-const selectApiErrMsg = () => createSelector(
-  selectCheckRegPageDomain(),
-  (checkRegState) => checkRegState.get('apiErrMsg')
-);
-
 const selectFormDomain = () => (state) => state.get('form');
 
 const selectFormValues = () => createSelector(
@@ -48,6 +43,5 @@ export {
   selectFormData,
   selectResults,
   selectLoading,
-  selectApiErrMsg,
   selectFormValues,
 };
