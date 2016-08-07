@@ -14,7 +14,7 @@ const selectCurrentState = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('currentState')
 );
- 
+
 const selectFormData = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('formData')

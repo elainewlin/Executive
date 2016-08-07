@@ -15,6 +15,8 @@ import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
+import { browserHistory } from 'react-router';
+
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     this.props.dispatch(actions.fetchStates());
@@ -82,6 +84,7 @@ function mapDispatchToProps(dispatch) {
     onChangeState: (evt) => dispatch(actions.changeState(evt.target.value)),
     onSubmit: (evt) => {
       evt.preventDefault();
+      // browserHistory.push("/post-check");
       dispatch(actions.submitForm());
     },
     dispatch,
