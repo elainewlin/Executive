@@ -23,6 +23,7 @@ select {
   height: 32px;
   padding: 6px;
   border-radius: 5px;
+  outline: none;
 }
 
 ::-webkit-input-placeholder {
