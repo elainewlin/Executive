@@ -23,14 +23,3 @@
 .link {
   color: #000080; /* complements the blue in the select box */
 }
-
-/* splash image */
-.flag {
-  width: 85%;
-  opacity: 0.05;
-  z-index: -1;
-  position: fixed;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
