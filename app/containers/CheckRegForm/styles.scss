@@ -2,10 +2,11 @@
 
 #button {
   background-color: $dark-red;
+  border: none;
   color: #FFF;
   display: block;
   margin: auto;
-  height: 40px;
+  height: $field-height;
   width: 50%;
   min-width: 200px;
   text-align: center;

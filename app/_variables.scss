@@ -1,4 +1,35 @@
-$dark-red: #ea3f3f;
-$light-red: #ea4f4f;
-$dark-blue: #356ee8;
-$light-blue: #5c88e8;
+$dark-red: #da2d2d;
+$light-red: #e85f5f;
+$dark-blue: #003dbf;
+$light-blue: #3469db;
+$small-screen: 424px;
+$mid-screen: 600px;
+$large-screen: 1000px;
+$field-height: 35px;
+$pad: .3*$field-height;
+
+@mixin font-size($fs-map) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+@mixin height($height-map) {
+  @each $fs-breakpoint, $fs-height in $height-map {
+    @if $fs-breakpoint == null {
+      height: $fs-height;
+    }
+    @else {
+      @media screen and (min-width: $fs-breakpoint) {
+        height: $fs-height;
+      }
+    }
+  }
+}

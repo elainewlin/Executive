@@ -1,10 +1,5 @@
 @import "../../variables.scss";
 :global .navbar.navbar-default {
-    background-color: $light-red;
-    .navbar-brand {
-        color: #FFF;
-        &:hover {
-            color: #DDD;
-        }
-    }
+    background-color: #FFF;
+    border: none;
 }
