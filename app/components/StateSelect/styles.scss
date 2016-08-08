@@ -1,6 +1,8 @@
+@import "../../variables.scss";
+
 /* StateSelect styles */
 .stateSelect {
-  background-color: #000080;
+  background-color: $dark-blue;
   color: #FFF;
   font-weight: bold;
   font-size: 16px;
@@ -14,3 +16,4 @@ select.stateSelect {
   text-align: center;
   text-align-last: center;
 }
+

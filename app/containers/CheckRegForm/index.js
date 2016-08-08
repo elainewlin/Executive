@@ -6,7 +6,7 @@
 
 import React from 'react';
 // import { connect } from 'react-redux';
-import styles from './styles.css';
+import styles from './styles.scss';
 import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';

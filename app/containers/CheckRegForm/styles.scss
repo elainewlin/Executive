@@ -1,9 +1,7 @@
-.checkRegForm {  /* stylelint-ignore */
-
-}
+@import "../../variables.scss";
 
 #button {
-  background-color: #C00;
+  background-color: $dark-red;
   color: #FFF;
   display: block;
   margin: auto;
@@ -14,6 +12,6 @@
 }
 
 #button:hover {
-  background-color: #FF3232;
+  background-color: $light-red;
 }
 

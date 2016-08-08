@@ -7,11 +7,6 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
-
-import styles from './styles.css';
-
 function SelectField(props) {
   let options;
   if (props.options) {

@@ -1,3 +1,5 @@
+@import "../../variables.scss";
+
 .header {
   padding-top: 5%;
   padding-bottom: 3%;
@@ -21,5 +23,5 @@
 }
 
 .link {
-  color: #000080; /* complements the blue in the select box */
+  color: $light-blue; /* complements the blue in the select box */
 }
