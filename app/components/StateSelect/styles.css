@@ -5,12 +5,6 @@
   font-weight: bold;
   font-size: 16px;
   height: 50px;
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
-select.stateSelect {
   text-align: center;
   text-align-last: center;
 }
