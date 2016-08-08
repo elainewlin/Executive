@@ -1,16 +1,16 @@
 /* StateSelect styles */
 .stateSelect {
-    background-color: #000080;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    height:50px;
-    width:100%;
-    display: block;
-    margin: 0 auto;
+  background-color: #000080;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  height: 50px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 select.stateSelect {
-    text-align: center;
-    text-align-last: center;
+  text-align: center;
+  text-align-last: center;
 }
