@@ -40,22 +40,28 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     }
     return (
       <div>
-        <div className={styles.header}>
-          <FormattedMessage {...messages.header} />
-        </div>
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
-            {formBody}
-            <div className={styles.message}>
-              If you are not registered, then download your <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
-            </div>
-
+        <div className="row">
+          <div className={styles.header}>
+            <FormattedMessage {...messages.header} />
           </div>
-          <pre>{formResults}</pre>
+        </div>
+        <div className="row">
+          <div className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+            <div>
+              <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+              {formBody}
+              <div className={styles.message}>
+                If you are not registered, then download your <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+            <pre>{formResults}</pre>
+          </div>
         </div>
         <img className={styles.flag} src={flag} role="presentation" />
-
       </div>
     );
   }

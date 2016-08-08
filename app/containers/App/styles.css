@@ -41,3 +41,7 @@ select {
 :-ms-input-placeholder {
   color: #000;
 }
+
+:global .form-control {
+  border-radius: 0px;
+}
