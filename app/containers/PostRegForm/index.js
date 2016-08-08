@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { reduxForm, change } from 'redux-form/immutable';
-import SocialButtons from 'components/SocialButtons';
 import * as c from './constants';
 
 import fetchStates from 'containers/CheckRegPage/actions';
@@ -15,63 +14,59 @@ import fetchStates from 'containers/CheckRegPage/actions';
 import { browserHistory } from 'react-router';
 import TextField from 'components/TextField';
 
+import SocialButtons from 'components/SocialButtons';
 import RegSticker from 'components/RegSticker'
+
+import VotePrompts from './vote_prompts';
 
 export class PostRegForm extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-       registration: "lmao"
+       registration: "unregistered"
     };
   }
 
-  componentDidMount () {
-    // this.setState({
-    //   registration: "unregistered"
-    // });
+  buildPostRegForm(regState) {
+    return (
+      <div className="post-reg-form">
+        <p>{this.getInstructionText(regState)}</p>
+        <RegSticker />
+        <div>Mail by {c.MAIL_IN_DATE}</div>
+        <div className="post-reg-footer-container">
+          {this.getFooter(regState)}
+        </div>
+      </div>
+    );
   }
 
-  buildPostRegForm() {
-    switch(this.state.registration) {
-      case "unregistered":
-        return "Nope, but register now?";
-      case "registered":
-        //header
-        //card
-        //vote on nov 8
-        //social buttons
-        return "Yes! You are registered to vote!";
-      default:
-        //state
-        //first, last
-
-        return "You're almost VoteReady! Print and mail your form!";
-    }
+  getInstructionText(regState) {
+    return VotePrompts[regState];
   }
 
-  getInstructionText() {
-    switch(this.state.registration) {
+  // Return proper footer container based on registration state
+  getFooter(regState) {
+    switch (regState) {
       case "unregistered":
-        return "Nope, but register now?";
-      case "registered":
-        return "Yes! You are registered to vote!";
+        return (
+          <div className="post-reg-footer">
+            <button className="check-again-button">
+              Check Again
+            </button>
+            OR REGISTER
+            <button className="download-form-button">
+              Download Form
+            </button>
+          </div>
+        );
       default:
-        return "You're almost there! Print and mail your form!";
+        return <SocialButtons />;
     }
   }
 
   render() {
-    return (
-      <div className="post-reg-form">
-        <p>{this.getInstructionText()}</p>
-        <div className="registered-card-container">
-          card content here
-        </div>
-        <div>Mail by {c.MAIL_IN_DATE}</div>
-        <SocialButtons />
-      </div>
-    );
+    return this.buildPostRegForm(this.state.registration);
   }
 }
 
