@@ -10,8 +10,6 @@ import { Link } from 'react-router';
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
-import styles from './styles.scss';
-
 function Header() {
   return (
     <nav className="navbar navbar-default">
