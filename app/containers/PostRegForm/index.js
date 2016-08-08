@@ -24,16 +24,16 @@ export class PostRegForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-       registration: "unregistered"
+       registration: "registered"
     };
   }
 
   buildPostRegForm(regState) {
     return (
       <div className="post-reg-form">
-        <p>{this.getInstructionText(regState)}</p>
+        <p>{this.getVoteStatusPrompt(regState)}</p>
         <RegSticker />
-        <div>Mail by {c.MAIL_IN_DATE}</div>
+        {this.getNextStepsInstructions(regState)}
         <div className="post-reg-footer-container">
           {this.getFooter(regState)}
         </div>
@@ -41,8 +41,19 @@ export class PostRegForm extends React.Component {
     );
   }
 
-  getInstructionText(regState) {
+  getVoteStatusPrompt(regState) {
     return VotePrompts[regState];
+  }
+
+  getNextStepsInstructions(regState) {
+    switch (regState) {
+      case "registered":
+        return <div>Vote by {c.VOTE_DATE}</div>;
+      case "unregistered":
+        return <div>Mail by {c.MAIL_IN_DATE}</div>;
+      default:
+        return "";
+    }
   }
 
   // Return proper footer container based on registration state
