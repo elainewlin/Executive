@@ -2,11 +2,13 @@ html {
   box-sizing: border-box;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 html,
 body {
   margin: 0;
   height: 100%;
-  font-family: Verdana, Geneva, sans-serif !important;
+  font-family: 'Roboto', sans-serif;
 }
 
 *,
