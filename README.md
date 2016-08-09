@@ -35,7 +35,8 @@ You'll need:
 * SSH access to the destination server
 
 ### Staging
-`ap -i staging.votemate.us, deploy.yml` (the comma is important)
+1. `cd ansible`
+2. `ap -i staging deploy.yml`
 
 Add `--tags build` to just build the project or `--tags copy` to copy an already built project to the server
 
