@@ -40,40 +40,46 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         formBody = this.props.formData.disabled_message;
       }
     }
+
     if (this.props.results) {
-      formResults = JSON.stringify(this.props.results, null, 2);
-    }
-    if (this.props.apiErrMsg.length > 0) {
-      apiErrMsg = (
-        <div className="row">
-          <div className="col-xs-12 alert alert-warning">
-            {this.props.apiErrMsg}
+      // formResults = JSON.stringify(this.props.results, null, 2);
+      return (
+        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          hi!!!!!!
+        </div>
+      );
+    } else {
+      if (this.props.apiErrMsg.length > 0) {
+        apiErrMsg = (
+          <div className="row">
+            <div className="col-xs-12 alert alert-warning">
+              {this.props.apiErrMsg}
+            </div>
+          </div>
+        );
+      }
+      return (
+        <div>
+          <div className={styles.header}>
+            <FormattedMessage {...messages.header} />
+          </div>
+          <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+            <div className={styles.checkRegPage}>
+              <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
+              {apiErrMsg}
+              {formBody}
+            </div>
+            <div className={styles.message}>
+              If you are not registered, then download your
+              <span>
+                <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
+              </span>
+            </div>
+            <div id="formResults" className={styles.formResults}>{formResults}</div>
           </div>
         </div>
       );
     }
-
-    return (
-      <div>
-        <div className={styles.header}>
-          <FormattedMessage {...messages.header} />
-        </div>
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
-            {apiErrMsg}
-            {formBody}
-          </div>
-          <div className={styles.message}>
-            If you are not registered, then download your
-            <span>
-              <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
-            </span>
-          </div>
-          <div id="formResults" className={styles.formResults}>{formResults}</div>
-        </div>
-      </div>
-    );
   }
 }
 
@@ -109,10 +115,11 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeState: (evt) => dispatch(actions.changeState(evt.target.value)),
+    onChangeState: (evt) => {
+      dispatch(actions.changeState(evt.target.value));
+    },
     onSubmit: (evt) => {
       evt.preventDefault();
-      // browserHistory.push("/post-check");
       dispatch(actions.submitForm());
     },
     dispatch,
