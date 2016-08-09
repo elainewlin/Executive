@@ -4,6 +4,28 @@ import request from 'superagent';
 import * as selectors from './selectors';
 import * as actions from './actions';
 import * as c from './constants';
+import * as cfg from 'config';
+
+export function* fetchInitialState() {
+  const FETCH_LOCATION_URL = `https://www.googleapis.com/geolocation/v1/geolocate?key=${cfg.GOOGLE_MAPS_API}`;
+  const location = yield request.post(FETCH_LOCATION_URL).accept('json');
+  if(location.status === 200) {
+    const data = location.body;
+    const lat = data.location.lat;
+    const lng = data.location.lng;
+    const FETCH_ADDRESS_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+`&key=${cfg.GOOGLE_MAPS_API}`;
+
+    const addressResponse = yield request.post(FETCH_ADDRESS_URL).accept('json');
+    if (addressResponse.status === 200) {
+      const data = addressResponse.body;
+      const address = data.results[0].address_components;
+      const state = address.filter(function(address, i) {
+        return address.types.indexOf('administrative_area_level_1') > -1;
+      });
+      yield put(actions.loadInitialState(state[0].short_name));
+    }
+  }
+}
 
 export function* fetchStates() {
   const states = yield request.get(c.FETCH_STATES_URL).accept('json');
@@ -35,6 +57,7 @@ export function* submitForm() {
 
 export function* checkRegSaga() {
   yield fork(takeEvery, c.FETCH_STATES, fetchStates);
+  yield fork(takeEvery, c.FETCH_INITIAL_STATE, fetchInitialState);
   yield fork(takeEvery, c.CHANGE_STATE, changeState);
   yield fork(takeEvery, c.SUBMIT_FORM, submitForm);
 }

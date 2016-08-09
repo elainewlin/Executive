@@ -5,6 +5,11 @@ import { createSelector } from 'reselect';
  */
 const selectCheckRegPageDomain = () => (state) => state.get('CheckRegPage');
 
+const selectInitialState = () => createSelector(
+  selectCheckRegPageDomain(),
+  (checkRegState) => checkRegState.get('initialState')
+);
+
 const selectStates = () => createSelector(
   selectCheckRegPageDomain(),
   (checkRegState) => checkRegState.get('states')
@@ -38,6 +43,7 @@ const selectFormValues = () => createSelector(
 );
 
 export {
+  selectInitialState,
   selectStates,
   selectCurrentState,
   selectFormData,
