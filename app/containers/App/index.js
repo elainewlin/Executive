@@ -10,7 +10,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Header from 'components/Header';
-// import styles from './styles.css';
+import styles from './styles.scss';
 
 function App(props) {
   return (

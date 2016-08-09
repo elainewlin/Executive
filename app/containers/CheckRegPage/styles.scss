@@ -1,0 +1,48 @@
+@import "../../variables.scss";
+@import url(https://fonts.googleapis.com/css?family=Karla);
+
+$header-font: (
+  null: 20px,
+  $small-screen: 30px,
+  $mid-screen: 40px,
+  $large-screen: 60px,
+);
+
+.header {
+  padding-top: $pad;
+  padding-bottom: $pad;
+  text-align: center;
+  @include font-size($header-font);
+  font-family: 'Karla', sans-serif;
+}
+
+.checkRegPage {  /* stylelint-ignore */
+  width: 60%;
+  min-width: 290px;
+  margin: auto;
+}
+
+.message {
+  padding-top: $pad;
+  font-size: inherit;
+  text-align: center;
+
+  @media screen and (max-width: $small-screen) {
+    span {
+      display: block;
+    }
+  }
+}
+
+[class*='col-'] {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
+
+.link {
+  color: $light-blue; /* complements the blue in the select box */
+  &:hover {
+    text-decoration: none;
+    color: $light-red;
+  }
+}
