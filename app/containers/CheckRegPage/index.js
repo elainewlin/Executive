@@ -9,10 +9,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import styles from './styles.css';
+import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
-import flag from './flag.jpg';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -25,9 +24,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let formBody;
     let formResults;
 
-    if (this.props.loading) {
-      formBody = <p className="col-xs-12">Loading...</p>;
-    } else if (this.props.formData) {
+    if (!this.props.loading && this.props.formData) {
       formBody = (
         <CheckRegForm
           fields={this.props.formData.fields}
@@ -47,15 +44,15 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <div className={styles.checkRegPage}>
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
             {formBody}
-            <div className={styles.message}>
-              If you are not registered, then download your <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
-            </div>
-
+          </div>
+          <div className={styles.message}>
+            If you are not registered, then download your 
+            <span>
+               <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
+            </span>
           </div>
           <pre>{formResults}</pre>
         </div>
-        <img className={styles.flag} src={flag}/>
-
       </div>
     );
   }

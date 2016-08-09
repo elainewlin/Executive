@@ -10,11 +10,11 @@ import { Link } from 'react-router';
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
-// import styles from './styles.css';
+import styles from './styles.scss';
 
 function Header() {
   return (
-    <nav className="navbar navbar-default">
+    <nav className="navbar navbar-default" id={styles.header}>
       <div className="container">
         <div className="navbar-header">
           <Link to="/" className="navbar-brand" activeClassName="activeRoute">
