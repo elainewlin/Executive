@@ -26,7 +26,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let formBody;
     let formResults;
     let initialState = 'MA';
-    console.log(this.props.initialState);
 
     if (!this.props.loading && this.props.formData) {
       formBody = (
@@ -39,6 +38,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
+
     return (
       <div>
         <div className={styles.header}>
@@ -79,7 +79,10 @@ CheckRegPage.propTypes = {
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  initialState: React.PropTypes.string,
+  initialState: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
