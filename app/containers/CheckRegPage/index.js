@@ -16,13 +16,17 @@ import * as selectors from './selectors';
 import * as actions from './actions';
 
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   componentDidMount() {
     this.props.dispatch(actions.fetchStates());
+    this.props.dispatch(actions.fetchInitialState());
   }
 
   render() {
     let formBody;
     let formResults;
+    console.log(this.props.initialState);
+    let initialState = 'MA';
 
     if (!this.props.loading && this.props.formData) {
       formBody = (
@@ -42,7 +46,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
           <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} initialState={initialState}/>
             {formBody}
           </div>
           <div className={styles.message}>
@@ -75,6 +79,7 @@ CheckRegPage.propTypes = {
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
+  initialState: React.PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({

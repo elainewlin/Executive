@@ -4,6 +4,27 @@ import request from 'superagent';
 import * as selectors from './selectors';
 import * as actions from './actions';
 import * as c from './constants';
+import * as cfg from 'config';
+
+export function* fetchInitialState() {
+  fetch(`https://www.googleapis.com/geolocation/v1/geolocate?key=${cfg.GOOGLE_MAPS_API}`, { method:'POST' })
+    .then(function(response) {
+      response.json().then(function(data) {
+        var lat = data.location.lat;
+        var lng = data.location.lng;
+        fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+`&key=${cfg.GOOGLE_MAPS_API}`, { method:'POST'})
+        .then(function(response) {
+          response.json().then(function(data) {
+            var address = data.results[0].address_components;
+            var state = address.filter(function(address, i) {
+              return address.types.indexOf('administrative_area_level_1') > -1;
+            });
+            console.log(state[0].short_name);
+          });
+        });
+      });
+    });
+}
 
 export function* fetchStates() {
   const states = yield request.get(c.FETCH_STATES_URL).accept('json');
@@ -35,6 +56,7 @@ export function* submitForm() {
 
 export function* checkRegSaga() {
   yield fork(takeEvery, c.FETCH_STATES, fetchStates);
+  yield fork(takeEvery, c.FETCH_INITIAL_STATE, fetchInitialState);
   yield fork(takeEvery, c.CHANGE_STATE, changeState);
   yield fork(takeEvery, c.SUBMIT_FORM, submitForm);
 }

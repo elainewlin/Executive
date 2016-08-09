@@ -8,6 +8,7 @@ import { fromJS } from 'immutable';
 import * as c from './constants';
 
 const initialState = fromJS({
+  initialState: false,
   states: false,
   currentState: false,
   loading: false,
@@ -17,6 +18,9 @@ const initialState = fromJS({
 
 function checkRegPageReducer(state = initialState, action) {
   switch (action.type) {
+    case c.LOAD_INITIAL_STATE:
+      return state
+        .set('initialState', action.initialState);
     case c.LOAD_STATES:
       return state
         .set('states', action.states);
