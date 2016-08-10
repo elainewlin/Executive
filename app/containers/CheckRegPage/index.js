@@ -12,6 +12,7 @@ import messages from './messages';
 // import styles from './styles.css';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
+
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -39,28 +40,22 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       );
     }
 
-    if (this.props.results) {
-      // formResults = JSON.stringify(this.props.results, null, 2);
-
-      return (
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <PostRegForm registered={this.props.results["registered"] ? "registered" : "unregistered"}/>
-        </div>
-      );
-    } else {
-      return (
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <div className="page-header">
-            <h1><FormattedMessage {...messages.header} /></h1>
-          </div>
-          <div className="col-xs-12">
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
-          </div>
-          {formBody}
-          <pre>{formResults}</pre>
-        </div>
-      );
+    if(this.props.results) {
+      formResults = JSON.stringify(this.props.results, null, 2);
     }
+
+    return (
+      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <div className="page-header">
+          <h1><FormattedMessage {...messages.header} /></h1>
+        </div>
+        <div className="col-xs-12">
+          <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+        </div>
+        {formBody}
+        <pre>{formResults}</pre>
+      </div>
+    );
   }
 }
 
