@@ -28,8 +28,15 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
   buildFormBody() {
     const formBody = [];
 
+    const fieldsetToLabel = {
+      'name': 'Name',
+      'dob': 'Birthday',
+      'residence': 'Address',
+      'id': 'Identification'
+    }
     for (const field of this.props.fields) {
-      formBody.push((<FormLabel label={field.fieldset} key={field.fieldset}></FormLabel>));
+      const label = fieldsetToLabel[field.fieldset];
+      formBody.push((<FormLabel label={label} key={label}></FormLabel>));
 
       switch (field.type) {
         case c.TEXT_FIELD:

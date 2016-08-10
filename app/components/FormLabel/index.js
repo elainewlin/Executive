@@ -13,16 +13,10 @@ import { Link } from 'react-router';
 import styles from './styles.scss';
 
 function FormLabel(props) {
-  const fieldsetToLabel = {
-    'name': 'Name',
-    'dob': 'Birthday',
-    'residence': 'Address',
-    'id': 'Identification'
-  }
 
   return (
     <div className='col-xs-12'>
-      <label>{fieldsetToLabel[props.label]}</label>
+      <label>{props.label}</label>
     </div>
   );
 }
