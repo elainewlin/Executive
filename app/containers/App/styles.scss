@@ -19,7 +19,6 @@ body {
 
 input,
 select {
-  background-color: #FFF;
   border: 1px solid #AAA;
   width: 100%;
   height: 32px;
@@ -29,18 +28,18 @@ select {
 }
 
 ::-webkit-input-placeholder {
-  color: #000;
+  color: #AAA;
   opacity: 1 !important; /* for chrome */
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: #000;
+  color: #AAA;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-  color: #000;
+  color: #AAA;
 }
 
 :-ms-input-placeholder {
-  color: #000;
+  color: #AAA;
 }
