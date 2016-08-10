@@ -12,6 +12,7 @@ import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
+
 import * as selectors from './selectors';
 import * as actions from './actions';
 
@@ -43,25 +44,22 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       }
     }
 
-    if (this.props.results) {
-      // formResults = JSON.stringify(this.props.results, null, 2);
+    if(this.props.results) {
+      formResults = JSON.stringify(this.props.results, null, 2);
+    }
 
-      return (
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          <PostRegForm registered={this.props.results["registered"] ? "registered" : "unregistered"}/>
+    if (this.props.apiErrMsg.length > 0) {
+      apiErrMsg = (
+        <div className="row">
+          <div className="col-xs-12 alert alert-warning">
+            {this.props.apiErrMsg}
+          </div>
         </div>
       );
-    } else {
-      if (this.props.apiErrMsg.length > 0) {
-        apiErrMsg = (
-          <div className="row">
-            <div className="col-xs-12 alert alert-warning">
-              {this.props.apiErrMsg}
-            </div>
-          </div>
-        );
-      }
-      return (
+    }
+
+    return (
+      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         <div>
           <div className={styles.header}>
             <FormattedMessage {...messages.header} />
@@ -81,8 +79,8 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             <div id="formResults" className={styles.formResults}>{formResults}</div>
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
