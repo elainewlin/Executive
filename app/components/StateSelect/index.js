@@ -3,7 +3,6 @@ import styles from './styles.scss';
 
 function StateSelect(props) {
   let options;
-  let selectedState;
 
   if (props.states) {
     options = props.states.map((state, index) => (
@@ -11,14 +10,9 @@ function StateSelect(props) {
     ));
   }
 
-  if (props.initialState) {
-    console.log(props.initialState);
-    selectedState = props.initialState;
-  }
-
   return (
     <div className="form-group">
-      <select className={styles.stateSelect} onChange={props.onChange} defaultValue={selectedState}>
+      <select className={styles.stateSelect} onChange={props.onChange} value={props.currentState}>
         <option key={"state-default"} value="" className={styles.default} disabled>Select your state</option>
         {options}
       </select>
@@ -32,10 +26,7 @@ StateSelect.propTypes = {
     React.PropTypes.bool,
   ]),
   onChange: React.PropTypes.func,
-  initialState: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
+  currentState: React.PropTypes.string,
 };
 
 export default StateSelect;

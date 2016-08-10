@@ -25,7 +25,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   render() {
     let formBody;
     let formResults;
-    let initialState = 'MA';
 
     if (!this.props.loading && this.props.formData) {
       formBody = (
@@ -46,7 +45,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
           <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} initialState={this.props.initialState}/>
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {formBody}
           </div>
           <div className={styles.message}>
@@ -79,15 +78,12 @@ CheckRegPage.propTypes = {
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  initialState: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.bool,
-  ]),
+  currentState: React.PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   states: selectors.selectStates(),
-  initialState: selectors.selectInitialState(),
+  currentState: selectors.selectCurrentState(),
   formData: selectors.selectFormData(),
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),

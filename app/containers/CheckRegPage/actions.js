@@ -12,13 +12,6 @@ export function fetchInitialState() {
   };
 }
 
-export function loadInitialState(state) {
-  return {
-    type: c.LOAD_INITIAL_STATE,
-    state,
-  };
-}
-
 export function fetchStates() {
   return {
     type: c.FETCH_STATES,
