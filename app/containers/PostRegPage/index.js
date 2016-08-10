@@ -5,20 +5,21 @@
  */
 
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { createStructuredSelector } from 'reselect';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
+import * as sagas from './sagas';
 
 // import StateSelect from 'components/StateSelect';
 import PostRegForm from 'containers/PostRegForm';
 
 // import * as selectors from './selectors';
-// import * as actions from './actions';
+import * as actions from './actions';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    // this.props.dispatch(actions.fetchStates());
+    this.props.dispatch(actions.fetchStates());
   }
 
   render() {
@@ -29,7 +30,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
 }
 
-// PostRegPage.propTypes = {
+PostRegPage.propTypes = {
 //   formData: React.PropTypes.oneOfType([
 //     React.PropTypes.object,
 //     React.PropTypes.bool,
@@ -45,18 +46,18 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 //   ]),
 //   onChangeState: React.PropTypes.func,
 //   onSubmit: React.PropTypes.func,
-//   dispatch: React.PropTypes.func,
-// };
+  dispatch: React.PropTypes.func,
+};
 
-// const mapStateToProps = createStructuredSelector({
+const mapStateToProps = createStructuredSelector({
   // states: selectors.selectStates(),
   // formData: selectors.selectFormData(),
   // loading: selectors.selectLoading(),
   // results: selectors.selectResults(),
-// });
+});
 
-// function mapDispatchToProps(dispatch) {
-//   return {
+function mapDispatchToProps(dispatch) {
+  return {
 //     onChangeState: (evt) => {
 //       dispatch(actions.changeState(evt.target.value))
 //     },
@@ -64,10 +65,10 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 //       evt.preventDefault();
 //       dispatch(actions.submitForm());
 //     },
-//     dispatch,
-//   };
-// }
+    dispatch
+  };
+}
 
-export default PostRegPage;
+// export default PostRegPage;
 
-// export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);
+export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);

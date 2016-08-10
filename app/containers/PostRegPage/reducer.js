@@ -15,7 +15,7 @@ const initialState = fromJS({
   results: false,
 });
 
-function checkRegPageReducer(state = initialState, action) {
+function postRegPageReducer(state = initialState, action) {
   switch (action.type) {
     case c.LOAD_STATES:
       return state
@@ -39,4 +39,4 @@ function checkRegPageReducer(state = initialState, action) {
   }
 }
 
-export default checkRegPageReducer;
+export default postRegPageReducer;

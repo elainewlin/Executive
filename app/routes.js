@@ -40,7 +40,7 @@ export default function createRoutes(store) {
       },
     }, {
       path: '/post-check',
-      name: 'postRegPage',
+      name: 'PostRegPage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
           System.import('containers/PostRegPage/reducer'),
@@ -51,7 +51,7 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('postRegPage', reducer.default);
+          injectReducer('PostRegPage', reducer.default);
           injectSagas(sagas.default);
           renderRoute(component);
         });

@@ -15,6 +15,8 @@ import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
 
+import PostRegForm from 'containers/PostRegForm';
+
 import { browserHistory } from 'react-router';
 
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -43,9 +45,10 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
 
     if (this.props.results) {
       // formResults = JSON.stringify(this.props.results, null, 2);
+
       return (
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-          hi!!!!!!
+          <PostRegForm registered={this.props.results["registered"] ? "registered" : "unregistered"}/>
         </div>
       );
     } else {

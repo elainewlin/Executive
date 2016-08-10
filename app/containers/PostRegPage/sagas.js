@@ -6,6 +6,7 @@ import * as actions from './actions';
 import * as c from './constants';
 
 export function* fetchStates() {
+  console.log("lololo");
   const states = yield request.get(c.FETCH_STATES_URL).accept('json');
   if (states.status === 200) {
     yield put(actions.loadStates(states.body));
