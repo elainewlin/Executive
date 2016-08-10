@@ -26,20 +26,3 @@ select {
   border-radius: 5px;
   outline: none;
 }
-
-::-webkit-input-placeholder {
-  color: #AAA;
-  opacity: 1 !important; /* for chrome */
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  color: #AAA;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-  color: #AAA;
-}
-
-:-ms-input-placeholder {
-  color: #AAA;
-}
