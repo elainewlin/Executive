@@ -13,6 +13,7 @@ $state-select-height: (
 /* StateSelect styles */
 .stateSelect {
   background-color: $dark-blue;
+  border:none;
   color: #FFF;
   font-weight: bold;
   @include font-size($state-select-font);
