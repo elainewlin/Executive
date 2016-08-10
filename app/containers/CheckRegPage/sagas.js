@@ -9,20 +9,20 @@ import * as cfg from 'config';
 export function* fetchInitialState() {
   const FETCH_LOCATION_URL = `https://www.googleapis.com/geolocation/v1/geolocate?key=${cfg.GOOGLE_MAPS_API}`;
   const location = yield request.post(FETCH_LOCATION_URL).accept('json');
-  if(location.status === 200) {
-    const data = location.body;
-    const lat = data.location.lat;
-    const lng = data.location.lng;
-    const FETCH_ADDRESS_URL = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+`&key=${cfg.GOOGLE_MAPS_API}`;
+  if (location.status === 200) {
+    const locationData = location.body;
+    const lat = locationData.location.lat;
+    const lng = locationData.location.lng;
+    const FETCH_ADDRESS_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${cfg.GOOGLE_MAPS_API}`;
 
     const addressResponse = yield request.post(FETCH_ADDRESS_URL).accept('json');
     if (addressResponse.status === 200) {
-      const data = addressResponse.body;
-      const address = data.results[0].address_components;
-      const state = address.filter(function(address, i) {
-        return address.types.indexOf('administrative_area_level_1') > -1;
-      });
-      yield put(actions.loadInitialState(state[0].short_name));
+      const addressData = addressResponse.body;
+      const address = addressData.results[0].address_components;
+      const state = address.filter((addr) =>
+        addr.types.indexOf('administrative_area_level_1') > -1
+      );
+      yield put(actions.changeState(state[0].short_name));
     }
   }
 }
