@@ -22,7 +22,7 @@ function FormLabel(props) {
 }
 
 FormLabel.propTypes = {
-  label: React.PropTypes.string
+  label: React.PropTypes.string,
 };
 
 export default FormLabel;
