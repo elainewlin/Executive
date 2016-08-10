@@ -21,8 +21,8 @@ function FormLabel(props) {
   }
 
   return (
-    <div className='form-group col-xs-12'>
-        <label>{fieldsetToLabel[props.label]}</label>
+    <div className='col-xs-12'>
+      <label>{fieldsetToLabel[props.label]}</label>
     </div>
   );
 }
