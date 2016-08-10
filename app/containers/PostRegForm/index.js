@@ -77,7 +77,7 @@ export class PostRegForm extends React.Component {
   }
 
   render() {
-    return this.buildPostRegForm(this.state.registration);
+    return this.buildPostRegForm(this.props.registered);
   }
 }
 
