@@ -26,12 +26,16 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let formBody;
     let formResults;
     if (!this.props.loading && this.props.formData) {
-      formBody = (
-        <CheckRegForm
-          fields={this.props.formData.fields}
-          onSubmit={this.props.onSubmit}
-        />
-      );
+      if (this.props.formData.enabled) {
+        formBody = (
+          <CheckRegForm
+            fields={this.props.formData.fields}
+            onSubmit={this.props.onSubmit}
+          />
+        );
+      } else {
+        formBody = this.props.formData.disabled_message;
+      }
     }
     if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
