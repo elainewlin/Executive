@@ -86,16 +86,18 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           break;
       }
     }
-  
-    formBody.push((
-      <input
-        key="form-submit"
-        type="submit"
-        className={`btn btn-default ${styles.button}`}
-        id={styles.button}
-        value="Check Registration"
-      />
-    ));
+
+    if (formBody.length > 0) {
+      formBody.push((
+        <input
+          key="form-submit"
+          type="submit"
+          className={`btn btn-default ${styles.button}`}
+          id={styles.button}
+          value="Check Registration"
+        />
+      ));
+    }
     return formBody;
   }
 

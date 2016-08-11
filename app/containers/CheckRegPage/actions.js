@@ -6,6 +6,12 @@
 
 import * as c from './constants';
 
+export function fetchInitialState() {
+  return {
+    type: c.FETCH_INITIAL_STATE,
+  };
+}
+
 export function fetchStates() {
   return {
     type: c.FETCH_STATES,

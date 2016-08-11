@@ -16,8 +16,10 @@ import * as selectors from './selectors';
 import * as actions from './actions';
 
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   componentDidMount() {
     this.props.dispatch(actions.fetchStates());
+    this.props.dispatch(actions.fetchInitialState());
   }
 
   render() {
@@ -34,6 +36,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
+
     return (
       <div>
         <div className={styles.header}>
@@ -41,13 +44,13 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
           <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {formBody}
           </div>
           <div className={styles.message}>
-            If you are not registered, then download your 
+            If you are not registered, then download your
             <span>
-               <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
+              <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
             </span>
           </div>
           <pre>{formResults}</pre>
@@ -74,10 +77,12 @@ CheckRegPage.propTypes = {
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
+  currentState: React.PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   states: selectors.selectStates(),
+  currentState: selectors.selectCurrentState(),
   formData: selectors.selectFormData(),
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),
