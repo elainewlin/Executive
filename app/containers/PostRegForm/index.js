@@ -31,14 +31,70 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState) {
     return (
       <div className="post-reg-form">
-        <p>{this.getVoteStatusPrompt(regState)}</p>
-        <RegSticker />
+        <h1>Your VoteReady Status</h1>
+        <p className="vote-status-header">{this.getVoteStatusPrompt(regState)}</p>
+
+        {this.getCallToActionButton(regState)}
+
+        Next national election: {c.VOTE_DATE}
+
         {this.getNextStepsInstructions(regState)}
+
+        {this.getEmailPrompt(regState)}
+
+        <RegSticker />
         <div className="post-reg-footer-container">
           {this.getFooter(regState)}
         </div>
       </div>
     );
+  }
+
+  getEmailPrompt(regState) {
+    switch (regState) {
+      default:
+        return (
+          <div className="email-reminder-container">
+            <div className="email-reminder">
+              <img className="email-reminder-icon">
+              </img>
+              <p className="email-reminder-text">
+                Email Reminder >
+              </p>
+            </div>
+
+            <button className="calendar-button">
+              Add to Calendar
+            </button>
+          </div>
+        );
+    }
+  }
+
+  getMailInDate(regState, state) {
+    switch (state) {
+      default:
+        return c.MAIL_IN_DATE;
+    }
+  }
+
+  getCallToActionButton(regState) {
+    switch (regState) {
+      case "registered":
+        return (
+          <button className="call-to-action-registered">
+            View Polling Place
+          </button>
+        );
+      case "unregistered":
+        return (
+          <button className="call-to-action-unregistered">
+            Download Registration Form
+          </button>
+        );
+      default:
+        return "";
+    }
   }
 
   getVoteStatusPrompt(regState) {
@@ -48,9 +104,9 @@ export class PostRegForm extends React.Component {
   getNextStepsInstructions(regState) {
     switch (regState) {
       case "registered":
-        return <div>Vote by {c.VOTE_DATE}</div>;
+        return "";
       case "unregistered":
-        return <div>Mail by {c.MAIL_IN_DATE}</div>;
+        return <div>Mail by {this.getMailInDate()}</div>;
       default:
         return "";
     }
@@ -62,13 +118,6 @@ export class PostRegForm extends React.Component {
       case "unregistered":
         return (
           <div className="post-reg-footer">
-            <button className="check-again-button">
-              Check Again
-            </button>
-            OR REGISTER
-            <button className="download-form-button">
-              Download Form
-            </button>
           </div>
         );
       default:
@@ -76,6 +125,13 @@ export class PostRegForm extends React.Component {
     }
   }
 
+  // <button className="check-again-button">
+  //   Check Again
+  // </button>
+  // OR REGISTER
+  // <button className="download-form-button">
+  //   Download Form
+  // </button>
   render() {
     return this.buildPostRegForm(this.props.registered);
   }

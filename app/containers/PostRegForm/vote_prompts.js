@@ -5,7 +5,7 @@
  */
 
 export default {
-  "unregistered": "Nope, but register now?",
-  "registering": "You're almost there! Print and mail your form!",
-  "registered": "Yes! You are registered to vote!"
+  "unregistered": "You are not registered to vote.",
+  "registered": "You are registered to vote.",
+  "registering": "You are not registered to vote."
 };
