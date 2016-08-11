@@ -29,15 +29,15 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     const formBody = [];
     const formLabels = new Set();
     const fieldsetToLabel = {
-      'name': 'Name',
-      'dob': 'Birthday',
-      'residence': 'Address',
-      'id': 'Identification'
-    }
+      name: 'Name',
+      dob: 'Birthday',
+      residence: 'Address',
+      id: 'Identification',
+    };
     for (const field of this.props.fields) {
       const label = fieldsetToLabel[field.fieldset];
       if (!formLabels.has(label)) {
-        formBody.push((<FormLabel label={label} key={label}></FormLabel>));
+        formBody.push((<FormLabel label={label} key={label} />));
         formLabels.add(label);
       }
 
@@ -54,8 +54,6 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           ));
           break;
         case c.SELECT_FIELD: {
-          console.log(field.fieldset);
-
           const options = field.conf.split(',').map(
             (option) => option.split(':')
           );

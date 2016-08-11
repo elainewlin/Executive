@@ -5,17 +5,15 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
-import styles from './styles.scss';
+// import styles from './styles.scss';
 
 function FormLabel(props) {
-
   return (
-    <div className='col-xs-12'>
+    <div className="col-xs-12">
       <label>{props.label}</label>
     </div>
   );
