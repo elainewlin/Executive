@@ -51,3 +51,10 @@ export function loadResults(results) {
     results,
   };
 }
+
+export function setApiErrMsg(msg) {
+  return {
+    type: c.SET_API_ERR_MSG,
+    msg,
+  };
+}

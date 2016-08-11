@@ -1,75 +1,78 @@
-import { takeEvery } from 'redux-saga';
-import { fork, put, select } from 'redux-saga/effects';
-import request from 'superagent';
+import { takeLatest } from 'redux-saga';
+import { fork, put, select, call } from 'redux-saga/effects';
+import request from 'utils/request';
 import * as selectors from './selectors';
+import messages from './messages';
 import * as actions from './actions';
 import * as c from './constants';
-import * as cfg from 'config';
 
 export function* fetchInitialState() {
-  const FETCH_LOCATION_URL = `https://www.googleapis.com/geolocation/v1/geolocate?key=${cfg.GOOGLE_MAPS_API}`;
-  try {
-    const location = yield request.post(FETCH_LOCATION_URL).accept('json');
-    if (location.status === 200) {
-      const locationData = location.body;
-      const lat = locationData.location.lat;
-      const lng = locationData.location.lng;
-
-      const FETCH_ADDRESS_URL = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${cfg.GOOGLE_MAPS_API}`;
-
-      const addressResponse = yield request.post(FETCH_ADDRESS_URL).accept('json');
-      if (addressResponse.status === 200) {
-        const addressData = addressResponse.body;
-        const address = addressData.results[0].address_components;
-        const state = address.filter((addr) =>
-          addr.types.indexOf('administrative_area_level_1') > -1
-        );
-        const stateAbbreviation = state[0].short_name;
-        yield put(actions.changeState(stateAbbreviation));
-      }
+  const location = yield call(
+    request,
+    c.FETCH_LOCATION_URL,
+    { method: 'POST' });
+  if (!location.err) {
+    const lat = location.data.location.lat;
+    const lng = location.data.location.lng;
+    const address = yield call(
+      request,
+      c.FETCH_ADDRESS_URL(lat, lng),
+      { method: 'POST' });
+    if (!address.err) {
+      const addressComponents = address.data.results[0].address_components;
+      const state = addressComponents.filter((ac) =>
+        ac.types.indexOf('administrative_area_level_1') > -1
+      );
+      const stateCode = state[0].short_name;
+      yield put(actions.changeState(stateCode));
     }
-  } catch (error) {
-    yield put(actions.changeState(''));
   }
 }
 
 export function* fetchStates() {
-  const states = yield request.get(c.FETCH_STATES_URL).accept('json');
-  if (states.status === 200) {
-    yield put(actions.loadStates(states.body));
+  const states = yield call(request, c.FETCH_STATES_URL);
+  if (!states.err) {
+    yield put(actions.loadStates(states.data));
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* changeState(action) {
-  const url = `${c.FETCH_STATES_URL}${action.state}/`;
-  try {
-    const stateFormResponse = yield request.get(url).accept('json');
-    if (stateFormResponse.status === 200) {
-      yield put(actions.loadStateForm(stateFormResponse.body));
-    }
-  } catch (error) {
-    yield put(actions.loadStateForm({ fields: [] }));
+  const stateForm = yield call(request, c.FETCH_STATE_URL(action.state));
+  if (!stateForm.err) {
+    yield put(actions.loadStateForm(stateForm.data));
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* submitForm() {
   const state = yield select(selectors.selectCurrentState());
-  const url = `${c.FETCH_STATES_URL}${state}/`;
   const formValues = yield select(selectors.selectFormValues());
-  const submitFormResponse = yield request.post(url)
-                                          .type('form')
-                                          .send(formValues)
-                                          .accept('json');
-  if (submitFormResponse.status === 200) {
-    yield put(actions.loadResults(submitFormResponse.body));
+  const formData = new FormData();
+  for (const key in formValues) { // eslint-disable-line no-restricted-syntax, guard-for-in
+    formData.append(key, formValues[key]);
+  }
+  const formResult = yield call(
+    request,
+    c.FETCH_STATE_URL(state),
+    {
+      method: 'POST',
+      body: formData,
+    });
+  if (!formResult.err) {
+    yield put(actions.loadResults(formResult.data));
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* checkRegSaga() {
-  yield fork(takeEvery, c.FETCH_STATES, fetchStates);
-  yield fork(takeEvery, c.FETCH_INITIAL_STATE, fetchInitialState);
-  yield fork(takeEvery, c.CHANGE_STATE, changeState);
-  yield fork(takeEvery, c.SUBMIT_FORM, submitForm);
+  yield fork(takeLatest, c.FETCH_STATES, fetchStates);
+  yield fork(takeLatest, c.FETCH_INITIAL_STATE, fetchInitialState);
+  yield fork(takeLatest, c.CHANGE_STATE, changeState);
+  yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
 }
 
 // All sagas to be loaded

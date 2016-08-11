@@ -10,4 +10,5 @@ export default defineMessages({
     id: 'app.containers.CheckRegPage.header',
     defaultMessage: 'Are you registered to vote?',
   },
+  apiErr: 'Error connecting to our servers',
 });

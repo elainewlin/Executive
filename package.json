@@ -112,6 +112,7 @@
       ],
       "no-console": 1,
       "max-len": 0,
+      "new-cap": 0,
       "prefer-template": 2,
       "no-use-before-define": 0,
       "newline-per-chained-call": 0,
@@ -194,7 +195,6 @@
     "redux-saga": "0.11.0",
     "reselect": "2.5.3",
     "sanitize.css": "4.1.0",
-    "superagent": "^2.1.0",
     "whatwg-fetch": "1.0.0"
   },
   "devDependencies": {
