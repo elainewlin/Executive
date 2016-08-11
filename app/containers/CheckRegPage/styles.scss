@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 @import url(https://fonts.googleapis.com/css?family=Karla);
 
 $header-font: (
@@ -13,7 +13,7 @@ $header-font: (
   padding-bottom: $pad;
   text-align: center;
   @include font-size($header-font);
-  font-family: 'Karla', sans-serif;
+  font-family: Karla, sans-serif;
 }
 
 .checkRegPage {  /* stylelint-ignore */

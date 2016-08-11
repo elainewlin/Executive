@@ -9,7 +9,7 @@ import * as c from './constants';
 
 const initialState = fromJS({
   states: false,
-  currentState: false,
+  currentState: '',
   loading: false,
   formData: false,
   results: false,

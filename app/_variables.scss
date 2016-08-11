@@ -1,12 +1,12 @@
-$dark-red: #da2d2d;
-$light-red: #ff3333;
-$dark-blue: #003dbf;
-$light-blue: #3333ff;
+$dark-red: #DA2D2D;
+$light-red: #F33;
+$dark-blue: #003DBF;
+$light-blue: #33F;
 $small-screen: 424px;
 $mid-screen: 600px;
 $large-screen: 1000px;
 $field-height: 35px;
-$pad: .3*$field-height;
+$pad: 0.3 * $field-height;
 
 @mixin font-size($fs-map) {
   @each $fs-breakpoint, $fs-font-size in $fs-map {
