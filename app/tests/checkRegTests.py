@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import os
 import json
 import time
+import sys
 # Fill in the form
 # input: 
 # field - id for the form field
@@ -72,19 +73,16 @@ WebDriverWait(driver, 10).until(
   EC.presence_of_element_located((By.CSS_SELECTOR, "#stateSelect > option[value='MA']"))
 )
 stateSelect = Select(driver.find_element_by_id("stateSelect"))
-'''
 
-# Set up test data 
-with open(directory+"all.json") as data_file:    
-  data = json.load(data_file)
-testState("MI")
-
-'''
 # Run tests for all supported states
-with open(directory+"supported.json") as data_file:    
-  data = json.load(data_file)
-allStates = data.keys()
-for state in allStates:
+if len(sys.argv) == 1:
+  with open(directory+"supported.json") as data_file:    
+    data = json.load(data_file)
+  allStates = data.keys()
+  for state in allStates:
+    testState(state)
+else: 
+  state = sys.argv[1]
+  with open(directory+"all.json") as data_file:    
+    data = json.load(data_file)
   testState(state)
-
-#driver.close()
