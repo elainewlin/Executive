@@ -25,7 +25,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   render() {
     let formBody;
     let formResults;
-
     if (!this.props.loading && this.props.formData) {
       formBody = (
         <CheckRegForm
