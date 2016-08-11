@@ -25,6 +25,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
   render() {
     let formBody;
     let formResults;
+    let apiErrMsg;
     if (!this.props.loading && this.props.formData) {
       if (this.props.formData.enabled) {
         formBody = (
@@ -40,6 +41,15 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
+    if (this.props.apiErrMsg.length > 0) {
+      apiErrMsg = (
+        <div className="row">
+          <div className="col-xs-12 alert alert-warning">
+            {this.props.apiErrMsg}
+          </div>
+        </div>
+      );
+    }
 
     return (
       <div>
@@ -49,6 +59,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
           <div className={styles.checkRegPage}>
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
+            {apiErrMsg}
             {formBody}
           </div>
           <div className={styles.message}>
@@ -82,6 +93,7 @@ CheckRegPage.propTypes = {
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
   currentState: React.PropTypes.string,
+  apiErrMsg: React.PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -90,6 +102,7 @@ const mapStateToProps = createStructuredSelector({
   formData: selectors.selectFormData(),
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),
+  apiErrMsg: selectors.selectApiErrMsg(),
 });
 
 function mapDispatchToProps(dispatch) {
