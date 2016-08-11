@@ -28,8 +28,7 @@ export function* fetchInitialState() {
         yield put(actions.changeState(stateAbbreviation));
       }
     }
-  }
-  catch(error) {
+  } catch (error) {
     yield put(actions.changeState(''));
   }
 }
@@ -48,12 +47,9 @@ export function* changeState(action) {
     if (stateFormResponse.status === 200) {
       yield put(actions.loadStateForm(stateFormResponse.body));
     }
+  } catch (error) {
+    yield put(actions.loadStateForm({ fields: [] }));
   }
-  catch(error) {
-    yield put(actions.loadStateForm({'fields': [{}]}));
-  }
-
-
 }
 
 export function* submitForm() {
