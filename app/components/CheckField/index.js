@@ -11,7 +11,7 @@ function CheckField(props) {
   return (
     <div className={`checkbox col-xs-${props.width}`}>
       <label htmlFor={props.name}>
-        <Field name={props.name} component="input" type="checkbox" />
+        <Field name={props.name} component="input" type="checkbox" id={props.label} />
         {props.description}
       </label>
     </div>

@@ -1,4 +1,4 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 
 $state-select-font: (
   null: 14px,
@@ -7,12 +7,13 @@ $state-select-font: (
 
 $state-select-height: (
   null: $field-height,
-  $mid-screen: 1.5*$field-height
+  $mid-screen: 1.5 * $field-height
 );
 
 /* StateSelect styles */
 .stateSelect {
   background-color: $dark-blue;
+  border: none;
   color: #FFF;
   font-weight: bold;
   @include font-size($state-select-font);

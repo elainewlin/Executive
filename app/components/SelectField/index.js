@@ -16,7 +16,7 @@ function SelectField(props) {
   }
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <Field name={props.name} component="select" defaultValue="">
+      <Field name={props.name} component="select" defaultValue="" id={props.label}>
         <option key="option-default" value="" disabled>{props.label}</option>
         {options}
       </Field>
