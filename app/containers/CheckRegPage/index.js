@@ -68,7 +68,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
               <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
             </span>
           </div>
-          <pre>{formResults}</pre>
+          <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
       </div>
     );

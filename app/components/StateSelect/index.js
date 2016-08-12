@@ -12,7 +12,7 @@ function StateSelect(props) {
 
   return (
     <div className="form-group">
-      <select className={styles.stateSelect} onChange={props.onChange} value={props.currentState}>
+      <select className={styles.stateSelect} onChange={props.onChange} value={props.currentState} id="stateSelect">
         <option key={"state-default"} value="" className={styles.default} disabled>Select your state</option>
         {options}
       </select>
