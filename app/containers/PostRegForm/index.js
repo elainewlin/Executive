@@ -43,6 +43,7 @@ export class PostRegForm extends React.Component {
 
         {this.getEmailPrompt(regState)}
 
+        <SocialButtons />
         <RegSticker />
         <div className="post-reg-footer-container">
           {this.getFooter(regState)}
@@ -127,8 +128,6 @@ export class PostRegForm extends React.Component {
           <div className="post-reg-footer">
           </div>
         );
-      default:
-        return <SocialButtons />;
     }
   }
 
