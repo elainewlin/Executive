@@ -2,20 +2,80 @@
 @import '../../variables.scss';
 @import url(https://fonts.googleapis.com/css?family=Muli);
 
+$header-font: (
+  null: 20px,
+  $small-screen: 30px,
+  $mid-screen: 40px,
+  $large-screen: 60px,
+);
 
+$registration-status: (
+  null: 12px,
+  $small-screen: 20px,
+  $mid-screen: 25px,
+  $large-screen: 30px,
+);
+
+$reg-deadline-font: (
+  null: 10px,
+  $small-screen: 16px,
+  $mid-screen: 21px,
+  $large-screen: 26px,
+);
+
+
+$normal-font: (
+  null: 8px,
+  $small-screen: 12px,
+  $mid-screen: 15px,
+  $large-screen: 20px,
+);
+
+h1 {
+  padding-top: $pad;
+  padding-bottom: $pad;
+  text-align: center;
+  @include font-size($header-font);
+  font-family: Muli, sans-serif;
+}
 .postregform{
-	font-family: Muli, sans-serif;
 	text-align: center;
 }
-h1{
-	font-size:4vw;
+
+.regheader{
+  @include font-size($registration-status);
+  padding-top: $pad;
+
 }
-.votestatusheader{
-	color: red;
+
+.regstatus{
+  @include font-size($registration-status);
+	color: $light-red;
 }
-.calltoaction{
-	color:green;
+
+.downloadbutton{
+	background-color:$dark-blue;
+	border: none;
+	color: #FFF;
+	display: block;
+	margin: auto;
+	height: $field-height;
+	width: 35%;
+	min-width: 200px;
+	text-align: center;
+	@include font-size($normal-font);
+
+
+
+}
+.downloadbutton:hover {
+  background-color: $light-blue;
 }
 .regdeadline{
-	font-size: 2vw;
+	padding-top:$pad;
+    @include font-size($reg-deadline-font);
+}
+
+.nextelection{
+    @include font-size($normal-font);
 }

@@ -5,7 +5,7 @@
  */
 
 export default {
-  unregistered: 'You are not registered to vote.',
-  registered: 'You are registered to vote.',
-  registering: 'You are not registered to vote.',
+  unregistered: 'not registered',
+  registered: 'registered',
+  registering: 'not registered',
 };

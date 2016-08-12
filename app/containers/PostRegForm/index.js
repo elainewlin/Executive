@@ -52,14 +52,14 @@ export class PostRegForm extends React.Component {
     switch (regState) {
       case 'registered':
         return (
-          <button className="call-to-action-registered">
+          <button className={styles.registeredbutton}>
             View Polling Place
           </button>
           // if washington or oregon, no polling place
         );
       case 'unregistered':
         return (
-          <button className="call-to-action-unregistered">
+          <button className={styles.downloadbutton}>
             Download Registration Form
           </button>
           // if state has online registration put another button link for online registration
@@ -103,14 +103,12 @@ export class PostRegForm extends React.Component {
     return (
       <div className={styles.postregform}>
         <h1>Your Registration Status</h1>
-        <p className={styles.votestatusheader}>{this.getVoteStatusPrompt(regState)}</p>
-
-        <div className={styles.calltoaction}>{this.getCallToActionButton(regState)} </div>
+        <p className={styles.regheader}> You are <span className={styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote. </p>
+      
+        <div>{this.getCallToActionButton(regState)} </div>
         
         <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
-        Next national election: {c.VOTE_DATE}
-
-       
+        <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
 
         {this.getEmailPrompt(regState)}
 
