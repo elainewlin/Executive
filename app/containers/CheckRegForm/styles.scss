@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+#button {
+  background-color: $dark-red;
+  border: none;
+  color: #FFF;
+  display: block;
+  margin: auto;
+  height: $field-height;
+  width: 50%;
+  min-width: 200px;
+  text-align: center;
+}
+
+#button:hover {
+  background-color: $light-red;
+}
+

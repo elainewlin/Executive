@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-// import styles from './styles.css';
+import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
 
@@ -21,39 +21,63 @@ import PostRegForm from 'containers/PostRegForm';
 import { browserHistory } from 'react-router';
 
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
   componentDidMount() {
     this.props.dispatch(actions.fetchStates());
+    this.props.dispatch(actions.fetchInitialState());
   }
 
   render() {
     let formBody;
     let formResults;
 
-    if (this.props.loading) {
-      formBody = <p className="col-xs-12">Loading...</p>;
-    } else if (this.props.formData) {
-      formBody = (
-        <CheckRegForm
-          fields={this.props.formData.fields}
-          onSubmit={this.props.onSubmit}
-        />
-      );
+    let apiErrMsg;
+    if (!this.props.loading && this.props.formData) {
+      if (this.props.formData.enabled) {
+        formBody = (
+          <CheckRegForm
+            fields={this.props.formData.fields}
+            onSubmit={this.props.onSubmit}
+          />
+        );
+      } else {
+        formBody = this.props.formData.disabled_message;
+      }
     }
 
     if(this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
 
+    if (this.props.apiErrMsg.length > 0) {
+      apiErrMsg = (
+        <div className="row">
+          <div className="col-xs-12 alert alert-warning">
+            {this.props.apiErrMsg}
+          </div>
+        </div>
+      );
+    }
+    
     return (
-      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
-        <div className="page-header">
-          <h1><FormattedMessage {...messages.header} /></h1>
+      <div>
+        <div className={styles.header}>
+          <FormattedMessage {...messages.header} />
         </div>
-        <div className="col-xs-12">
-          <StateSelect states={this.props.states} onChange={this.props.onChangeState} />
+        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          <div className={styles.checkRegPage}>
+            <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
+            {apiErrMsg}
+            {formBody}
+          </div>
+          <div className={styles.message}>
+            If you are not registered, then download your
+            <span>
+              <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
+            </span>
+          </div>
+          <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
-        {formBody}
-        <pre>{formResults}</pre>
       </div>
     );
   }
@@ -76,13 +100,17 @@ CheckRegPage.propTypes = {
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   dispatch: React.PropTypes.func,
+  currentState: React.PropTypes.string,
+  apiErrMsg: React.PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
   states: selectors.selectStates(),
+  currentState: selectors.selectCurrentState(),
   formData: selectors.selectFormData(),
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),
+  apiErrMsg: selectors.selectApiErrMsg(),
 });
 
 function mapDispatchToProps(dispatch) {

@@ -6,11 +6,12 @@
 
 import React from 'react';
 // import { connect } from 'react-redux';
-// import styles from './styles.css';
+import styles from './styles.scss';
 import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
 import CheckField from 'components/CheckField';
+import FormLabel from 'components/FormLabel';
 import * as c from './constants';
 
 // Used to change pages
@@ -29,7 +30,20 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
 
   buildFormBody() {
     const formBody = [];
+    const formLabels = new Set();
+    const fieldsetToLabel = {
+      name: 'Name',
+      dob: 'Birthday',
+      residence: 'Address',
+      id: 'Identification',
+    };
     for (const field of this.props.fields) {
+      const label = fieldsetToLabel[field.fieldset];
+      if (!formLabels.has(label)) {
+        formBody.push((<FormLabel label={label} key={label} />));
+        formLabels.add(label);
+      }
+
       switch (field.type) {
         case c.TEXT_FIELD:
           formBody.push((
@@ -73,14 +87,19 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           break;
       }
     }
-    formBody.push((
-      <input
-        key="form-submit"
-        type="submit"
-        className="btn btn-default"
-        value="Submit"
-      />
-    ));
+
+    if (formBody.length > 0) {
+      formBody.push((
+        <input
+          key="form-submit"
+          type="submit"
+          className={`btn btn-default ${styles.button}`}
+          id={styles.button}
+          name="checkregbutton"
+          value="Check Registration"
+        />
+      ));
+    }
     return formBody;
   }
   
