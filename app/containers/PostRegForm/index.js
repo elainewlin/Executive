@@ -7,6 +7,7 @@
 import React from 'react';
 import { reduxForm, change } from 'redux-form/immutable';
 import * as c from './constants';
+import stateDeadlines from './state_deadlines'
 
 import fetchStates from 'containers/CheckRegPage/actions';
 
@@ -71,11 +72,13 @@ export class PostRegForm extends React.Component {
     }
   }
 
-  getMailInDate(regState, state) {
-    switch (state) {
-      default:
-        return c.MAIL_IN_DATE;
+  getMailInDate(state) {
+    // change to grab proper default state?
+    if (!stateDeadlines[state]) {
+      return c.MAIL_IN_DATE;
     }
+
+    return stateDeadlines[state];
   }
 
   getCallToActionButton(regState) {
@@ -102,11 +105,15 @@ export class PostRegForm extends React.Component {
   }
 
   getNextStepsInstructions(regState) {
+    // Change to actually use state from params
+    // passed by the check reg form
+    const state = "MA";
+
     switch (regState) {
       case "registered":
         return "";
       case "unregistered":
-        return <div>Mail by {this.getMailInDate()}</div>;
+        return <div>Mail by {this.getMailInDate(state)}</div>;
       default:
         return "";
     }
