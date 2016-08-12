@@ -1,3 +1,21 @@
-.checkRegPage {  /* stylelint-ignore */
 
+@import '../../variables.scss';
+@import url(https://fonts.googleapis.com/css?family=Muli);
+
+
+.postregform{
+	font-family: Muli, sans-serif;
+	text-align: center;
+}
+h1{
+	font-size:4vw;
+}
+.votestatusheader{
+	color: red;
+}
+.calltoaction{
+	color:green;
+}
+.regdeadline{
+	font-size: 2vw;
 }

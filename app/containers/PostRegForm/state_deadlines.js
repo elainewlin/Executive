@@ -50,14 +50,4 @@ export default {
   WV: 'October 18th',
   WI: 'October 19th',
   WY: 'October 25th',
-};
-
-  // Same Day Registrations:
-  // CO_SAME_DAY = 'True',
-  // CT_SAME_DAY = 'True';
-  // IL_SAME_DAY = 'True';
-  // ME_SAME_DAY = 'True';
-  // MT_SAME_DAY = 'True';
-  // NH_SAME_DAY = 'True';
-  // WI_SAME_DAY = 'True';
-  // WY_SAME_DAY = 'True';
+}

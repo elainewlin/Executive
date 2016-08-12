@@ -7,6 +7,7 @@
 import React from 'react';
 import * as c from './constants';
 import stateDeadlines from './state_deadlines';
+import styles from './styles.scss';
 import SocialButtons from 'components/SocialButtons';
 import RegSticker from 'components/RegSticker';
 import VotePrompts from './vote_prompts';
@@ -32,9 +33,7 @@ export class PostRegForm extends React.Component {
               </p>
             </div>
 
-            <button className="calendar-button">
-              Add to Calendar
-            </button>
+            
           </div>
         );
     }
@@ -56,12 +55,14 @@ export class PostRegForm extends React.Component {
           <button className="call-to-action-registered">
             View Polling Place
           </button>
+          // if washington or oregon, no polling place
         );
       case 'unregistered':
         return (
           <button className="call-to-action-unregistered">
             Download Registration Form
           </button>
+          // if state has online registration put another button link for online registration
         );
       default:
         return '';
@@ -100,15 +101,16 @@ export class PostRegForm extends React.Component {
 
   buildPostRegForm(regState) {
     return (
-      <div className="post-reg-form">
-        <h1>Your VoteReady Status</h1>
-        <p className="vote-status-header">{this.getVoteStatusPrompt(regState)}</p>
+      <div className={styles.postregform}>
+        <h1>Your Registration Status</h1>
+        <p className={styles.votestatusheader}>{this.getVoteStatusPrompt(regState)}</p>
 
-        {this.getCallToActionButton(regState)}
-
+        <div className={styles.calltoaction}>{this.getCallToActionButton(regState)} </div>
+        
+        <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
         Next national election: {c.VOTE_DATE}
 
-        {this.getNextStepsInstructions(regState)}
+       
 
         {this.getEmailPrompt(regState)}
 
