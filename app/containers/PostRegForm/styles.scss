@@ -65,10 +65,24 @@ h1 {
 	text-align: center;
 	@include font-size($normal-font);
 
-
-
 }
 .downloadbutton:hover {
+  background-color: $light-blue;
+}
+.registeredbutton{
+	background-color:$dark-blue;
+	border: none;
+	color: #FFF;
+	display: block;
+	margin: auto;
+	height: $field-height;
+	width: 35%;
+	min-width: 200px;
+	text-align: center;
+	@include font-size($normal-font);
+
+}
+.registeredbutton:hover {
   background-color: $light-blue;
 }
 .regdeadline{
