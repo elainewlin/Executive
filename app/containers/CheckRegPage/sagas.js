@@ -5,6 +5,8 @@ import * as selectors from './selectors';
 import * as actions from './actions';
 import * as c from './constants';
 
+import { browserHistory } from 'react-router';
+
 export function* fetchStates() {
   const states = yield request.get(c.FETCH_STATES_URL).accept('json');
   if (states.status === 200) {
@@ -30,6 +32,14 @@ export function* submitForm() {
                                           .accept('json');
   if (submitFormResponse.status === 200) {
     yield put(actions.loadResults(submitFormResponse.body));
+
+    // store results from query
+    let results = actions.loadResults(submitFormResponse.body).results;
+
+    // if the form worked, redirect to page with registration status
+    if (results["registered"] !== undefined) {
+      browserHistory.push(`/postcheck/${results["registered"]}`);
+    }
   }
 }
 

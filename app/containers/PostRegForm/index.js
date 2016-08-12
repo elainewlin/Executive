@@ -7,6 +7,7 @@
 import React from 'react';
 import { reduxForm, change } from 'redux-form/immutable';
 import * as c from './constants';
+import stateDeadlines from './state_deadlines'
 
 import fetchStates from 'containers/CheckRegPage/actions';
 
@@ -31,9 +32,18 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState) {
     return (
       <div className="post-reg-form">
-        <p>{this.getVoteStatusPrompt(regState)}</p>
-        <RegSticker />
+        <h1>Your VoteReady Status</h1>
+        <p className="vote-status-header">{this.getVoteStatusPrompt(regState)}</p>
+
+        {this.getCallToActionButton(regState)}
+
+        Next national election: {c.VOTE_DATE}
+
         {this.getNextStepsInstructions(regState)}
+
+        {this.getEmailPrompt(regState)}
+
+        <RegSticker />
         <div className="post-reg-footer-container">
           {this.getFooter(regState)}
         </div>
@@ -41,16 +51,69 @@ export class PostRegForm extends React.Component {
     );
   }
 
+  getEmailPrompt(regState) {
+    switch (regState) {
+      default:
+        return (
+          <div className="email-reminder-container">
+            <div className="email-reminder">
+              <img className="email-reminder-icon">
+              </img>
+              <p className="email-reminder-text">
+                Email Reminder >
+              </p>
+            </div>
+
+            <button className="calendar-button">
+              Add to Calendar
+            </button>
+          </div>
+        );
+    }
+  }
+
+  getMailInDate(state) {
+    // change to grab proper default state?
+    if (!stateDeadlines[state]) {
+      return c.MAIL_IN_DATE;
+    }
+
+    return stateDeadlines[state];
+  }
+
+  getCallToActionButton(regState) {
+    switch (regState) {
+      case "registered":
+        return (
+          <button className="call-to-action-registered">
+            View Polling Place
+          </button>
+        );
+      case "unregistered":
+        return (
+          <button className="call-to-action-unregistered">
+            Download Registration Form
+          </button>
+        );
+      default:
+        return "";
+    }
+  }
+
   getVoteStatusPrompt(regState) {
     return VotePrompts[regState];
   }
 
   getNextStepsInstructions(regState) {
+    // Change to actually use state from params
+    // passed by the check reg form
+    const state = "MA";
+
     switch (regState) {
       case "registered":
-        return <div>Vote by {c.VOTE_DATE}</div>;
+        return "";
       case "unregistered":
-        return <div>Mail by {c.MAIL_IN_DATE}</div>;
+        return <div>Mail by {this.getMailInDate(state)}</div>;
       default:
         return "";
     }
@@ -62,13 +125,6 @@ export class PostRegForm extends React.Component {
       case "unregistered":
         return (
           <div className="post-reg-footer">
-            <button className="check-again-button">
-              Check Again
-            </button>
-            OR REGISTER
-            <button className="download-form-button">
-              Download Form
-            </button>
           </div>
         );
       default:
@@ -76,8 +132,15 @@ export class PostRegForm extends React.Component {
     }
   }
 
+  // <button className="check-again-button">
+  //   Check Again
+  // </button>
+  // OR REGISTER
+  // <button className="download-form-button">
+  //   Download Form
+  // </button>
   render() {
-    return this.buildPostRegForm(this.state.registration);
+    return this.buildPostRegForm(this.props.registered);
   }
 }
 
