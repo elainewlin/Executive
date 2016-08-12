@@ -8,7 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   header: {
     id: 'app.containers.CheckRegPage.header',
-    defaultMessage: 'Are you registered to vote?',
+    defaultMessage: 'Check if you\'re registered to vote',
   },
-  apiErr: 'Error connecting to our servers',
 });

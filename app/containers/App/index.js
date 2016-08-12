@@ -10,7 +10,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 
 import Header from 'components/Header';
-import styles from './styles.scss'; // eslint-disable-line no-unused-vars
+// import styles from './styles.css';
 
 function App(props) {
   return (
