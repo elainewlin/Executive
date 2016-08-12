@@ -43,8 +43,10 @@ def testUser(user):
     EC.presence_of_element_located((By.XPATH, "//*[@id='formResults' and text() != '']"))
   )
   time.sleep(1)
-  print formResults.get_attribute('innerHTML')
-  # assert something man?
+
+  results = formResults.get_attribute('innerHTML')
+  # print results
+  assert "\"registered\": true" in results
 
 # Test the UI for a given state
 def testState(state):
@@ -86,3 +88,5 @@ else:
   with open(directory+"all.json") as data_file:    
     data = json.load(data_file)
   testState(state)
+
+driver.close()
