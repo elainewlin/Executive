@@ -7,6 +7,11 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
+
+// import styles from './styles.css';
+
 function SelectField(props) {
   let options;
   if (props.options) {
@@ -16,8 +21,8 @@ function SelectField(props) {
   }
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <Field name={props.name} component="select" defaultValue="" id={props.label}>
-        <option key="option-default" value="" disabled>{props.label}</option>
+      <Field className="form-control" name={props.name} component="select">
+        <option key="option-default" value="">{props.label}</option>
         {options}
       </Field>
     </div>

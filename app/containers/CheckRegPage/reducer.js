@@ -9,11 +9,10 @@ import * as c from './constants';
 
 const initialState = fromJS({
   states: false,
-  currentState: '',
+  currentState: false,
   loading: false,
   formData: false,
   results: false,
-  apiErrMsg: '',
 });
 
 function checkRegPageReducer(state = initialState, action) {
@@ -25,21 +24,16 @@ function checkRegPageReducer(state = initialState, action) {
       return state
         .set('currentState', action.state)
         .set('results', false)
-        .set('loading', true)
-        .set('apiErrMsg', '');
+        .set('loading', true);
     case c.LOAD_STATE_FORM:
       return state
         .set('formData', action.stateFormData)
         .set('loading', false);
     case c.SUBMIT_FORM:
-      return state
-        .set('apiErrMsg', '');
+      return state; // Do nothing for now
     case c.LOAD_RESULTS:
       return state
-        .set('results', action.results)
-        .set('apiErrMsg', '');
-    case c.SET_API_ERR_MSG:
-      return state.set('apiErrMsg', action.msg);
+        .set('results', action.results);
     default:
       return state;
   }

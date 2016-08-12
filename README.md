@@ -28,33 +28,6 @@ The development server by default is at `localhost:3000`
 * Run test and lint before committing
 * JS and CSS linting settings are in package.json if something is unreasonable
 
-## Testing
-Our main tests are using Selenium and Chromedriver, which run the site in an chrome environment and inject all test cases. 
-### Requirements
-- Python 2.x
-- Selenium: `pip install selenium`
-- Test cases `selected.json` and `all.json` in `app/tests/` (not in VCS)
-
-### Running
-Run `app/tests/checkRegTests.py` with Python
-
-```
-positional arguments:
-  states
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -t TARGET, --target TARGET
-```
-#### Examples
-- Run only MA and MA tests 
-
-		python checkRegTests.py MA MI
-		
-- Run all supported tests against staging
-		
-		python checkRegTests.py -t https://staging.votemate.us
-
 ## Deploying with Ansible
 You'll need:
 
@@ -62,8 +35,7 @@ You'll need:
 * SSH access to the destination server
 
 ### Staging
-1. `cd ansible`
-2. `ap -i staging deploy.yml`
+`ap -i staging.votemate.us, deploy.yml` (the comma is important)
 
 Add `--tags build` to just build the project or `--tags copy` to copy an already built project to the server
 
