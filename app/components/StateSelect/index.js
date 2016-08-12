@@ -1,18 +1,19 @@
 import React from 'react';
-
-// import styles from './styles.css';
+import styles from './styles.scss';
 
 function StateSelect(props) {
   let options;
+
   if (props.states) {
     options = props.states.map((state, index) => (
       <option key={`state-${index}`} value={state.code}>{state.label}</option>
     ));
   }
+
   return (
     <div className="form-group">
-      <select className="form-control" onChange={props.onChange}>
-        <option key={"state-default"} value="">Select your state</option>
+      <select className={styles.stateSelect} onChange={props.onChange} value={props.currentState} id="stateSelect">
+        <option key={"state-default"} value="" className={styles.default} disabled>Select your state</option>
         {options}
       </select>
     </div>
@@ -25,6 +26,7 @@ StateSelect.propTypes = {
     React.PropTypes.bool,
   ]),
   onChange: React.PropTypes.func,
+  currentState: React.PropTypes.string,
 };
 
 export default StateSelect;

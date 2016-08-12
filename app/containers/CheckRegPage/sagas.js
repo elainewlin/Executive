@@ -1,52 +1,84 @@
-import { takeEvery } from 'redux-saga';
-import { fork, put, select } from 'redux-saga/effects';
-import request from 'superagent';
+import { takeLatest } from 'redux-saga';
+import { fork, put, select, call } from 'redux-saga/effects';
+import request from 'utils/request';
 import * as selectors from './selectors';
+import messages from './messages';
 import * as actions from './actions';
 import * as c from './constants';
-
 import { browserHistory } from 'react-router';
 
+export function* fetchInitialState() {
+  const location = yield call(
+    request,
+    c.FETCH_LOCATION_URL,
+    { method: 'POST' });
+  if (!location.err) {
+    const lat = location.data.location.lat;
+    const lng = location.data.location.lng;
+    const address = yield call(
+      request,
+      c.FETCH_ADDRESS_URL(lat, lng),
+      { method: 'POST' });
+    if (!address.err) {
+      const addressComponents = address.data.results[0].address_components;
+      const state = addressComponents.filter((ac) =>
+        ac.types.indexOf('administrative_area_level_1') > -1
+      );
+      const stateCode = state[0].short_name;
+      yield put(actions.changeState(stateCode));
+    }
+  }
+}
+
 export function* fetchStates() {
-  const states = yield request.get(c.FETCH_STATES_URL).accept('json');
-  if (states.status === 200) {
-    yield put(actions.loadStates(states.body));
+  const states = yield call(request, c.FETCH_STATES_URL);
+  if (!states.err) {
+    yield put(actions.loadStates(states.data));
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* changeState(action) {
-  const url = `${c.FETCH_STATES_URL}${action.state}/`;
-  const stateFormResponse = yield request.get(url).accept('json');
-  if (stateFormResponse.status === 200) {
-    yield put(actions.loadStateForm(stateFormResponse.body));
+  const stateForm = yield call(request, c.FETCH_STATE_URL(action.state));
+  if (!stateForm.err) {
+    yield put(actions.loadStateForm(stateForm.data));
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* submitForm() {
   const state = yield select(selectors.selectCurrentState());
-  const url = `${c.FETCH_STATES_URL}${state}/`;
   const formValues = yield select(selectors.selectFormValues());
-  const submitFormResponse = yield request.post(url)
-                                          .type('form')
-                                          .send(formValues)
-                                          .accept('json');
-  if (submitFormResponse.status === 200) {
-    yield put(actions.loadResults(submitFormResponse.body));
 
-    // store results from query
-    let results = actions.loadResults(submitFormResponse.body).results;
-
-    // if the form worked, redirect to page with registration status
+  const formData = new FormData();
+  for (const key in formValues) { // eslint-disable-line no-restricted-syntax, guard-for-in
+    formData.append(key, formValues[key]);
+  }
+  const formResult = yield call(
+    request,
+    c.FETCH_STATE_URL(state),
+    {
+      method: 'POST',
+      body: formData,
+    });
+  if (!formResult.err) {
+    yield put(actions.loadResults(formResult.data));
+    const results = formResult.data;
     if (results["registered"] !== undefined) {
       browserHistory.push(`/postcheck/${results["registered"]}`);
     }
+  } else {
+    yield put(actions.setApiErrMsg(messages.apiErr));
   }
 }
 
 export function* checkRegSaga() {
-  yield fork(takeEvery, c.FETCH_STATES, fetchStates);
-  yield fork(takeEvery, c.CHANGE_STATE, changeState);
-  yield fork(takeEvery, c.SUBMIT_FORM, submitForm);
+  yield fork(takeLatest, c.FETCH_STATES, fetchStates);
+  yield fork(takeLatest, c.FETCH_INITIAL_STATE, fetchInitialState);
+  yield fork(takeLatest, c.CHANGE_STATE, changeState);
+  yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
 }
 
 // All sagas to be loaded
