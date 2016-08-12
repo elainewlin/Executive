@@ -11,78 +11,95 @@ import os
 import json
 import time
 import sys
-# Fill in the form
-# input: 
-# field - id for the form field
-# value - value for the form field
-def fillField(field, value):
-  formField = driver.find_element_by_id(field)
-  if formField.get_attribute("type") == "text":
-    formField.clear()
-    formField.send_keys(value)
-  else: # Handling select
-    select = Select(formField)
-    select.select_by_visible_text(value)
+import argparse
 
-# Test the UI for a given user
-# input: dictionary with the user data
-def testUser(user):
-  formFields = user.keys()
-  checkRegButton = driver.find_element_by_name("checkregbutton")
 
-  # Fill in all of the form fields
-  for formField, value in user.iteritems():
-    fillField(formField, value)
+class CheckRegTester:
+  def __init__(self, driver):
+    self.driver = driver
 
-  # Submit form
-  checkRegButton.click()
-  # wait for form results to load in the hidden formResults div
-  formResults = driver.find_element_by_id("formResults")
+  # Fill in the form
+  # input: 
+  # field - id for the form field
+  # value - value for the form field
+  def fillField(self, field, value):
+    formField = self.driver.find_element_by_id(field)
+    if formField.get_attribute("type") == "text":
+      formField.clear()
+      formField.send_keys(value)
+    else: # Handling select
+      select = Select(formField)
+      select.select_by_visible_text(value)
 
-  WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.XPATH, "//*[@id='formResults' and text() != '']"))
-  )
-  time.sleep(1)
-  print formResults.get_attribute('innerHTML')
-  # assert something man?
+  # Test the UI for a given user
+  # input: dictionary with the user data
+  def testUser(self, user):
+    formFields = user.keys()
+    checkRegButton = self.driver.find_element_by_name("checkregbutton")
 
-# Test the UI for a given state
-def testState(state):
-  print state
-  stateSelect.select_by_value(state)
+    # Fill in all of the form fields
+    for formField, value in user.iteritems():
+      self.fillField(formField, value)
 
-  # Wait for the API call to load the form
-  WebDriverWait(driver, 10).until(
-    EC.presence_of_element_located((By.ID, "checkregform"))
-  )
+    # Submit form
+    checkRegButton.click()
+    # wait for form results to load in the hidden formResults div
+    formResults = self.driver.find_element_by_id("formResults")
 
-  userData = data[state]
-  for user in userData:
-    testUser(user)
+    WebDriverWait(self.driver, 10).until(
+      EC.presence_of_element_located(
+        (By.XPATH, "//*[@id='formResults' and text() != '']")
+      )
+    )
+    time.sleep(1)
+    print formResults.get_attribute('innerHTML')
+    # assert something man?
 
-directory = os.getcwd()+"/app/tests/"
+  # Test the UI for a given state
+  def testState(self, state, userData):
+    print state
+    stateSelect = Select(self.driver.find_element_by_id("stateSelect"))
+    stateSelect.select_by_value(state)
 
-# Set up driver 
-chromedriver = directory+"chromedriver"
-os.environ["webdriver.chrome.driver"] = chromedriver
-driver = webdriver.Chrome(chromedriver)
-driver.get("localhost:3000")
+    # Wait for the API call to load the form
+    WebDriverWait(self.driver, 10).until(
+      EC.presence_of_element_located((By.ID, "checkregform"))
+    )
 
-# Wait for the API call to load the state select
-WebDriverWait(driver, 10).until(
-  EC.presence_of_element_located((By.CSS_SELECTOR, "#stateSelect > option[value='MA']"))
-)
-stateSelect = Select(driver.find_element_by_id("stateSelect"))
+    for user in userData:
+      self.testUser(user)
 
-# Run tests for all supported states
-if len(sys.argv) == 1:
-  with open(directory+"supported.json") as data_file:    
-    data = json.load(data_file)
-  allStates = data.keys()
-  for state in allStates:
-    testState(state)
-else: 
-  state = sys.argv[1]
-  with open(directory+"all.json") as data_file:    
-    data = json.load(data_file)
-  testState(state)
+  def test(self, data, target):
+    self.driver.get(target)
+    WebDriverWait(self.driver, 10).until(
+      EC.presence_of_element_located(
+        (By.CSS_SELECTOR, "#stateSelect > option[value='MA']"))
+    )
+
+    for state, userData in data.iteritems():
+      self.testState(state, userData)
+
+if __name__ == "__main__":
+  TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+  CHROMEDRIVER = os.path.join(TEST_DIR, "chromedriver")
+  SUPPORTED_JSON = os.path.join(TEST_DIR, "supported.json")
+  ALL_JSON = os.path.join(TEST_DIR, "all.json")
+
+  parser = argparse.ArgumentParser(description='Test executive')
+  parser.add_argument("states", nargs="*")
+  parser.add_argument("-t", "--target", default="localhost:3000")
+  args = parser.parse_args()
+
+  # Set up driver 
+  os.environ["webdriver.chrome.driver"] = CHROMEDRIVER
+  driver = webdriver.Chrome(CHROMEDRIVER)
+  crt = CheckRegTester(driver)
+
+  if not args.states:
+    with open(SUPPORTED_JSON) as data_file:
+      data = json.load(data_file)
+  else:
+    with open(ALL_JSON) as data_file:
+       all_data = json.load(data_file)
+       data = {k:v for k,v in all_data.iteritems() if k in set(args.states)}
+  crt.test(data, args.target)
