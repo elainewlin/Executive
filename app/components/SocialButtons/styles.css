@@ -1,3 +1,10 @@
-.buttons-container { /* stylelint-ignore */
-  
+.buttons { /* stylelint-ignore */
+}
+
+.social {
+    opacity: 1;
+    display: inline-block;
+}
+.social:hover {
+    opacity: 0.5;
 }
