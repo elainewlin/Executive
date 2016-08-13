@@ -18,7 +18,7 @@ function Header() {
       <div className="container">
         <div className="navbar-header">
           <Link to="/" className="navbar-brand" activeClassName="activeRoute">
-            <img src={logo} className={styles.logo}/>
+            <img src={logo} className={styles.logo} alt="VoteMate" />
           </Link>
         </div>
       </div>
