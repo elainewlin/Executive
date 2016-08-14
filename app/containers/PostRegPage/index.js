@@ -12,9 +12,13 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
   render() {
     return (
-      <PostRegForm registered={this.props.params["registered"] === "true" ? "registered" : "unregistered"}/>
+      <PostRegForm registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'} />
     );
   }
 }
+
+PostRegPage.propTypes = {
+  params: React.PropTypes.object,
+};
 
 export default PostRegPage;

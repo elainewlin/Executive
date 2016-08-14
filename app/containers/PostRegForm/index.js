@@ -5,19 +5,10 @@
  */
 
 import React from 'react';
-import { reduxForm, change } from 'redux-form/immutable';
 import * as c from './constants';
-import stateDeadlines from './state_deadlines'
-
-import fetchStates from 'containers/CheckRegPage/actions';
-
-// Used to change pages
-import { browserHistory } from 'react-router';
-import TextField from 'components/TextField';
-
+import stateDeadlines from './state_deadlines';
 import SocialButtons from 'components/SocialButtons';
-import RegSticker from 'components/RegSticker'
-
+import RegSticker from 'components/RegSticker';
 import VotePrompts from './vote_prompts';
 
 export class PostRegForm extends React.Component {
@@ -25,30 +16,8 @@ export class PostRegForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-       registration: "registered"
+      registration: 'registered',
     };
-  }
-
-  buildPostRegForm(regState) {
-    return (
-      <div className="post-reg-form">
-        <h1>Your VoteReady Status</h1>
-        <p className="vote-status-header">{this.getVoteStatusPrompt(regState)}</p>
-
-        {this.getCallToActionButton(regState)}
-
-        Next national election: {c.VOTE_DATE}
-
-        {this.getNextStepsInstructions(regState)}
-
-        {this.getEmailPrompt(regState)}
-
-        <RegSticker />
-        <div className="post-reg-footer-container">
-          {this.getFooter(regState)}
-        </div>
-      </div>
-    );
   }
 
   getEmailPrompt(regState) {
@@ -57,8 +26,7 @@ export class PostRegForm extends React.Component {
         return (
           <div className="email-reminder-container">
             <div className="email-reminder">
-              <img className="email-reminder-icon">
-              </img>
+              <img className="email-reminder-icon" alt="email-reminder-icon" />
               <p className="email-reminder-text">
                 Email Reminder >
               </p>
@@ -83,20 +51,20 @@ export class PostRegForm extends React.Component {
 
   getCallToActionButton(regState) {
     switch (regState) {
-      case "registered":
+      case 'registered':
         return (
           <button className="call-to-action-registered">
             View Polling Place
           </button>
         );
-      case "unregistered":
+      case 'unregistered':
         return (
           <button className="call-to-action-unregistered">
             Download Registration Form
           </button>
         );
       default:
-        return "";
+        return '';
     }
   }
 
@@ -107,22 +75,22 @@ export class PostRegForm extends React.Component {
   getNextStepsInstructions(regState) {
     // Change to actually use state from params
     // passed by the check reg form
-    const state = "MA";
+    const state = 'MA';
 
     switch (regState) {
-      case "registered":
-        return "";
-      case "unregistered":
+      case 'registered':
+        return '';
+      case 'unregistered':
         return <div>Mail by {this.getMailInDate(state)}</div>;
       default:
-        return "";
+        return '';
     }
   }
 
   // Return proper footer container based on registration state
   getFooter(regState) {
     switch (regState) {
-      case "unregistered":
+      case 'unregistered':
         return (
           <div className="post-reg-footer">
           </div>
@@ -130,6 +98,28 @@ export class PostRegForm extends React.Component {
       default:
         return <SocialButtons />;
     }
+  }
+
+  buildPostRegForm(regState) {
+    return (
+      <div className="post-reg-form">
+        <h1>Your VoteReady Status</h1>
+        <p className="vote-status-header">{this.getVoteStatusPrompt(regState)}</p>
+
+        {this.getCallToActionButton(regState)}
+
+        Next national election: {c.VOTE_DATE}
+
+        {this.getNextStepsInstructions(regState)}
+
+        {this.getEmailPrompt(regState)}
+
+        <RegSticker />
+        <div className="post-reg-footer-container">
+          {this.getFooter(regState)}
+        </div>
+      </div>
+    );
   }
 
   // <button className="check-again-button">
@@ -143,5 +133,9 @@ export class PostRegForm extends React.Component {
     return this.buildPostRegForm(this.props.registered);
   }
 }
+
+PostRegForm.propTypes = {
+  registered: React.PropTypes.string,
+};
 
 export default PostRegForm;

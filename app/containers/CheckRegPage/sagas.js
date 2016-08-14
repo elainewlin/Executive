@@ -65,8 +65,8 @@ export function* submitForm() {
   if (!formResult.err) {
     yield put(actions.loadResults(formResult.data));
     // if the form worked, redirect to page with registration status
-    if (formResult.data["registered"] !== undefined) {
-      browserHistory.push(`/postcheck/${formResult.data["registered"]}`);
+    if (formResult.data.registered !== undefined) {
+      browserHistory.push(`/postcheck/${formResult.data.registered}`);
     }
   } else {
     yield put(actions.setApiErrMsg(messages.apiErr));

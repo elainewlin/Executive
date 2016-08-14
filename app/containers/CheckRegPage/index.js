@@ -12,13 +12,8 @@ import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
 import CheckRegForm from 'containers/CheckRegForm';
-
 import * as selectors from './selectors';
 import * as actions from './actions';
-
-import PostRegForm from 'containers/PostRegForm';
-
-import { browserHistory } from 'react-router';
 
 export class CheckRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -44,7 +39,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       }
     }
 
-    if(this.props.results) {
+    if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
 

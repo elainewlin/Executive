@@ -49,8 +49,8 @@ export default {
   DC: 'October 11th',
   WV: 'October 18th',
   WI: 'October 19th',
-  WY: 'October 25th'
-}
+  WY: 'October 25th',
+};
 
   // Same Day Registrations:
   // CO_SAME_DAY = 'True',

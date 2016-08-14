@@ -8,6 +8,6 @@ import { defineMessages } from 'react-intl';
 export default defineMessages({
   button: {
     facebookButton: 'Share on Facebook',
-    twitterButton: 'Share on Twitter'
+    twitterButton: 'Share on Twitter',
   },
 });

@@ -7,7 +7,7 @@
 import React from 'react';
 import messages from './messages';
 
-import styles from './styles.css';
+// import styles from './styles.css';
 
 function SocialButtons() {
   return (

@@ -54,6 +54,6 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    }
+    },
   ];
 }

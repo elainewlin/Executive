@@ -14,9 +14,6 @@ import CheckField from 'components/CheckField';
 import FormLabel from 'components/FormLabel';
 import * as c from './constants';
 
-// Used to change pages
-import { browserHistory } from 'react-router';
-
 export class CheckRegForm extends React.Component { // eslint-disable-line react/prefer-stateless-
 
   componentDidMount() {
@@ -102,7 +99,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     }
     return formBody;
   }
-  
+
   render() {
     return (
       <form id="checkregform" onSubmit={this.props.onSubmit}>
