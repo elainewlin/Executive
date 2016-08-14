@@ -32,8 +32,6 @@ export class PostRegForm extends React.Component {
                 Email Reminder >
               </p>
             </div>
-
-            
           </div>
         );
     }
@@ -96,6 +94,8 @@ export class PostRegForm extends React.Component {
           <div className="post-reg-footer">
           </div>
         );
+      default:
+        return '';
     }
   }
 
@@ -104,9 +104,7 @@ export class PostRegForm extends React.Component {
       <div className={styles.postregform}>
         <h1>Your Registration Status</h1>
         <p className={styles.regheader}> You are <span className={styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote. </p>
-      
-        <div>{this.getCallToActionButton(regState)} </div>
-        
+        <div>{this.getCallToActionButton(regState)}</div>
         <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
         <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
 

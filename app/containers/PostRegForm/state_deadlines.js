@@ -50,4 +50,4 @@ export default {
   WV: 'October 18th',
   WI: 'October 19th',
   WY: 'October 25th',
-}
+};

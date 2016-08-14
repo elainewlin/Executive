@@ -6,16 +6,16 @@
 
 import {
   ShareButtons,
-  generateShareIcon
+  generateShareIcon,
 } from 'react-share';
 
 const {
   FacebookShareButton,
-  TwitterShareButton
+  TwitterShareButton,
 } = ShareButtons;
 
 import React from 'react';
-import messages from './messages';
+// import messages from './messages';
 
 import styles from './styles.scss';
 
@@ -28,18 +28,22 @@ function SocialButtons() {
       <FacebookShareButton
         url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAQxxq8RSEVWAQWJEt58Ura_KSXYKShhzhYHy-gI8Xgwn0lxkwfxrpY2mY"
         title="a cute cat"
-        className={styles.social}>
+        className={styles.social}
+      >
         <FacebookIcon
           size={32}
-          round />
+          round
+        />
       </FacebookShareButton>
       <TwitterShareButton
         url="http://www.tpevent.com/wp-content/uploads/2016/01/cute-cat-images-tpevent-5.jpg"
         title="twitter cute cat"
-        className={styles.social}>
+        className={styles.social}
+      >
         <TwitterIcon
           size={32}
-          round />
+          round
+        />
       </TwitterShareButton>
     </div>
   );

@@ -23,7 +23,6 @@ $reg-deadline-font: (
   $large-screen: 26px,
 );
 
-
 $normal-font: (
   null: 8px,
   $small-screen: 12px,
@@ -38,58 +37,61 @@ h1 {
   @include font-size($header-font);
   font-family: Muli, sans-serif;
 }
-.postregform{
-	text-align: center;
+
+.postregform {
+  text-align: center;
 }
 
-.regheader{
+.regheader {
   @include font-size($registration-status);
   padding-top: $pad;
 
 }
 
-.regstatus{
+.regstatus {
   @include font-size($registration-status);
-	color: $light-red;
+  color: $light-red;
 }
 
-.downloadbutton{
-	background-color:$dark-blue;
-	border: none;
-	color: #FFF;
-	display: block;
-	margin: auto;
-	height: $field-height;
-	width: 35%;
-	min-width: 200px;
-	text-align: center;
-	@include font-size($normal-font);
-
+.downloadbutton {
+  background-color: $dark-blue;
+  border: none;
+  color: #FFF;
+  display: block;
+  margin: auto;
+  height: $field-height;
+  width: 35%;
+  min-width: 200px;
+  text-align: center;
+  @include font-size($normal-font);
 }
+
 .downloadbutton:hover {
   background-color: $light-blue;
 }
-.registeredbutton{
-	background-color:$dark-blue;
-	border: none;
-	color: #FFF;
-	display: block;
-	margin: auto;
-	height: $field-height;
-	width: 35%;
-	min-width: 200px;
-	text-align: center;
-	@include font-size($normal-font);
 
+.registeredbutton {
+  background-color: $dark-blue;
+  border: none;
+  color: #FFF;
+  display: block;
+  margin: auto;
+  height: $field-height;
+  width: 35%;
+  min-width: 200px;
+  text-align: center;
+  @include font-size($normal-font);
 }
+
 .registeredbutton:hover {
   background-color: $light-blue;
 }
-.regdeadline{
-	padding-top:$pad;
-    @include font-size($reg-deadline-font);
+
+.regdeadline {
+  padding-top: $pad;
+  @include font-size($reg-deadline-font);
 }
 
-.nextelection{
-    @include font-size($normal-font);
+.nextelection {
+  @include font-size($normal-font);
 }
