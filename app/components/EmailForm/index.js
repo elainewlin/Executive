@@ -18,6 +18,7 @@ function EmailForm(props) {
 
   return (
     <input type='email' className={styles.email} onKeyPress={handleKeyPress}></input>
+
   );
 }
 
