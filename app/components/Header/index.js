@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
-
+import logo from './logo.png';
 import styles from './styles.scss';
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
       <div className="container">
         <div className="navbar-header">
           <Link to="/" className="navbar-brand" activeClassName="activeRoute">
-            VoteMate
+            <img src={logo} className={styles.logo} alt="VoteMate" />
           </Link>
         </div>
       </div>

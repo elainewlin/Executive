@@ -55,16 +55,13 @@ optional arguments:
 		
 		python checkRegTests.py -t https://staging.votemate.us
 
-## Deploying with Ansible
-You'll need:
-
-* Ansible 2.X
-* SSH access to the destination server
+## Deploying
+Deployment uses the gh-pages npm package to commit the latest changes in the `build` folder to the github pages repo for the selected environment.
 
 ### Staging
-1. `cd ansible`
-2. `ap -i staging deploy.yml`
+- `npm run build` (if you haven't already)
+- `npm run deploy:staging`
 
-Add `--tags build` to just build the project or `--tags copy` to copy an already built project to the server
-
-#### [Boilerplate documentation](https://github.com/mxstbr/react-boilerplate/tree/master/docs)
+### Production
+- `npm run build` (if you haven't already)
+- `npm run deploy:production`
