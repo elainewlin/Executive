@@ -1,5 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import { fork, put, select, call } from 'redux-saga/effects';
+import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import * as selectors from './selectors';
 import messages from './messages';
@@ -63,6 +64,10 @@ export function* submitForm() {
     });
   if (!formResult.err) {
     yield put(actions.loadResults(formResult.data));
+    // if the form worked, redirect to page with registration status
+    if (formResult.data.registered !== undefined) {
+      browserHistory.push(`/postcheck/${formResult.data.registered}`);
+    }
   } else {
     yield put(actions.setApiErrMsg(messages.apiErr));
   }

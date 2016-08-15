@@ -39,6 +39,14 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/postcheck/:registered',
+      name: 'PostRegPage',
+      getComponent(nextState, cb) {
+        System.import('containers/PostRegPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

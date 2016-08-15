@@ -39,9 +39,11 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         formBody = this.props.formData.disabled_message;
       }
     }
+
     if (this.props.results) {
       formResults = JSON.stringify(this.props.results, null, 2);
     }
+
     if (this.props.apiErrMsg.length > 0) {
       apiErrMsg = (
         <div className="row">
@@ -53,11 +55,11 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     }
 
     return (
-      <div>
-        <div className={styles.header}>
-          <FormattedMessage {...messages.header} />
-        </div>
-        <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+        <div>
+          <div className={styles.header}>
+            <FormattedMessage {...messages.header} />
+          </div>
           <div className={styles.checkRegPage}>
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
@@ -110,7 +112,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    onChangeState: (evt) => dispatch(actions.changeState(evt.target.value)),
+    onChangeState: (evt) => {
+      dispatch(actions.changeState(evt.target.value));
+    },
     onSubmit: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitForm());
