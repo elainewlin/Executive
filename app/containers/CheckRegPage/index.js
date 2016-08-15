@@ -11,7 +11,6 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
-import EmailForm from 'components/EmailForm';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -64,7 +63,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
           </div>
-          <EmailForm submitEmail={this.props.onSubmitEmail}></EmailForm>
 
           <div className={styles.message}>
             If you are not registered, then download your
@@ -98,7 +96,6 @@ CheckRegPage.propTypes = {
   dispatch: React.PropTypes.func,
   currentState: React.PropTypes.string,
   apiErrMsg: React.PropTypes.string,
-  onSubmitEmail: React.PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -118,10 +115,6 @@ function mapDispatchToProps(dispatch) {
     onSubmit: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitForm());
-    },
-    onSubmitEmail: (evt) => {
-      evt.preventDefault();
-      dispatch(actions.submitEmail());
     },
     dispatch,
   };

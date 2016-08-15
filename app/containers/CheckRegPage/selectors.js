@@ -42,11 +42,6 @@ const selectFormValues = () => createSelector(
   (formDomain) => formDomain.CheckRegForm.values
 );
 
-const selectEmail = () => createSelector(
-  selectFormDomain(),
-  (formDomain) => formDomain.EmailForm.values
-);
-
 export {
   selectStates,
   selectCurrentState,
@@ -55,5 +50,4 @@ export {
   selectLoading,
   selectApiErrMsg,
   selectFormValues,
-  selectEmail,
 };
