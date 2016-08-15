@@ -30,7 +30,7 @@ export default function createRoutes(store) {
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('CheckRegPage', reducer.default);
+          injectReducer('checkRegPage', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
@@ -38,14 +38,33 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    }, {
-      path: '/postcheck/:registered',
-      name: 'PostRegPage',
-      getComponent(nextState, cb) {
-        System.import('containers/PostRegPage')
-          .then(loadModule(cb))
-          .catch(errorLoading);
+      indexRoute: {
+        name: 'checkregform',
+        getComponent(nextState, cb) {
+          const importModules = Promise.all([
+            System.import('containers/CheckRegForm'),
+          ]);
+
+          const renderRoute = loadModule(cb);
+
+          importModules.then(([component]) => {
+            renderRoute(component);
+          });
+
+          importModules.catch(errorLoading);
+        },
       },
+      childRoutes: [
+        {
+          path: 'results/:registered',
+          name: 'checkRegResults',
+          getComponent(nextState, cb) {
+            System.import('containers/PostRegPage')
+              .then(loadModule(cb))
+              .catch(errorLoading);
+          },
+        },
+      ]
     }, {
       path: '*',
       name: 'notfound',

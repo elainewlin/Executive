@@ -1,6 +1,6 @@
 /*
  *
- * CheckRegPage actions
+ * CheckRegForm actions
  *
  */
 

@@ -1,37 +1,37 @@
 import { createSelector } from 'reselect';
 
 /**
- * Direct selector to the checkRegPage state domain
+ * Direct selector to the CheckRegForm state domain
  */
-const selectCheckRegPageDomain = () => (state) => state.get('CheckRegPage');
+const selectCheckRegFormDomain = () => (state) => state.get('checkRegPage').get('form');
 
 const selectStates = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('states')
 );
 
 const selectCurrentState = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('currentState')
 );
 
 const selectFormData = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('formData')
 );
 
 const selectResults = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('results')
 );
 
 const selectLoading = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('loading')
 );
 
 const selectApiErrMsg = () => createSelector(
-  selectCheckRegPageDomain(),
+  selectCheckRegFormDomain(),
   (checkRegState) => checkRegState.get('apiErrMsg')
 );
 
@@ -39,7 +39,10 @@ const selectFormDomain = () => (state) => state.get('form');
 
 const selectFormValues = () => createSelector(
   selectFormDomain(),
-  (formDomain) => formDomain.CheckRegForm.values
+  (formDomain) => {
+    console.log(formDomain);
+    return formDomain.checkRegForm.values;
+  }
 );
 
 export {
