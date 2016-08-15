@@ -15,7 +15,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
   render() {
     return (
       <div>
-        <PostRegForm registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'} />
+        <PostRegForm registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'} state={this.props.params.state}/>
         <EmailForm submitEmail={this.props.onSubmitEmail}></EmailForm>
       </div>
     );

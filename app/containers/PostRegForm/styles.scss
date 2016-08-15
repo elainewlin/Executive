@@ -2,6 +2,7 @@
 @import '../../variables.scss';
 @import url(https://fonts.googleapis.com/css?family=Muli);
 
+
 $header-font: (
   null: 20px,
   $small-screen: 30px,
@@ -45,12 +46,16 @@ h1 {
 .regheader {
   @include font-size($registration-status);
   padding-top: $pad;
-
 }
 
 .regstatus {
   @include font-size($registration-status);
   color: $light-red;
+}
+
+.regstatusgreen {
+  @include font-size($registration-status);
+  color: $light-green;
 }
 
 .downloadbutton {

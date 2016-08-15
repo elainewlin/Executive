@@ -39,7 +39,7 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
-      path: '/postcheck/:registered',
+      path: '/postcheck/:state/:registered',
       name: 'PostRegPage',
       getComponent(nextState, cb) {
        const importModules = Promise.all([
