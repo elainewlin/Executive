@@ -2,6 +2,7 @@
   opacity: 1;
   display: inline-block;
   &:hover {
+    cursor: pointer;
     opacity: 0.5;
   }
 }
