@@ -1,13 +1,21 @@
 /*
  *
- * PostRegForm
- *
+ * The PostRegForm Component is displayed within
+ * the PostRegPage container.
  */
 
+// React
 import React from 'react';
+
+// Styling
+import styles from './styles.scss';
+
+// Misc constants
 import * as c from './constants';
 import stateDeadlines from './state_deadlines';
-import styles from './styles.scss';
+import stateNames from './state_names';
+
+// Misc components
 import SocialButtons from 'components/SocialButtons';
 import RegSticker from 'components/RegSticker';
 import VotePrompts from './vote_prompts';
@@ -67,6 +75,10 @@ export class PostRegForm extends React.Component {
     }
   }
 
+  getCurrentStateName(abbreviation) {
+    return stateNames[abbreviation];
+  }
+
   getVoteStatusPrompt(regState) {
     return VotePrompts[regState];
   }
@@ -74,13 +86,13 @@ export class PostRegForm extends React.Component {
   getNextStepsInstructions(regState) {
     // Change to actually use state from params
     // passed by the check reg form
-    const state = 'MA';
+    // const state = 'MA';
 
     switch (regState) {
       case 'registered':
         return '';
       case 'unregistered':
-        return <div>Mail by {this.getMailInDate(state)}</div>;
+        return <div>Mail by {this.getMailInDate(regState)}</div>;
       default:
         return '';
     }
@@ -99,11 +111,14 @@ export class PostRegForm extends React.Component {
     }
   }
 
-  buildPostRegForm(regState) {
+  buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postregform}>
         <h1>Your Registration Status</h1>
-        <p className={styles.regheader}> You are <span className={styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote. </p>
+
+        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.regstatusgreen : styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
+        </p>
+
         <div>{this.getCallToActionButton(regState)}</div>
         <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
         <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
@@ -127,7 +142,7 @@ export class PostRegForm extends React.Component {
   //   Download Form
   // </button>
   render() {
-    return this.buildPostRegForm(this.props.registered);
+    return this.buildPostRegForm(this.props.registered, this.props.state);
   }
 }
 
