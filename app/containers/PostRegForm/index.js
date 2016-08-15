@@ -14,11 +14,12 @@ import styles from './styles.scss';
 import * as c from './constants';
 import stateDeadlines from './state_deadlines';
 import stateNames from './state_names';
+import onlineRegForms from './online_registration_forms';
 
 // Misc components
 import SocialButtons from 'components/SocialButtons';
 import RegSticker from 'components/RegSticker';
-import VotePrompts from './vote_prompts';
+import votePrompts from './vote_prompts';
 
 export class PostRegForm extends React.Component {
 
@@ -75,12 +76,16 @@ export class PostRegForm extends React.Component {
     }
   }
 
-  getCurrentStateName(abbreviation) {
-    return stateNames[abbreviation];
+  getCurrentStateName(state) {
+    return stateNames[state];
+  }
+
+  getOnlineRegistrationLink(state) {
+    return onlineRegForms[state];
   }
 
   getVoteStatusPrompt(regState) {
-    return VotePrompts[regState];
+    return votePrompts[regState];
   }
 
   getNextStepsInstructions(regState) {
