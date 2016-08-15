@@ -6,19 +6,14 @@
 
 import React from 'react';
 import styles from './styles.scss';
+import { Field } from 'redux-form';
+import { reduxForm } from 'redux-form/immutable';
 
 function EmailForm(props) {
-
-  const handleKeyPress = function(e) {
-    if (e.key === 'Enter') {
-      console.log('submitted email');
-      props.submitEmail();
-    }
-  }
-
   return (
-    <input type='email' className={styles.email} onKeyPress={handleKeyPress}></input>
-
+    <form onSubmit={props.submitEmail}>
+      <Field type='text' name='email' className={styles.email} placeholder='Email Address' component="input" />
+    </form>
   );
 }
 
@@ -26,4 +21,7 @@ EmailForm.propTypes = {
   submitEmail: React.PropTypes.func,
 };
 
-export default EmailForm;
+export default reduxForm({
+  form: 'EmailForm',
+  destroyOnUnmount: false,
+})(EmailForm);

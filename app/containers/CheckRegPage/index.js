@@ -61,7 +61,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <div className={styles.checkRegPage}>
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
-            {formBody}
           </div>
           <EmailForm submitEmail={this.props.onSubmitEmail}></EmailForm>
 
@@ -107,7 +106,6 @@ const mapStateToProps = createStructuredSelector({
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),
   apiErrMsg: selectors.selectApiErrMsg(),
-  email: selectors.selectCurrentState(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -118,6 +116,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(actions.submitForm());
     },
     onSubmitEmail: (evt) => {
+      evt.preventDefault();
       dispatch(actions.submitEmail());
     },
     dispatch,

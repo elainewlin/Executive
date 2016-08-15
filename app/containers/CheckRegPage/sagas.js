@@ -69,12 +69,10 @@ export function* submitForm() {
 }
 
 export function* submitEmail() {
-  console.log('sagas - submitted email');
-  console.log("votemate:"+c.FETCH_MAILCHIMP_URL);
-
+  const email = yield select(selectors.selectEmail());
   const emailResult = yield call(
   request,
-  c.FETCH_MAILCHIMP_URL+'&email[email]=test@mit.edu',
+  c.FETCH_MAILCHIMP_URL+email['email'],
   {
     mode: 'no-cors'
   });
