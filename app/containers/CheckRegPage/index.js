@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
+import EmailForm from 'components/EmailForm';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -62,6 +63,8 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             {apiErrMsg}
             {formBody}
           </div>
+          <EmailForm></EmailForm>
+
           <div className={styles.message}>
             If you are not registered, then download your
             <span>

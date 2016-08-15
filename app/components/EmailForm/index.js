@@ -5,13 +5,19 @@
 */
 
 import React from 'react';
+import styles from './styles.scss';
 
 function EmailForm(props) {
+
+  const handleKeyPress = function(e) {
+    if (e.key === 'Enter') {
+      console.log('submitted email');
+      // this.props.submitEmail();
+    }
+  }
+
   return (
-    <div class='col-xs-12'>
-    <input type='email'></input>
-    <button type='submit' onClick={props.submitEmail}>Submit Email</button>
-    </div>
+    <input type='email' className={styles.email} onKeyPress={handleKeyPress}></input>
   );
 }
 
