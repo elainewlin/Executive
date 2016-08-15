@@ -68,11 +68,16 @@ export function* submitForm() {
   }
 }
 
+export function* submitEmail() {
+  console.log('sagas - submitted email');
+}
+
 export function* checkRegSaga() {
   yield fork(takeLatest, c.FETCH_STATES, fetchStates);
   yield fork(takeLatest, c.FETCH_INITIAL_STATE, fetchInitialState);
   yield fork(takeLatest, c.CHANGE_STATE, changeState);
   yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
+  yield fork(takeLatest, c.SUBMIT_EMAIL, submitEmail);
 }
 
 // All sagas to be loaded

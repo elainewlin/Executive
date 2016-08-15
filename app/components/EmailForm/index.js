@@ -12,7 +12,7 @@ function EmailForm(props) {
   const handleKeyPress = function(e) {
     if (e.key === 'Enter') {
       console.log('submitted email');
-      // this.props.submitEmail();
+      props.submitEmail();
     }
   }
 

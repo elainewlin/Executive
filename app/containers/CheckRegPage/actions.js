@@ -45,6 +45,12 @@ export function submitForm() {
   };
 }
 
+export function submitEmail() {
+  return {
+    type: c.SUBMIT_EMAIL,
+  };
+}
+
 export function loadResults(results) {
   return {
     type: c.LOAD_RESULTS,

@@ -63,7 +63,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             {apiErrMsg}
             {formBody}
           </div>
-          <EmailForm></EmailForm>
+          <EmailForm submitEmail={this.props.onSubmitEmail}></EmailForm>
 
           <div className={styles.message}>
             If you are not registered, then download your
@@ -97,6 +97,7 @@ CheckRegPage.propTypes = {
   dispatch: React.PropTypes.func,
   currentState: React.PropTypes.string,
   apiErrMsg: React.PropTypes.string,
+  onSubmitEmail: React.PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -106,6 +107,7 @@ const mapStateToProps = createStructuredSelector({
   loading: selectors.selectLoading(),
   results: selectors.selectResults(),
   apiErrMsg: selectors.selectApiErrMsg(),
+  email: selectors.selectCurrentState(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -114,6 +116,9 @@ function mapDispatchToProps(dispatch) {
     onSubmit: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitForm());
+    },
+    onSubmitEmail: (evt) => {
+      dispatch(actions.submitEmail());
     },
     dispatch,
   };
