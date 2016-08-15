@@ -72,7 +72,7 @@ export function* submitEmail() {
   const email = yield select(selectors.selectEmail());
   const emailResult = yield call(
   request,
-  c.FETCH_MAILCHIMP_URL+email['email'],
+  c.FETCH_MAILCHIMP_URL+email['email']+"&merge_vars[state]=MA",
   {
     mode: 'no-cors'
   });
