@@ -10,9 +10,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
 import EmailForm from 'components/EmailForm';
+import SocialButtons from 'components/SocialButtons';
 import * as selectors from './selectors';
 import * as actions from './actions';
-import SocialButtons from 'components/SocialButtons';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
