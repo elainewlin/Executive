@@ -6,11 +6,15 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
+import EmailForm from 'components/EmailForm';
+import * as selectors from './selectors';
+import * as actions from './actions';
 import SocialButtons from 'components/SocialButtons';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
   render() {
     return (
     <div>
@@ -18,6 +22,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
         registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'}
         state={this.props.params.state}>
       </PostRegForm>
+      <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>
       <SocialButtons />
     </div>
     );
@@ -26,6 +31,18 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
 PostRegPage.propTypes = {
   params: React.PropTypes.object,
+  onSubmitEmail: React.PropTypes.func,
+  dispatch: React.PropTypes.func,
 };
 
-export default PostRegPage;
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmitEmail: (evt) => {
+      evt.preventDefault();
+      dispatch(actions.submitEmail());
+    },
+    dispatch,
+  };
+}
+
+export default connect(null, mapDispatchToProps)(PostRegPage);

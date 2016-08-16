@@ -64,6 +64,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             {apiErrMsg}
             {formBody}
           </div>
+
           <div className={styles.message}>
             If you are not registered, then download your
             <span>
