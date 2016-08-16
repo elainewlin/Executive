@@ -34,6 +34,38 @@ $normal-font: (
   text-align: center;
 }
 
+.calltoactioncontainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.regdeadlinesdiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.postregfooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.postregfootertext {
+  display: flex;
+  align-self: center;
+  vertical-align: middle;
+  margin-right: 10px;
+  @include font-size($registration-status);
+}
+
+.reginstructionsdiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .regheader {
   @include font-size($header-font);
   padding-top: $pad;
@@ -61,13 +93,14 @@ $normal-font: (
   @include font-size($normal-font);
 
   &:hover {
+    transition: background-color 200ms;
     background-color: $light-blue;
   }
 }
 
 .regdeadline {
   padding-top: $pad;
-  @include font-size($reg-deadline-font);
+  @include font-size($normal-font);
 }
 
 .nextelection {

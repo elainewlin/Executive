@@ -10,6 +10,6 @@ export default defineMessages({
     cta: 'View Polling Place'
   },
   unregistered: {
-    cta: 'Download Registration Form'
+    cta: 'Mail-In Form'
   }
 });
