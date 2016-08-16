@@ -20,7 +20,6 @@ import * as c from './constants';
 import stateDeadlines from './state_deadlines';
 import stateNames from './state_names';
 import onlineRegForms from './online_registration_forms';
-<<<<<<< HEAD
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
 
@@ -39,16 +38,10 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postregform}>
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.regstatusgreen : styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
+        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
         </p>
 
         {this.getRegInstructionsDiv(regState, stateAbbreviation)}
-
-        {this.getEmailPrompt(regState)}
-
-        <div className="post-reg-footer-container">
-          {this.getFooter(regState)}
-        </div>
       </div>
     );
   }
@@ -71,22 +64,6 @@ export class PostRegForm extends React.Component {
          National election: {c.VOTE_DATE}
       </p>
     </div>
-  }
-
-  getEmailPrompt(regState) {
-    switch (regState) {
-      default:
-        return (
-          <div className="email-reminder-container">
-            <div className="email-reminder">
-              <img className="email-reminder-icon" alt="email-reminder-icon" />
-              <p className="email-reminder-text">
-                Email Reminder >
-              </p>
-            </div>
-          </div>
-        );
-    }
   }
 
   getMailInDate(state) {
@@ -148,7 +125,7 @@ export class PostRegForm extends React.Component {
 
     // return button if link exists
     return link ?
-    <button className={styles.downloadbutton}
+    <button className={styles.button}
             onClick={function() {
               window.location.href = link;
             }}>
@@ -180,24 +157,6 @@ export class PostRegForm extends React.Component {
       default:
         return '';
     }
-  }
-
-  buildPostRegForm(regState, stateAbbreviation) {
-    return (
-      <div className={styles.postregform}>
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
-        </p>
-        <div>{this.getCallToActionButton(regState)}</div>
-        <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
-        <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
-
-        {this.getEmailPrompt(regState)}
-
-        <div className="post-reg-footer-container">
-          {this.getFooter(regState)}
-        </div>
-      </div>
-    );
   }
 
   render() {
