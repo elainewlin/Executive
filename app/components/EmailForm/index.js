@@ -12,7 +12,7 @@ import { reduxForm } from 'redux-form/immutable';
 function EmailForm(props) {
   return (
     <form onSubmit={props.submitEmail}>
-      <Field type='text' name='email' className={styles.email} placeholder='Email Address' component="input" />
+      <Field type='text' name='email' className={styles.email} placeholder='Email Reminder' component="input" />
     </form>
   );
 }

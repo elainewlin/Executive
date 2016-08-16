@@ -7,13 +7,16 @@ import * as actions from './actions';
 import * as c from './constants';
 
 export function* submitEmail() {
+  console.log("sagas!");
   const email = yield select(selectors.selectEmail());
-  const emailResult = yield call(
-  request,
-  c.FETCH_MAILCHIMP_URL+email['email']+"&merge_vars[state]=MA",
-  {
-    mode: 'no-cors'
-  });
+  const state = yield select(selectors.selectState());
+  console.log(state);
+  // const emailResult = yield call(
+  // request,
+  // c.FETCH_MAILCHIMP_URL+email['email']+"&merge_vars[state]="+state,
+  // {
+  //   mode: 'no-cors'
+  // });
 
 }
 

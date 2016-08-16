@@ -30,22 +30,6 @@ export class PostRegForm extends React.Component {
     };
   }
 
-  getEmailPrompt(regState) {
-    switch (regState) {
-      default:
-        return (
-          <div className="email-reminder-container">
-            <div className="email-reminder">
-              <img className="email-reminder-icon" alt="email-reminder-icon" />
-              <p className="email-reminder-text">
-                Email Reminder >
-              </p>
-            </div>
-          </div>
-        );
-    }
-  }
-
   getMailInDate(state) {
     // change to grab proper default state?
     if (!stateDeadlines[state]) {
@@ -127,8 +111,6 @@ export class PostRegForm extends React.Component {
         <div>{this.getCallToActionButton(regState)}</div>
         <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
         <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
-
-        {this.getEmailPrompt(regState)}
 
         <SocialButtons />
         <RegSticker />

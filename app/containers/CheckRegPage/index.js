@@ -62,6 +62,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <div className={styles.checkRegPage}>
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
+            {formBody}
           </div>
 
           <div className={styles.message}>
