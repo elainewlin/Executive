@@ -11,7 +11,6 @@ import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
 import CheckField from 'components/CheckField';
-import FormLabel from 'components/FormLabel';
 import * as c from './constants';
 
 export class CheckRegForm extends React.Component { // eslint-disable-line react/prefer-stateless-
@@ -37,7 +36,11 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     for (const field of this.props.fields) {
       const label = fieldsetToLabel[field.fieldset];
       if (!formLabels.has(label)) {
-        formBody.push((<FormLabel label={label} key={label} />));
+        formBody.push((
+          <div className="col-xs-12" key={label}>
+            <label>{label}</label>
+          </div>
+        ));
         formLabels.add(label);
       }
 

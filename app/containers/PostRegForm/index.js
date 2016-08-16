@@ -15,10 +15,8 @@ import * as c from './constants';
 import stateDeadlines from './state_deadlines';
 import stateNames from './state_names';
 import onlineRegForms from './online_registration_forms';
-
+import messages from './messages';
 // Misc components
-import SocialButtons from 'components/SocialButtons';
-import RegSticker from 'components/RegSticker';
 import votePrompts from './vote_prompts';
 
 export class PostRegForm extends React.Component {
@@ -59,15 +57,15 @@ export class PostRegForm extends React.Component {
     switch (regState) {
       case 'registered':
         return (
-          <button className={styles.registeredbutton}>
-            View Polling Place
+          <button className={styles.button}>
+            {messages.registered.cta}
           </button>
           // if washington or oregon, no polling place
         );
       case 'unregistered':
         return (
-          <button className={styles.downloadbutton}>
-            Download Registration Form
+          <button className={styles.button}>
+            {messages.unregistered.cta}
           </button>
           // if state has online registration put another button link for online registration
         );
@@ -119,19 +117,14 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postregform}>
-        <h1>Your Registration Status</h1>
-
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.regstatusgreen : styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
+        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
         </p>
-
         <div>{this.getCallToActionButton(regState)}</div>
         <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
         <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
 
         {this.getEmailPrompt(regState)}
 
-        <SocialButtons />
-        <RegSticker />
         <div className="post-reg-footer-container">
           {this.getFooter(regState)}
         </div>
