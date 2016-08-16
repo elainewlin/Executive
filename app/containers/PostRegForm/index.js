@@ -7,14 +7,20 @@
 // React
 import React from 'react';
 
+// React Router
+import { browserHistory } from 'react-router';
+
 // Styling
 import styles from './styles.scss';
 
 // Misc constants
 import * as c from './constants';
+
+// Dynamic form objects
 import stateDeadlines from './state_deadlines';
 import stateNames from './state_names';
 import onlineRegForms from './online_registration_forms';
+import pollingPlaceLinks from './polling_place_links';
 
 // Misc components
 import SocialButtons from 'components/SocialButtons';
@@ -28,6 +34,43 @@ export class PostRegForm extends React.Component {
     this.state = {
       registration: 'registered',
     };
+  }
+
+  buildPostRegForm(regState, stateAbbreviation) {
+    return (
+      <div className={styles.postregform}>
+        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.regstatusgreen : styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
+        </p>
+
+        {this.getRegInstructionsDiv(regState, stateAbbreviation)}
+
+        {this.getEmailPrompt(regState)}
+
+        <div className="post-reg-footer-container">
+          {this.getFooter(regState)}
+        </div>
+      </div>
+    );
+  }
+  // <RegSticker />
+
+  getRegInstructionsDiv(regState, stateAbbreviation) {
+    return (<div className={styles.reginstructionsdiv}>
+        {this.getCallToActionDiv(regState, stateAbbreviation)}
+        {this.getDeadlinesDiv(regState, stateAbbreviation)}
+    </div>);
+  }
+
+  getDeadlinesDiv(regState, stateAbbreviation) {
+    return <div className={styles.regdeadlinesdiv}>
+      <div className={styles.regdeadline}>
+        {this.getNextStepsInstructions(regState, stateAbbreviation)}
+      </div>
+
+      <p className={styles.nextelection}>
+         National election: {c.VOTE_DATE}
+      </p>
+    </div>
   }
 
   getEmailPrompt(regState) {
@@ -55,19 +98,34 @@ export class PostRegForm extends React.Component {
     return stateDeadlines[state];
   }
 
-  getCallToActionButton(regState) {
+  getCallToActionDiv(regState, stateAbbreviation) {
+    return <div className={styles.calltoactioncontainer}>
+      {this.getCallToActionButton(regState, stateAbbreviation)}
+      {this.getOnlineRegistrationButton(regState, stateAbbreviation)}
+    </div>
+  }
+
+  getCallToActionButton(regState, stateAbbreviation) {
     switch (regState) {
       case 'registered':
-        return (
-          <button className={styles.registeredbutton}>
+        let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
+
+        console.log(browserHistory);
+
+        return pollingPlaceLink ? (
+          <button className={styles.registeredbutton}
+                  onClick={function() {
+                    window.location.href = pollingPlaceLink;
+                  }}>
             View Polling Place
           </button>
           // if washington or oregon, no polling place
-        );
+        ) : "";
       case 'unregistered':
+        // add links lol
         return (
           <button className={styles.downloadbutton}>
-            Download Registration Form
+            Mail-In Form
           </button>
           // if state has online registration put another button link for online registration
         );
@@ -80,6 +138,25 @@ export class PostRegForm extends React.Component {
     return stateNames[state];
   }
 
+  getOnlineRegistrationButton(regState, stateAbbreviation) {
+    switch (regState) {
+      case "registered":
+        return "";
+    }
+
+    let link = onlineRegForms[stateAbbreviation];
+
+    // return button if link exists
+    return link ?
+    <button className={styles.downloadbutton}
+            onClick={function() {
+              window.location.href = link;
+            }}>
+      Online Registration
+    </button>
+    : "";
+  }
+
   getOnlineRegistrationLink(state) {
     return onlineRegForms[state];
   }
@@ -88,7 +165,7 @@ export class PostRegForm extends React.Component {
     return votePrompts[regState];
   }
 
-  getNextStepsInstructions(regState) {
+  getNextStepsInstructions(regState, stateAbbreviation) {
     // Change to actually use state from params
     // passed by the check reg form
     // const state = 'MA';
@@ -97,7 +174,9 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return '';
       case 'unregistered':
-        return <div>Mail by {this.getMailInDate(regState)}</div>;
+        return (<div>
+          Registration Deadline: {this.getMailInDate(stateAbbreviation)}
+        </div>);
       default:
         return '';
     }
@@ -105,47 +184,23 @@ export class PostRegForm extends React.Component {
 
   // Return proper footer container based on registration state
   getFooter(regState) {
-    switch (regState) {
-      case 'unregistered':
-        return (
-          <div className="post-reg-footer">
-          </div>
-        );
-      default:
-        return '';
-    }
+
+    return (<div className={styles.postregfooter}>
+      <p className={styles.postregfootertext}>{c.SLOGAN}</p>
+      <SocialButtons />
+    </div>);
+    //
+    // switch (regState) {
+    //   case 'unregistered':
+    //     return (
+    //       <div className="post-reg-footer">
+    //       </div>
+    //     );
+    //   default:
+    //     return '';
+    // }
   }
 
-  buildPostRegForm(regState, stateAbbreviation) {
-    return (
-      <div className={styles.postregform}>
-        <h1>Your Registration Status</h1>
-
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.regstatusgreen : styles.regstatus}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
-        </p>
-
-        <div>{this.getCallToActionButton(regState)}</div>
-        <div className={styles.regdeadline}> {this.getNextStepsInstructions(regState)}</div>
-        <p className={styles.nextelection}> Next national election: {c.VOTE_DATE} </p>
-
-        {this.getEmailPrompt(regState)}
-
-        <SocialButtons />
-        <RegSticker />
-        <div className="post-reg-footer-container">
-          {this.getFooter(regState)}
-        </div>
-      </div>
-    );
-  }
-
-  // <button className="check-again-button">
-  //   Check Again
-  // </button>
-  // OR REGISTER
-  // <button className="download-form-button">
-  //   Download Form
-  // </button>
   render() {
     return this.buildPostRegForm(this.props.registered, this.props.state);
   }
