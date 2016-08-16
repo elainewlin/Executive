@@ -12,14 +12,19 @@ import PostRegForm from 'containers/PostRegForm';
 import EmailForm from 'components/EmailForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
+import SocialButtons from 'components/SocialButtons';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
-        <PostRegForm registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'} state={this.props.params.state}/>
-        <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>
-      </div>
+    <div>
+      <PostRegForm
+        registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'}
+        state={this.props.params.state}>
+      </PostRegForm>
+      <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>
+      <SocialButtons />
+    </div>
     );
   }
 }

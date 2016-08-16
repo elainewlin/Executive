@@ -11,9 +11,8 @@
   min-width: 200px;
   text-align: center;
   outline: none;
-}
 
-#button:hover {
-  background-color: $light-red;
+  &:hover {
+    background-color: $light-red;
+  }
 }
-

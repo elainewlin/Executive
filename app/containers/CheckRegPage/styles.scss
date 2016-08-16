@@ -1,11 +1,10 @@
 @import '../../variables.scss';
-@import url(https://fonts.googleapis.com/css?family=Muli);
 
 $header-font: (
   null: 20px,
   $small-screen: 30px,
   $mid-screen: 40px,
-  $large-screen: 60px,
+  $large-screen: 50px,
 );
 
 .header {
@@ -13,7 +12,7 @@ $header-font: (
   padding-bottom: $pad;
   text-align: center;
   @include font-size($header-font);
-  font-family: Muli, sans-serif;
+  
 }
 
 .checkRegPage {  /* stylelint-ignore */

@@ -1,4 +1,5 @@
 @import '../../variables.scss';
+@import url(https://fonts.googleapis.com/css?family=Muli);
 
 html {
   box-sizing: border-box;
@@ -8,7 +9,7 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: Muli, sans-serif;
 }
 
 *,
