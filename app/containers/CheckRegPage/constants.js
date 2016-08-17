@@ -13,6 +13,7 @@ export const LOAD_STATES = 'app/CheckRegPage/LOAD_STATES';
 export const CHANGE_STATE = 'app/CheckRegPage/CHANGE_STATE';
 export const LOAD_STATE_FORM = 'app/CheckRegPage/LOAD_STATE_FORM';
 export const SUBMIT_FORM = 'app/CheckRegPage/SUBMIT_FORM';
+export const REGISTER_NOW = 'app/CheckRegPage/REGISTER_NOW';
 export const LOAD_RESULTS = 'app/CheckRegPage/LOAD_RESULTS';
 export const SET_API_ERR_MSG = 'app/CheckRegpage/SET_API_ERR_MSG';
 

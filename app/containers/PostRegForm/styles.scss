@@ -9,64 +9,12 @@ $header-font: (
   $large-screen: 50px,
 );
 
-$registration-status: (
-  null: 12px,
-  $small-screen: 20px,
-  $mid-screen: 25px,
-  $large-screen: 30px,
-);
-
-$reg-deadline-font: (
-  null: 10px,
-  $small-screen: 16px,
-  $mid-screen: 21px,
-  $large-screen: 26px,
-);
-
-$normal-font: (
-  null: 8px,
-  $small-screen: 12px,
-  $mid-screen: 15px,
-  $large-screen: 20px,
-);
-
-.postregform {
+.postRegForm {
   text-align: center;
+  margin: auto;
 }
 
-.calltoactioncontainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.regdeadlinesdiv {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-}
-
-.postregfooter {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.postregfootertext {
-  display: flex;
-  align-self: center;
-  vertical-align: middle;
-  margin-right: 10px;
-  @include font-size($registration-status);
-}
-
-.reginstructionsdiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.regheader {
+.header {
   @include font-size($header-font);
   padding-top: $pad;
 }
@@ -80,29 +28,19 @@ $normal-font: (
 }
 
 .button {
+  @include button();
   background-color: $dark-blue;
-  border-radius: 5px;
   border: none;
   color: #FFF;
-  display: block;
-  margin: auto;
-  height: $field-height;
-  width: 35%;
-  min-width: 200px;
-  text-align: center;
-  @include font-size($normal-font);
 
   &:hover {
-    transition: background-color 200ms;
     background-color: $light-blue;
   }
 }
 
 .regdeadline {
   padding-top: $pad;
-  @include font-size($normal-font);
 }
 
 .nextelection {
-  @include font-size($normal-font);
 }

@@ -1,16 +1,10 @@
 @import '../../variables.scss';
 
 #button {
+  @include button();
   background-color: $dark-red;
   border: none;
   color: #FFF;
-  display: block;
-  margin: auto;
-  height: $field-height;
-  width: 50%;
-  min-width: 200px;
-  text-align: center;
-  outline: none;
 
   &:hover {
     background-color: $light-red;

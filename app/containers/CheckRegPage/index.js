@@ -11,6 +11,7 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
+import stateNames from 'utils/state_names';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -63,14 +64,12 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
             {formBody}
+            <hr></hr>
+            <button onClick={this.props.registerNow} className={styles.registerButton}>
+              {'Register in '+stateNames[this.props.currentState]}
+            </button>
           </div>
 
-          <div className={styles.message}>
-            If you are not registered, then download your
-            <span>
-              <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
-            </span>
-          </div>
           <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
       </div>
@@ -94,6 +93,7 @@ CheckRegPage.propTypes = {
   ]),
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
+  registerNow: React.PropTypes.func,
   dispatch: React.PropTypes.func,
   currentState: React.PropTypes.string,
   apiErrMsg: React.PropTypes.string,
@@ -116,6 +116,9 @@ function mapDispatchToProps(dispatch) {
     onSubmit: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitForm());
+    },
+    registerNow: (evt) => {
+      dispatch(actions.registerNow());
     },
     dispatch,
   };

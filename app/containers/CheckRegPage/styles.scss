@@ -12,13 +12,24 @@ $header-font: (
   padding-bottom: $pad;
   text-align: center;
   @include font-size($header-font);
-  
 }
 
 .checkRegPage {  /* stylelint-ignore */
   width: 60%;
   min-width: 290px;
   margin: auto;
+}
+
+.registerButton {
+  @include button();
+  background-color: #FFF;
+  border: 1px solid $dark-blue;
+  color: $dark-blue;
+
+  &:hover {
+    background-color: $dark-blue;
+    color: #FFF;
+  }
 }
 
 .message {
