@@ -10,7 +10,7 @@ import styles from './styles.scss';
 function RegisterButton(props) {
 
   return (
-    <button className={styles.register}>
+    <button className={styles.register} onClick={props.onClick}>
         Register in {props.state}
     </button>
   );
@@ -18,6 +18,7 @@ function RegisterButton(props) {
 
 RegisterButton.propTypes = {
   state: React.PropTypes.string,
+  onClick: React.PropTypes.func
 };
 
 export default RegisterButton;

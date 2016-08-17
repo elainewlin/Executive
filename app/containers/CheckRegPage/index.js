@@ -65,11 +65,10 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
             {apiErrMsg}
             {formBody}
+            <hr></hr>
+            <RegisterButton state={stateNames[this.props.currentState]} onClick={this.props.registerNow}/>
           </div>
 
-          <div className={styles.message}>
-            <RegisterButton state={stateNames[this.props.currentState]}/>
-          </div>
           <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
       </div>
@@ -93,6 +92,7 @@ CheckRegPage.propTypes = {
   ]),
   onChangeState: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
+  registerNow: React.PropTypes.func,
   dispatch: React.PropTypes.func,
   currentState: React.PropTypes.string,
   apiErrMsg: React.PropTypes.string,
@@ -115,6 +115,9 @@ function mapDispatchToProps(dispatch) {
     onSubmit: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitForm());
+    },
+    registerNow: (evt) => {
+      dispatch(actions.registerNow());
     },
     dispatch,
   };
