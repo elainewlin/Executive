@@ -5,8 +5,7 @@
 $header-font: (
   null: 20px,
   $small-screen: 30px,
-  $mid-screen: 40px,
-  $large-screen: 50px,
+  $large-screen: 40px,
 );
 
 .postRegForm {
@@ -16,7 +15,7 @@ $header-font: (
 
 .header {
   @include font-size($header-font);
-  padding-top: $pad;
+  padding-top: 6*$pad;
 }
 
 .unregistered {
@@ -29,6 +28,8 @@ $header-font: (
 
 .button {
   @include button();
+  margin-top: $pad;
+  width: 50px;
   background-color: $dark-blue;
   border: none;
   color: #FFF;
