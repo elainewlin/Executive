@@ -36,7 +36,7 @@ function SocialButtons() {
             className={styles.social}
           >
             <FacebookIcon
-              size={24}
+              size={28}
               round
             />
           </FacebookShareButton>
@@ -46,7 +46,7 @@ function SocialButtons() {
             className={styles.social}
           >
             <TwitterIcon
-              size={24}
+              size={28}
               round
             />
           </TwitterShareButton>
