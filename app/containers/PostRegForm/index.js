@@ -66,7 +66,6 @@ export class PostRegForm extends React.Component {
         );
       
       default:
-        // add links lol
         let link = onlineRegForms[stateAbbreviation];
         
         return (
