@@ -18,7 +18,7 @@ import * as c from './constants';
 
 // Dynamic form objects
 import stateDeadlines from './state_deadlines';
-import stateNames from './state_names';
+import stateNames from 'utils/state_names';
 import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
@@ -38,7 +38,7 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postregform}>
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {this.getCurrentStateName(stateAbbreviation)}.
+        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {stateNames[stateAbbreviation]}.
         </p>
 
         {this.getRegInstructionsDiv(regState, stateAbbreviation)}
@@ -109,10 +109,6 @@ export class PostRegForm extends React.Component {
       default:
         return '';
     }
-  }
-
-  getCurrentStateName(state) {
-    return stateNames[state];
   }
 
   getOnlineRegistrationButton(regState, stateAbbreviation) {

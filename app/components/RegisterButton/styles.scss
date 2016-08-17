@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+.register {
+  background-color: #FFF;
+  border: 1px solid $dark-blue;
+  color: $dark-blue;
+  display: block;
+  margin: auto;
+  height: $field-height;
+  width: 50%;
+  min-width: 200px;
+  text-align: center;
+  outline: none;
+
+  &:hover {
+    color: $dark-red;
+  }
+}

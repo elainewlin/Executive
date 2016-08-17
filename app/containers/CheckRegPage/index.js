@@ -11,6 +11,8 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
+import stateNames from 'utils/state_names';
+import RegisterButton from 'components/RegisterButton';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -66,10 +68,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           </div>
 
           <div className={styles.message}>
-            If you are not registered, then download your
-            <span>
-              <a target="_blank" href="http://www.eac.gov/assets/1/Documents/Federal%20Voter%20Registration_1-25-16_ENG.pdf" className={styles.link}> registration form</a>!
-            </span>
+            <RegisterButton state={stateNames[this.props.currentState]}/>
           </div>
           <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
