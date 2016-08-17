@@ -12,7 +12,6 @@ import messages from './messages';
 import styles from './styles.scss';
 import StateSelect from 'components/StateSelect';
 import stateNames from 'utils/state_names';
-import RegisterButton from 'components/RegisterButton';
 import CheckRegForm from 'containers/CheckRegForm';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -66,7 +65,9 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
             {apiErrMsg}
             {formBody}
             <hr></hr>
-            <RegisterButton state={stateNames[this.props.currentState]} onClick={this.props.registerNow}/>
+            <button onClick={this.props.registerNow} className={styles.registerButton}>
+              {'Register in '+stateNames[this.props.currentState]}
+            </button>
           </div>
 
           <div id="formResults" className={styles.formResults}>{formResults}</div>

@@ -10,6 +10,17 @@ $field-height: 35px;
 $button-height:50px;
 $pad: 0.3 * $field-height;
 
+@mixin button() {
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  height: $field-height;
+  width: 50%;
+  min-width: 200px;
+  text-align: center;
+  outline: none;
+}
+
 @mixin font-size($fs-map) {
   @each $fs-breakpoint, $fs-font-size in $fs-map {
     @if $fs-breakpoint == null {

@@ -11,6 +11,7 @@ $header-font: (
 
 .postRegForm {
   text-align: center;
+  margin: auto;
 }
 
 .header {
@@ -27,19 +28,12 @@ $header-font: (
 }
 
 .button {
+  @include button();
   background-color: $dark-blue;
-  border-radius: 5px;
   border: none;
   color: #FFF;
-  display: block;
-  margin: auto;
-  height: $field-height;
-  width: 35%;
-  min-width: 200px;
-  text-align: center;
 
   &:hover {
-    transition: background-color 200ms;
     background-color: $light-blue;
   }
 }

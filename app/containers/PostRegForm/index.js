@@ -39,7 +39,6 @@ export class PostRegForm extends React.Component {
           You are {this.getVoteStatusPrompt(regState)} to vote in {stateNames[stateAbbreviation]}
         </h1>
 
-
         {this.getRegInstructions(regState, stateAbbreviation)}
       </div>
     );
@@ -68,25 +67,20 @@ export class PostRegForm extends React.Component {
       
       default:
         // add links lol
+        let link = onlineRegForms[stateAbbreviation];
+        
         return (
-          <button className={styles.button}>
-            {messages.unregistered.cta}
-          </button>
-          // if state has online registration put another button link for online registration
+          <div>
+            <button className={styles.button}>
+              {messages.unregistered.mail}
+            </button>
+            <div> Registration Deadline: {this.getMailInDate(stateAbbreviation)} </div>
+            <button className={styles.button} onClick={function() {window.location.href = link;}}>
+              {messages.unregistered.online}
+            </button>
+          </div>
         );
     }
-  }
-
-  getDeadlinesDiv(regState, stateAbbreviation) {
-    return <div className={styles.regdeadlinesdiv}>
-      <div className={styles.regdeadline}>
-        {this.getNextStepsInstructions(regState, stateAbbreviation)}
-      </div>
-
-      <span>
-         
-      </span>
-    </div>
   }
 
   getMailInDate(state) {
@@ -98,51 +92,6 @@ export class PostRegForm extends React.Component {
     return stateDeadlines[state];
   }
 
-  getCallToActionDiv(regState, stateAbbreviation) {
-    return <div className={styles.calltoactioncontainer}>
-      {this.getCallToActionButton(regState, stateAbbreviation)}
-      {this.getOnlineRegistrationButton(regState, stateAbbreviation)}
-    </div>
-  }
-
-  getCallToActionButton(regState, stateAbbreviation) {
-    switch (regState) {
-      case 'registered':
-        let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
-
-        return pollingPlaceLink ? (
-          <button className={styles.button}
-                  onClick={function() {
-                    window.location.href = pollingPlaceLink;
-                  }}>
-            {messages.registered.cta}
-          </button>
-          // if washington or oregon, no polling place
-        ) : "";
-      case 'unregistered':
-        // add links lol
-        return (
-          <button className={styles.button}>
-            {messages.unregistered.cta}
-          </button>
-          // if state has online registration put another button link for online registration
-        );
-      default:
-        return '';
-    }
-  }
-
-  getOnlineRegistrationButton(regState, stateAbbreviation) {
-    let link = onlineRegForms[stateAbbreviation];
-
-    // return button if link exists
-    return link ?
-    <button className={styles.button} onClick={function() {window.location.href = link;}}>
-      Online Registration
-    </button>
-    : "";
-  }
-
   getVoteStatusPrompt(regState) {
     switch (regState) {
       case 'registering':
@@ -151,15 +100,6 @@ export class PostRegForm extends React.Component {
         return (<span className={styles.registered}>{messages.registered.status}</span>);
       case 'unregistered':
         return (<span className={styles.unregistered}>{messages.unregistered.status}</span>);  
-    }
-  }
-
-  getNextStepsInstructions(regState, stateAbbreviation) {
-    switch (regState) {
-      case 'registered':
-        return '';
-      default:
-        return (<div> Registration Deadline: {this.getMailInDate(stateAbbreviation)} </div>);
     }
   }
 
