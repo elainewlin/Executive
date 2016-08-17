@@ -43,11 +43,11 @@ PostRegPage.propTypes = {
   dispatch: React.PropTypes.func,
 };
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
     onSubmitEmail: (evt) => {
       evt.preventDefault();
-      dispatch(actions.submitEmail());
+      dispatch(actions.submitEmail(ownProps.params));
     },
     dispatch,
   };
