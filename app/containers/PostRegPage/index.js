@@ -13,6 +13,7 @@ import EmailForm from 'components/EmailForm';
 import SocialButtons from 'components/SocialButtons';
 import * as selectors from './selectors';
 import * as actions from './actions';
+import styles from './styles.scss'
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -30,8 +31,10 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
         registered={registered}
         state={this.props.params.state}>
       </PostRegForm>
-      <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>
-      <SocialButtons />
+      <div className={styles.social}>
+        <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>
+        <SocialButtons />
+      </div>
     </div>
     );
   }

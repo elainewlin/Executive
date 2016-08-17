@@ -1,0 +1,10 @@
+@import '../../variables.scss';
+
+.social {
+  position: fixed;
+  bottom: $pad;
+
+  > * {
+    margin-bottom: 5*$pad;
+  }
+}

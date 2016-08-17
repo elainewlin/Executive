@@ -11,9 +11,17 @@ import { reduxForm } from 'redux-form/immutable';
 
 function EmailForm(props) {
   return (
-    <form onSubmit={props.submitEmail}>
-      <Field type='text' name='email' className={styles.email} placeholder='Email Reminder' component="input" />
-    </form>
+    <div className={styles.email}>
+      <div className={styles.heading}>
+        Don't forget to vote! Sign up for reminders.
+      </div>
+      <form onSubmit={props.submitEmail} className='form-inline'>
+        <div className='form-group'>
+          <Field type='text' name='email' className={styles.input} placeholder='Email' component="input" />
+        </div>
+        <button type="submit" className={styles.submit}>Submit</button>
+      </form>
+    </div>
   );
 }
 

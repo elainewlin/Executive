@@ -1,8 +1,6 @@
 @import '../../variables.scss';
 
 .footer {
-  position: fixed;
-  bottom: 10*$pad;
   text-align: center;
 }
 
@@ -14,6 +12,7 @@
   display: inline-block;
   vertical-align: sub;
 }
+
 .social {
   opacity: 1;
   display: inline-block;
