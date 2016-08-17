@@ -16,10 +16,18 @@ import * as actions from './actions';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
+    var registered = 'registering';
+    if(this.props.params.registered == 'true') {
+      registered = 'registered';
+    }
+    if(this.props.params.registered == 'false') {
+      registered = 'unregistered';
+    }
+
     return (
     <div>
       <PostRegForm
-        registered={this.props.params.registered === 'true' ? 'registered' : 'unregistered'}
+        registered={registered}
         state={this.props.params.state}>
       </PostRegForm>
       <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state}></EmailForm>

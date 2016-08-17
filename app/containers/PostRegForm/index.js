@@ -23,9 +23,6 @@ import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
 
-// Misc components
-import votePrompts from './vote_prompts';
-
 export class PostRegForm extends React.Component {
 
   constructor(props) {
@@ -37,21 +34,47 @@ export class PostRegForm extends React.Component {
 
   buildPostRegForm(regState, stateAbbreviation) {
     return (
-      <div className={styles.postregform}>
-        <p className={styles.regheader}> You are <span className={regState === "registered" ? styles.registered : styles.unregistered}> {this.getVoteStatusPrompt(regState)} </span> to vote in {stateNames[stateAbbreviation]}.
-        </p>
+      <div className={styles.postRegForm}>
+        <h1> 
+          You are {this.getVoteStatusPrompt(regState)} to vote in {stateNames[stateAbbreviation]}
+        </h1>
 
-        {this.getRegInstructionsDiv(regState, stateAbbreviation)}
+
+        {this.getRegInstructions(regState, stateAbbreviation)}
       </div>
     );
   }
-  // <RegSticker />
 
-  getRegInstructionsDiv(regState, stateAbbreviation) {
-    return (<div className={styles.reginstructionsdiv}>
-        {this.getCallToActionDiv(regState, stateAbbreviation)}
-        {this.getDeadlinesDiv(regState, stateAbbreviation)}
-    </div>);
+  getRegInstructions(regState, stateAbbreviation) {
+    switch (regState) {
+      case 'registered':
+        let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
+
+        let pollingPlaceButton = (<button className={styles.button}
+          onClick={function() {
+            window.location.href = pollingPlaceLink;
+          }}>
+          {messages.registered.cta}
+        </button>);
+
+        return (
+          <div>
+            <div>
+              for the national election on {c.VOTE_DATE}.
+            </div>
+            {pollingPlaceButton}
+          </div>
+        );
+      
+      default:
+        // add links lol
+        return (
+          <button className={styles.button}>
+            {messages.unregistered.cta}
+          </button>
+          // if state has online registration put another button link for online registration
+        );
+    }
   }
 
   getDeadlinesDiv(regState, stateAbbreviation) {
@@ -60,9 +83,9 @@ export class PostRegForm extends React.Component {
         {this.getNextStepsInstructions(regState, stateAbbreviation)}
       </div>
 
-      <p className={styles.nextelection}>
-         National election: {c.VOTE_DATE}
-      </p>
+      <span>
+         
+      </span>
     </div>
   }
 
@@ -87,8 +110,6 @@ export class PostRegForm extends React.Component {
       case 'registered':
         let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
 
-        console.log(browserHistory);
-
         return pollingPlaceLink ? (
           <button className={styles.button}
                   onClick={function() {
@@ -112,46 +133,33 @@ export class PostRegForm extends React.Component {
   }
 
   getOnlineRegistrationButton(regState, stateAbbreviation) {
-    switch (regState) {
-      case "registered":
-        return "";
-    }
-
     let link = onlineRegForms[stateAbbreviation];
 
     // return button if link exists
     return link ?
-    <button className={styles.button}
-            onClick={function() {
-              window.location.href = link;
-            }}>
+    <button className={styles.button} onClick={function() {window.location.href = link;}}>
       Online Registration
     </button>
     : "";
   }
 
-  getOnlineRegistrationLink(state) {
-    return onlineRegForms[state];
-  }
-
   getVoteStatusPrompt(regState) {
-    return votePrompts[regState];
+    switch (regState) {
+      case 'registering':
+        return (<span>{messages.registering.status}</span>);
+      case 'registered':
+        return (<span className={styles.registered}>{messages.registered.status}</span>);
+      case 'unregistered':
+        return (<span className={styles.unregistered}>{messages.unregistered.status}</span>);  
+    }
   }
 
   getNextStepsInstructions(regState, stateAbbreviation) {
-    // Change to actually use state from params
-    // passed by the check reg form
-    // const state = 'MA';
-
     switch (regState) {
       case 'registered':
         return '';
-      case 'unregistered':
-        return (<div>
-          Registration Deadline: {this.getMailInDate(stateAbbreviation)}
-        </div>);
       default:
-        return '';
+        return (<div> Registration Deadline: {this.getMailInDate(stateAbbreviation)} </div>);
     }
   }
 
