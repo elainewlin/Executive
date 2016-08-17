@@ -87,8 +87,6 @@ export class PostRegForm extends React.Component {
       case 'registered':
         let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
 
-        console.log(browserHistory);
-
         return pollingPlaceLink ? (
           <button className={styles.button}
                   onClick={function() {
