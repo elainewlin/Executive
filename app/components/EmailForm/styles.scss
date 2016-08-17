@@ -3,12 +3,11 @@
 .email {
   border: 1px solid #CCC;
   width: 30%;
+  min-width: 290px;
   margin: auto;
   border-radius: 10px;
   padding: $pad;
-  > * {
-    text-align: center;
-  }
+  text-align: center;
 }
 
 .heading {
