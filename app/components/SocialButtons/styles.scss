@@ -1,9 +1,8 @@
 @import '../../variables.scss';
 
 .footer {
-  position: fixed;
-  bottom: 10*$pad;
   text-align: center;
+  padding-top: 3*$pad;
 }
 
 .socialText {
@@ -14,6 +13,7 @@
   display: inline-block;
   vertical-align: sub;
 }
+
 .social {
   opacity: 1;
   display: inline-block;

@@ -1,5 +1,36 @@
+@import '../../variables.scss';
+
 .email {
-    width: 200px;
-    display: block;
-    margin: auto;
+  border: 1px solid #CCC;
+  width: 30%;
+  margin: auto;
+  border-radius: 10px;
+  padding: $pad;
+  > * {
+    text-align: center;
+  }
+}
+
+.heading {
+  font-size: 16px;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  border-radius: 0px;
+  &:focus {
+    border-bottom: 1px solid $light-red;
+  }
+}
+
+.submit {
+  margin: 10px;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  outline: none;
+  &:hover {
+    border: 1px solid #000;
+  }
 }
