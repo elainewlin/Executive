@@ -67,7 +67,7 @@ export function* submitForm() {
     yield put(actions.loadResults(formResult.data));
     // if the form worked, redirect to page with registration status
     if (formResult.data.registered !== undefined) {
-      browserHistory.push(`/postcheck/${state}/${formResult.data.registered}`);
+      browserHistory.push(`/check/${state}/${formResult.data.registered}`);
     }
   } else {
     yield put(actions.setApiErrMsg(messages.apiErr));
@@ -76,7 +76,7 @@ export function* submitForm() {
 
 export function* registerNow() {
   const state = yield select(selectors.selectCurrentState());
-  browserHistory.push(`/postcheck/${state}/`);
+  browserHistory.push(`/check/${state}/`);
 }
 
 export function* checkRegSaga() {

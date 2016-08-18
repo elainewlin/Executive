@@ -27,7 +27,8 @@ $header-font: (
   color: $dark-blue;
 
   &:hover {
-    background-color: $dark-blue;
+    border: none;
+    background-color: $light-blue;
     color: #FFF;
   }
 }
