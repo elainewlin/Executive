@@ -1,12 +1,18 @@
 @import '../../variables.scss';
+$social-font: (
+  null: 18px,
+  $mid-screen: 24px,
+  $large-screen: 28px,
+);
 
 .footer {
   text-align: center;
 }
 
 .socialText {
-  font-size: 28px;
+  @include font-size($social-font);
   color: #7F7F87;
+  vertical-align: super;
 }
 
 .buttons {

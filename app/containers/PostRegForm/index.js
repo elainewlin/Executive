@@ -35,10 +35,10 @@ export class PostRegForm extends React.Component {
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postRegForm}>
-        <h1 className={styles.header}> 
-          You are {regState} to vote on <b>Nov 8</b>
-        </h1>
-        <hr></hr>
+        <div className={styles.header}> 
+          You are {regState} to vote <span className={styles.voteDay}>on <b>Nov 8</b></span>
+        </div>
+        <hr className={styles.bar}></hr>
         <div className={styles.regInstructions}>
           {this.getRegInstructions(regState, stateAbbreviation)}
         </div>
@@ -60,7 +60,7 @@ export class PostRegForm extends React.Component {
 
         return (
           <div>
-            <h3>Democratic Party</h3>
+            <h3 className={styles.subHead}>Democratic Party</h3>
             {pollingPlaceButton}
           </div>
         );
@@ -70,15 +70,13 @@ export class PostRegForm extends React.Component {
         
         return (
           <div>
-            <h2>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h2>
-            <div className={styles.unregisteredButtons}>
+            <h3 className={styles.subHead}>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h3>
             <button className={styles.button}>
               {messages.unregistered.mail}
             </button>
             <button className={styles.button} onClick={function() {window.location.href = link;}}>
               {messages.unregistered.online}
             </button>
-            </div>
           </div>
         );
     }

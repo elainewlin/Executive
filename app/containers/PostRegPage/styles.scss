@@ -1,8 +1,11 @@
 @import '../../variables.scss';
 
+.postRegPage {
+    text-align: center;
+}
 .social {
-    margin-top: 10*$pad;
+    margin-top: 20vmin;
     > * {
-        margin-top: 5*$pad;
+        margin-top: 5vmin;
     }
 }

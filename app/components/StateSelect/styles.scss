@@ -5,19 +5,14 @@ $state-select-font: (
   $mid-screen: 18px
 );
 
-$state-select-height: (
-  null: $field-height,
-  $mid-screen: 1.5 * $field-height
-);
-
 /* StateSelect styles */
 .stateSelect {
   background-color: $dark-blue;
   border: none;
   color: #FFF;
   font-weight: bold;
-  @include font-size($state-select-font);
-  @include height($state-select-height);
+  height: 1.5 * $field-height;
+  font-size: 18px;  
   width: 100%;
   display: block;
   margin: 0 auto;

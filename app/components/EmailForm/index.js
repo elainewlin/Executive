@@ -13,12 +13,10 @@ function EmailForm(props) {
   return (
     <div className={styles.email}>
       <div className={styles.heading}>
-        Don't forget to vote! Sign up for reminders.
+        Don't forget to vote! <span className={styles.wrap}>Sign up for reminders.</span>
       </div>
       <form onSubmit={props.submitEmail} className='form-inline'>
-        <div className='form-group'>
-          <Field type='text' name='email' className={styles.input} placeholder='Email' component="input" />
-        </div>
+        <Field type='text' name='email' className={styles.input} placeholder='Email' component="input" />
         <button type="submit" className={styles.submit}>Submit</button>
       </form>
     </div>
