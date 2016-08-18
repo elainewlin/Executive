@@ -22,7 +22,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
       registered = 'registered';
     }
     if(this.props.params.registered == 'false') {
-      registered = 'unregistered';
+      registered = 'not registered';
     }
 
     return (

@@ -7,15 +7,10 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
   registered: {
-    cta: 'Polling Place',
-    status: 'registered',
+    cta: 'Find Polling Place',
   },
   unregistered: {
-    mail: 'Mail-In Form',
-    online: 'Online Registration',
-    status: 'not registered',
+    mail: 'Download Mail-In Form',
+    online: 'Register Online',
   },
-  registering: {
-    status: 'registering'
-  }
 });

@@ -10,7 +10,6 @@ $header-font: (
 
 .postRegForm {
   text-align: center;
-  margin: auto;
 }
 
 .header {
@@ -18,30 +17,28 @@ $header-font: (
   padding-top: 6*$pad;
 }
 
-.unregistered {
-  color: $light-red;
-}
-
-.registered {
-  color: $light-green;
+.regInstructions {
+  margin: auto;
+  margin-top: 2*$pad;
+  width: 50%;
+  padding: 2*$pad;
 }
 
 .button {
   @include button();
-  margin-top: $pad;
-  width: 50px;
+  margin-left: $pad;
+  width: 100px;
   background-color: $dark-blue;
   border: none;
   color: #FFF;
-
+  display: inline-block;
+  height: 1.5 * $field-height;
+  font-size: 16px;
   &:hover {
     background-color: $light-blue;
   }
 }
 
-.regdeadline {
-  padding-top: $pad;
-}
-
-.nextelection {
+.red {
+  color: $dark-red;
 }

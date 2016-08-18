@@ -36,12 +36,12 @@ export class PostRegForm extends React.Component {
     return (
       <div className={styles.postRegForm}>
         <h1 className={styles.header}> 
-          You are {this.getVoteStatusPrompt(regState)} to vote in {stateNames[stateAbbreviation]}.
+          You are {regState} to vote on <b>Nov 8</b>
         </h1>
-        <h3>
-          National Election: {c.VOTE_DATE}.
-        </h3>
-        {this.getRegInstructions(regState, stateAbbreviation)}
+        <hr></hr>
+        <div className={styles.regInstructions}>
+          {this.getRegInstructions(regState, stateAbbreviation)}
+        </div>
       </div>
     );
   }
@@ -60,6 +60,7 @@ export class PostRegForm extends React.Component {
 
         return (
           <div>
+            <h3>Democratic Party</h3>
             {pollingPlaceButton}
           </div>
         );
@@ -69,13 +70,15 @@ export class PostRegForm extends React.Component {
         
         return (
           <div>
-            <h3> Register by {this.getMailInDate(stateAbbreviation)}. </h3>
+            <h2> Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h2>
+            <div>
             <button className={styles.button}>
               {messages.unregistered.mail}
             </button>
             <button className={styles.button} onClick={function() {window.location.href = link;}}>
               {messages.unregistered.online}
             </button>
+            </div>
           </div>
         );
     }
@@ -88,17 +91,6 @@ export class PostRegForm extends React.Component {
     }
 
     return stateDeadlines[state];
-  }
-
-  getVoteStatusPrompt(regState) {
-    switch (regState) {
-      case 'registering':
-        return (<span>{messages.registering.status}</span>);
-      case 'registered':
-        return (<span className={styles.registered}>{messages.registered.status}</span>);
-      case 'unregistered':
-        return (<span className={styles.unregistered}>{messages.unregistered.status}</span>);  
-    }
   }
 
   render() {
