@@ -55,21 +55,22 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     }
 
     return (
-      <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+      <div>
         <div>
           <div className={styles.header}>
             <FormattedMessage {...messages.header} />
           </div>
-          <div className={styles.checkRegPage}>
-            <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
-            {apiErrMsg}
-            {formBody}
-            <hr></hr>
-            <button onClick={this.props.registerNow} className={styles.registerButton}>
-              {'Register in '+stateNames[this.props.currentState]}
-            </button>
+          <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+            <div className={styles.checkRegPage}>
+              <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
+              {apiErrMsg}
+              {formBody}
+              <hr></hr>
+              <button onClick={this.props.registerNow} className={styles.registerButton}>
+                {'Register in '+stateNames[this.props.currentState]}
+              </button>
+            </div>
           </div>
-
           <div id="formResults" className={styles.formResults}>{formResults}</div>
         </div>
       </div>

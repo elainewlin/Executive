@@ -70,8 +70,8 @@ export class PostRegForm extends React.Component {
         
         return (
           <div>
-            <h2> Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h2>
-            <div>
+            <h2>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h2>
+            <div className={styles.unregisteredButtons}>
             <button className={styles.button}>
               {messages.unregistered.mail}
             </button>

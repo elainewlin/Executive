@@ -10,6 +10,7 @@ $header-font: (
 
 .postRegForm {
   text-align: center;
+  width: 100%;
 }
 
 .header {
@@ -22,6 +23,10 @@ $header-font: (
   margin-top: 2*$pad;
   width: 50%;
   padding: 2*$pad;
+}
+
+.unregisteredButtons {
+  margin-left: 2*$pad;
 }
 
 .button {
