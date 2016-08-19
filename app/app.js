@@ -8,9 +8,6 @@
 // Needed for redux-saga es6 generator support
 import 'babel-polyfill';
 
-// Load the manifest.json file
-import '!file?name=[name].[ext]!./manifest.json';
-
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
