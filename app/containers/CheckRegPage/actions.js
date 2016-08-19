@@ -45,6 +45,12 @@ export function submitForm() {
   };
 }
 
+export function registerNow() {
+  return {
+    type: c.REGISTER_NOW,
+  };
+}
+
 export function loadResults(results) {
   return {
     type: c.LOAD_RESULTS,

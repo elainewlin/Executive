@@ -1,5 +1,6 @@
 import { takeLatest } from 'redux-saga';
 import { fork, put, select, call } from 'redux-saga/effects';
+import { browserHistory } from 'react-router';
 import request from 'utils/request';
 import * as selectors from './selectors';
 import messages from './messages';
@@ -61,11 +62,21 @@ export function* submitForm() {
       method: 'POST',
       body: formData,
     });
+
   if (!formResult.err) {
     yield put(actions.loadResults(formResult.data));
+    // if the form worked, redirect to page with registration status
+    if (formResult.data.registered !== undefined) {
+      browserHistory.push(`/check/${state}/${formResult.data.registered}`);
+    }
   } else {
     yield put(actions.setApiErrMsg(messages.apiErr));
   }
+}
+
+export function* registerNow() {
+  const state = yield select(selectors.selectCurrentState());
+  browserHistory.push(`/check/${state}/`);
 }
 
 export function* checkRegSaga() {
@@ -73,6 +84,7 @@ export function* checkRegSaga() {
   yield fork(takeLatest, c.FETCH_INITIAL_STATE, fetchInitialState);
   yield fork(takeLatest, c.CHANGE_STATE, changeState);
   yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
+  yield fork(takeLatest, c.REGISTER_NOW, registerNow);
 }
 
 // All sagas to be loaded

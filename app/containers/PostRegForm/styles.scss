@@ -1,0 +1,65 @@
+@import '../../variables.scss';
+@import url(https://fonts.googleapis.com/css?family=Muli);
+
+
+$header-font: (
+  null: 20px,
+  $small-screen: 25px,
+  $mid-screen: 30px,
+  $large-screen: 40px,
+);
+
+$subhead-font: (
+  null: 20px,
+  $small-screen: 25px,
+  $mid-screen: 30px,
+  $large-screen: 32px,
+);
+
+.regInstructions {
+  @media screen and (min-width: 500px) {
+    padding-top: 8vmin;
+  }
+}
+
+.header {
+  @include font-size($header-font);
+  padding-top: 6vmin;
+}
+
+.subHead {
+  @include font-size($subhead-font);
+}
+
+.voteDay {
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
+}
+
+.bar {
+  width: 80%;
+  min-width: 290px;
+}
+
+.button {
+  @include button();
+  height: 45px;
+  font-size: 16px;
+  margin-top: $pad;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: $dark-blue;
+  border: none;
+  color: #FFF;
+  max-width: 140px;
+  display: inline-block;
+
+  &:hover {
+    background-color: $light-blue;
+  }
+}
+
+.red {
+  color: $dark-red;
+}

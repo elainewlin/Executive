@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+.email {
+  border: 1px solid $dark-red;
+  width: 40%;
+  max-width: 430px;
+  min-width: 290px;
+  margin: auto;
+  border-radius: 5px;
+  padding: $pad;
+  text-align: center;
+}
+
+.wrap {
+  @media screen and (max-width: 994px) {
+    display: block;
+  }
+}
+
+.heading {
+  font-size: 16px;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  border-radius: 0;
+  width: 60%;
+  &:focus {
+    border-bottom: 1px solid $light-red;
+  }
+}
+
+.submit {
+  margin-left: $pad;
+  background-color: $dark-red;
+  border: none;
+  color: #FFF;
+  border-radius: 5px;
+  outline: none;
+  &:hover {
+    background-color: $light-red;
+  }
+}

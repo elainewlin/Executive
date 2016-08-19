@@ -39,6 +39,27 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/check/:state(/:registered)',
+      name: 'PostRegPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/PostRegPage/reducer'),
+          System.import('containers/PostRegPage/sagas'),
+          System.import('containers/PostRegPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('PostRegPage', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

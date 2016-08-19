@@ -1,10 +1,9 @@
 @import '../../variables.scss';
 
-:global .navbar.navbar-default {
-  background-color: #FFF;
-  border: none;
+.vote {
+  color: $light-blue;
 }
 
-.logo {
-  width: 10%;
+.mate {
+  color: $light-red;
 }

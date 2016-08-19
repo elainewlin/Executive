@@ -34,6 +34,9 @@ function checkRegPageReducer(state = initialState, action) {
     case c.SUBMIT_FORM:
       return state
         .set('apiErrMsg', '');
+    case c.REGISTER_NOW:
+      return state
+        .set('apiErrMsg', '');
     case c.LOAD_RESULTS:
       return state
         .set('results', action.results)

@@ -1,4 +1,4 @@
-// import Header from '../index';
+// import CheckField from '../index';
 
 // import expect from 'expect';
 // import { shallow } from 'enzyme';
