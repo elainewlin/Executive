@@ -42,7 +42,7 @@ export default function createRoutes(store) {
       path: '/check/:state(/:registered)',
       name: 'PostRegPage',
       getComponent(nextState, cb) {
-       const importModules = Promise.all([
+        const importModules = Promise.all([
           System.import('containers/PostRegPage/reducer'),
           System.import('containers/PostRegPage/sagas'),
           System.import('containers/PostRegPage'),

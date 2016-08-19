@@ -18,7 +18,7 @@ function Header() {
         <div className="navbar-header">
           <Link to="/" className="navbar-brand" activeClassName="activeRoute">
             <span className={styles.vote}>vote</span>
-            <span className={styles.mate}>mate</span>          
+            <span className={styles.mate}>mate</span>
           </Link>
         </div>
       </div>

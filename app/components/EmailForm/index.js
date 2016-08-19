@@ -15,8 +15,8 @@ function EmailForm(props) {
       <div className={styles.heading}>
         Don't forget to vote! <span className={styles.wrap}>Sign up for reminders.</span>
       </div>
-      <form onSubmit={props.submitEmail} className='form-inline'>
-        <Field type='text' name='email' className={styles.input} placeholder='Email' component="input" />
+      <form onSubmit={props.submitEmail} className="form-inline">
+        <Field type="text" name="email" className={styles.input} placeholder="Email" component="input" />
         <button type="submit" className={styles.submit}>Submit</button>
       </form>
     </div>

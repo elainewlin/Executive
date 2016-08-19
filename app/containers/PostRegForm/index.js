@@ -7,9 +7,6 @@
 // React
 import React from 'react';
 
-// React Router
-import { browserHistory } from 'react-router';
-
 // Styling
 import styles from './styles.scss';
 
@@ -18,7 +15,6 @@ import * as c from './constants';
 
 // Dynamic form objects
 import stateDeadlines from './state_deadlines';
-import stateNames from 'utils/state_names';
 import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
@@ -32,10 +28,54 @@ export class PostRegForm extends React.Component {
     };
   }
 
+  getMailInDate(state) {
+    // change to grab proper default state?
+    if (!stateDeadlines[state]) {
+      return c.MAIL_IN_DATE;
+    }
+    return stateDeadlines[state];
+  }
+
+  getRegInstructions(regState, stateAbbreviation) {
+    const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
+    const onlineLink = onlineRegForms[stateAbbreviation];
+
+    switch (regState) {
+      case 'registered':
+        return (
+          <div>
+            <h3 className={styles.subHead}>Democratic Party</h3>
+            <button
+              className={styles.button}
+              onClick={function() { window.location.href = pollingPlaceLink; }}
+            >
+              {messages.registered.cta}
+            </button>
+          </div>
+        );
+      default:
+
+        return (
+          <div>
+            <h3 className={styles.subHead}>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h3>
+            <button className={styles.button}>
+              {messages.unregistered.mail}
+            </button>
+            <button
+              className={styles.button}
+              onClick={function() { window.location.href = onlineLink; }}
+            >
+              {messages.unregistered.online}
+            </button>
+          </div>
+        );
+    }
+  }
+
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postRegForm}>
-        <div className={styles.header}> 
+        <div className={styles.header}>
           You are {regState} to vote <span className={styles.voteDay}>on <b>Nov 8</b></span>
         </div>
         <hr className={styles.bar}></hr>
@@ -46,51 +86,6 @@ export class PostRegForm extends React.Component {
     );
   }
 
-  getRegInstructions(regState, stateAbbreviation) {
-    switch (regState) {
-      case 'registered':
-        let pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
-
-        let pollingPlaceButton = (<button className={styles.button}
-          onClick={function() {
-            window.location.href = pollingPlaceLink;
-          }}>
-          {messages.registered.cta}
-        </button>);
-
-        return (
-          <div>
-            <h3 className={styles.subHead}>Democratic Party</h3>
-            {pollingPlaceButton}
-          </div>
-        );
-      
-      default:
-        let link = onlineRegForms[stateAbbreviation];
-        
-        return (
-          <div>
-            <h3 className={styles.subHead}>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h3>
-            <button className={styles.button}>
-              {messages.unregistered.mail}
-            </button>
-            <button className={styles.button} onClick={function() {window.location.href = link;}}>
-              {messages.unregistered.online}
-            </button>
-          </div>
-        );
-    }
-  }
-
-  getMailInDate(state) {
-    // change to grab proper default state?
-    if (!stateDeadlines[state]) {
-      return c.MAIL_IN_DATE;
-    }
-
-    return stateDeadlines[state];
-  }
-
   render() {
     return this.buildPostRegForm(this.props.registered, this.props.state);
   }
@@ -98,6 +93,7 @@ export class PostRegForm extends React.Component {
 
 PostRegForm.propTypes = {
   registered: React.PropTypes.string,
+  state: React.PropTypes.string,
 };
 
 export default PostRegForm;

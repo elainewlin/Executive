@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectPostRegPageDomain = () => (state, props) => state.get('PostRegPage').get('params');
+const selectPostRegPageDomain = () => (state) => state.get('PostRegPage').get('params');
 
 const selectState = () => createSelector(
   selectPostRegPageDomain(),

@@ -24,7 +24,7 @@
 .input {
   border: none;
   border-bottom: 1px solid #CCC;
-  border-radius: 0px;
+  border-radius: 0;
   width: 60%;
   &:focus {
     border-bottom: 1px solid $light-red;

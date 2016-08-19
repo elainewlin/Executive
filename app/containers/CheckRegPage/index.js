@@ -67,7 +67,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
               {formBody}
               <hr></hr>
               <button onClick={this.props.registerNow} className={styles.registerButton}>
-                {'Register in '+stateNames[this.props.currentState]}
+                Register in {stateNames[this.props.currentState]}
               </button>
             </div>
           </div>
@@ -118,7 +118,7 @@ function mapDispatchToProps(dispatch) {
       evt.preventDefault();
       dispatch(actions.submitForm());
     },
-    registerNow: (evt) => {
+    registerNow: () => {
       dispatch(actions.registerNow());
     },
     dispatch,
