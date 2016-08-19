@@ -30,8 +30,8 @@ function SocialButtons() {
       </span>
       <div className={styles.buttons}>
         <FacebookShareButton
-          url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAQxxq8RSEVWAQWJEt58Ura_KSXYKShhzhYHy-gI8Xgwn0lxkwfxrpY2mY"
-          title="a cute cat"
+          url="votemate.us"
+          title="VoteMate - Let's Vote. Together."
           className={styles.social}
         >
           <FacebookIcon
@@ -40,8 +40,8 @@ function SocialButtons() {
           />
         </FacebookShareButton>
         <TwitterShareButton
-          url="http://www.tpevent.com/wp-content/uploads/2016/01/cute-cat-images-tpevent-5.jpg"
-          title="twitter cute cat"
+          url="votemate.us"
+          title="Are you registered to vote?"
           className={styles.social}
         >
           <TwitterIcon
