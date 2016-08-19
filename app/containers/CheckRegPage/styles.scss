@@ -28,7 +28,7 @@ $header-font: (
 
   &:hover {
     border: none;
-    background-color: $light-blue;
+    background-color: $dark-blue;
     color: #FFF;
   }
 }
@@ -48,14 +48,6 @@ $header-font: (
 [class*='col-'] {
   padding-left: 2px !important;
   padding-right: 2px !important;
-}
-
-.link {
-  color: $light-blue; /* complements the blue in the select box */
-  &:hover {
-    text-decoration: none;
-    color: $light-red;
-  }
 }
 
 .formResults {
