@@ -23,6 +23,7 @@
             username: Executive Deploy (Ansible)
             icon_url: https://votemate.us/favicon.ico
             msg: Starting deploy of Executive to {{ domain_name }}
+          when: slack_token is defined
         - name: rsync build directory
           synchronize:
             src: "{{ build_dir }}"
@@ -36,6 +37,7 @@
             username: Executive Deploy (Ansible)
             icon_url: https://votemate.us/favicon.ico
             msg: "Successfully deployed Executive to {{ domain_name }} :ok_hand:"
+          when: slack_token is defined
       rescue:
         - name: Let slack know deploy failed
           local_action:
@@ -45,6 +47,7 @@
             username: Executive Deploy (Ansible)
             icon_url: https://votemate.us/favicon.ico
             msg: "Deploy of Executive to {{ domain_name }} failed :fire:"
+          when: slack_token is defined
 
   tags:
     - copy
