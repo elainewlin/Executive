@@ -1,0 +1,14 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes
+  become: yes
+
+- name: Update all packages to the latest version
+  apt: upgrade=dist
+  become: yes
+
+- name: Install apt packages
+  apt:
+    pkg: "{{ item }}"
+  become: yes
+  with_items: "{{ apt_packages }}"
