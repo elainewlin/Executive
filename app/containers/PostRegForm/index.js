@@ -39,6 +39,16 @@ export class PostRegForm extends React.Component {
   getRegInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
+    let onlineRegButton;
+
+    if(onlineLink) {
+      onlineRegButton = (<button
+        className={styles.button}
+        onClick={function() { window.location.href = onlineLink; }}
+      >
+        {messages.unregistered.online}
+      </button>);
+    }
 
     switch (regState) {
       case 'registered':
@@ -61,12 +71,7 @@ export class PostRegForm extends React.Component {
             <button className={styles.button}>
               {messages.unregistered.mail}
             </button>
-            <button
-              className={styles.button}
-              onClick={function() { window.location.href = onlineLink; }}
-            >
-              {messages.unregistered.online}
-            </button>
+            {onlineRegButton}
           </div>
         );
     }

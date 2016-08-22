@@ -27,6 +27,8 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let formBody;
     let formResults;
     let apiErrMsg;
+    let registerComponent;
+
     if (!this.props.loading && this.props.formData) {
       if (this.props.formData.enabled) {
         formBody = (
@@ -54,6 +56,18 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       );
     }
 
+    if (this.props.currentState != "") {
+      registerComponent = (
+        <div>
+          <hr></hr>
+          <div className={styles.test}>Know you aren't registered?</div>
+          <button onClick={this.props.registerNow} className={styles.registerButton}>
+            Register in {stateNames[this.props.currentState]}
+          </button>
+        </div>
+      );
+    } 
+
     return (
       <div>
         <div>
@@ -65,11 +79,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
               <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
               {apiErrMsg}
               {formBody}
-              <hr></hr>
-              <div className={styles.test}>Know you aren't registered?</div>
-              <button onClick={this.props.registerNow} className={styles.registerButton}>
-                Register in {stateNames[this.props.currentState]}
-              </button>
+              {registerComponent}
             </div>
           </div>
           <div id="formResults" className={styles.formResults}>{formResults}</div>
