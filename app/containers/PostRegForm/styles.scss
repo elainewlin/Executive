@@ -1,7 +1,6 @@
 @import '../../variables.scss';
 @import url(https://fonts.googleapis.com/css?family=Muli);
 
-
 $header-font: (
   null: 20px,
   $small-screen: 25px,
@@ -16,15 +15,9 @@ $subhead-font: (
   $large-screen: 32px,
 );
 
-.regInstructions {
-  @media screen and (min-width: 500px) {
-    padding-top: 8vmin;
-  }
-}
-
 .header {
   @include font-size($header-font);
-  padding-top: 6vmin;
+  padding-top: 22vmin;
 }
 
 .subHead {
@@ -35,11 +28,6 @@ $subhead-font: (
   @media screen and (max-width: 500px) {
     display: block;
   }
-}
-
-.bar {
-  width: 80%;
-  min-width: 290px;
 }
 
 .button {
@@ -58,8 +46,4 @@ $subhead-font: (
   &:hover {
     background-color: $light-blue;
   }
-}
-
-.red {
-  color: $dark-red;
 }
