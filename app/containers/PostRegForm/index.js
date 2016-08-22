@@ -41,7 +41,7 @@ export class PostRegForm extends React.Component {
     const onlineLink = onlineRegForms[stateAbbreviation];
     let onlineRegButton;
 
-    if(onlineLink) {
+    if (onlineLink) {
       onlineRegButton = (<button
         className={styles.button}
         onClick={function() { window.location.href = onlineLink; }}

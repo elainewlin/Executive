@@ -31,7 +31,6 @@ export default {
   NM: 'Oct 11',
   NY: 'Oct 14',
   NC: 'Oct 14',
-  NH: 'Oct 29',
   OH: 'Oct 11',
   OK: 'Oct 14',
   OR: 'Oct 18',

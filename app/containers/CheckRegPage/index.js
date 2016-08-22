@@ -56,7 +56,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
       );
     }
 
-    if (this.props.currentState != "") {
+    if (this.props.currentState !== '') {
       registerComponent = (
         <div>
           <hr></hr>
@@ -66,7 +66,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           </button>
         </div>
       );
-    } 
+    }
 
     return (
       <div>
