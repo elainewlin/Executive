@@ -8,7 +8,7 @@ $header-font: (
 );
 
 .header {
-  padding-top: 6vmin;
+  padding-top: 8vmin;
   padding-bottom: $pad;
   text-align: center;
   @include font-size($header-font);
