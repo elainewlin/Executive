@@ -83,7 +83,6 @@ export class PostRegForm extends React.Component {
         <div className={styles.header}>
           You are {regState} to vote <span className={styles.voteDay}>on <b>Nov 8</b></span>
         </div>
-        <hr className={styles.bar}></hr>
         <div className={styles.regInstructions}>
           {this.getRegInstructions(regState, stateAbbreviation)}
         </div>

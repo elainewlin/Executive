@@ -2,7 +2,7 @@
 
 .email {
   border: 1px solid $dark-red;
-  width: 40%;
+  width: 50%;
   max-width: 430px;
   min-width: 290px;
   margin: auto;
@@ -12,13 +12,13 @@
 }
 
 .wrap {
-  @media screen and (max-width: 994px) {
+  @media screen and (max-width: 992px) {
     display: block;
   }
 }
 
 .heading {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .input {
