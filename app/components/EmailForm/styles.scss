@@ -27,7 +27,8 @@
   border-radius: 0;
   width: 60%;
   &:focus {
-    border-bottom: 1px solid $light-red;
+    border: none;
+    border-bottom: 1px solid $dark-red;
   }
 }
 

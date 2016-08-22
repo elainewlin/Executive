@@ -16,6 +16,10 @@ $state-select-font: (
   display: block;
   margin: 0 auto;
   height: 52px;
+  &:focus {
+    box-shadow: 0 2px 2px $dark-blue inset, 0 0 5px $dark-blue;
+  }
+
 }
 
 select.stateSelect {

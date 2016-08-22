@@ -14,6 +14,11 @@ $header-font: (
   @include font-size($header-font);
 }
 
+.test {
+  text-align: center;
+  padding-bottom: $pad;
+}
+
 .checkRegPage {  /* stylelint-ignore */
   width: 60%;
   min-width: 290px;

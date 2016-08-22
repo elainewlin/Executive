@@ -25,5 +25,8 @@ select {
   height: 32px;
   padding: 6px;
   border-radius: 5px;
-  outline: none;
+  &:focus {
+    border: 2px solid $dark-blue;
+    outline: 0 none;
+  }
 }
