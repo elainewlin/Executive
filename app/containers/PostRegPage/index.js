@@ -7,9 +7,11 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
 import EmailForm from 'components/EmailForm';
 import SocialButtons from 'components/SocialButtons';
+import * as selectors from './selectors';
 import * as actions from './actions';
 import styles from './styles.scss';
 
@@ -27,7 +29,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
       <div className={styles.postRegPage}>
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
-          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} />
+          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} isSubmitted={this.props.isSubmitted} />
           <SocialButtons />
         </div>
       </div>
@@ -39,6 +41,7 @@ PostRegPage.propTypes = {
   params: React.PropTypes.object,
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
+  isSubmitted: React.PropTypes.bool,
 };
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -51,4 +54,8 @@ function mapDispatchToProps(dispatch, ownProps) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(PostRegPage);
+const mapStateToProps = createStructuredSelector({
+  isSubmitted: selectors.selectSubmitted(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);

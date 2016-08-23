@@ -1,15 +1,20 @@
 import { createSelector } from 'reselect';
 
-const selectPostRegPageDomain = () => (state) => state.get('PostRegPage').get('params');
+const selectPostRegPageDomain = () => (state) => state.get('PostRegPage');
+
+const selectSubmitted = () => createSelector(
+  selectPostRegPageDomain(),
+  (postRegDomain) => postRegDomain.get('isSubmitted')
+);
 
 const selectState = () => createSelector(
   selectPostRegPageDomain(),
-  (postRegDomain) => postRegDomain.state
+  (postRegDomain) => postRegDomain.get('params').state
 );
 
 const selectRegistered = () => createSelector(
   selectPostRegPageDomain(),
-  (postRegDomain) => postRegDomain.registered
+  (postRegDomain) => postRegDomain.get('params').registered
 );
 
 const selectFormDomain = () => (state) => state.get('form');
@@ -20,6 +25,7 @@ const selectEmail = () => createSelector(
 );
 
 export {
+  selectSubmitted,
   selectState,
   selectRegistered,
   selectEmail,
