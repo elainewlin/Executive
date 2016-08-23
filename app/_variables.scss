@@ -16,9 +16,10 @@ $pad: 0.3 * $field-height;
   height: $field-height;
   font-weight: bold;
   width: 50%;
-  min-width: 200px;
+  min-width: 210px;
   text-align: center;
   outline: none;
+  white-space:nowrap;
 }
 
 @mixin font-size($fs-map) {
