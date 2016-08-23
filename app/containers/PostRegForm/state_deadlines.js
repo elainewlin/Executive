@@ -10,6 +10,7 @@ export default {
   FL: 'Oct 11',
   GA: 'Oct 11',
   HI: 'Oct 10',
+  ID: 'Oct 14',
   IL: 'Oct 11',
   IN: 'Oct 11',
   IA: 'Oct 24',
@@ -31,10 +32,11 @@ export default {
   NM: 'Oct 11',
   NY: 'Oct 14',
   NC: 'Oct 14',
+  //ND: No Registration
   NH: 'Oct 29',
   OH: 'Oct 11',
   OK: 'Oct 14',
-  OR: 'Oct 18',
+  OR: 'Oct 18', //how does oregon register? 
   PA: 'Oct 11',
   RI: 'Oct 9',
   SC: 'Oct 8',
