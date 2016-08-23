@@ -54,7 +54,6 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-            <h3 className={styles.subHead}>Democratic Party</h3>
             <button
               className={styles.button}
               onClick={function() { window.location.href = pollingPlaceLink; }}
