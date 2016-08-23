@@ -13,10 +13,9 @@ function EmailForm(props) {
   let form;
   if (props.isSubmitted) {
     form = (<div>Currently not working. Please try again later.</div>);
-  }
-  else {
+  } else {
     form = (<form onSubmit={props.submitEmail} className="form-inline">
-      <Field type="text" name="email" className={styles.input} placeholder="Email" component="input" required/>
+      <Field type="text" name="email" className={styles.input} placeholder="Email" component="input" required />
       <button type="submit" className={styles.submit}>Submit</button>
     </form>);
   }

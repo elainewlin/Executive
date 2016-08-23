@@ -8,7 +8,7 @@ import { fromJS } from 'immutable';
 import * as c from './constants';
 
 const initialState = fromJS({
-    isSubmitted: false,
+  isSubmitted: false,
 });
 
 function postRegPageReducer(state = initialState, action) {
