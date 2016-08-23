@@ -8,17 +8,28 @@ $header-font: (
 );
 
 .header {
-  padding-top: 8vmin;
-  padding-bottom: $pad;
+  padding-top: 5vh;
+  padding-bottom: 2vh;
   text-align: center;
   @include font-size($header-font);
 }
 
 .test {
   text-align: center;
-  padding-bottom: $pad;
+  padding-bottom: 2vh;
 }
 
+.voteOrg {
+  overflow: hidden;
+}
+
+.iframe {
+  width: 102%;
+  height: 500px;
+  margin-left: -1%;
+  margin-top: -150px;
+  border: 0 none;
+}
 .checkRegPage {  /* stylelint-ignore */
   width: 60%;
   min-width: 290px;
