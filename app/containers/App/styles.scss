@@ -19,6 +19,17 @@ body {
   box-sizing: inherit;
 }
 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+@include placeholder {
+  color: $gray;
+}
+
 input,
 select {
   border: 1px solid $gray;
