@@ -30,7 +30,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     const fieldsetToLabel = {
       name: 'Name',
       dob: 'Birthday',
-      residence: 'Address',
+      residence: 'Residence',
       id: 'Identification',
     };
     for (const field of this.props.fields) {
@@ -53,6 +53,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
               name={field.name_attr}
               width={field.width}
               validation={field.conf}
+              required={field.required}
             />
           ));
           break;
@@ -67,6 +68,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
               name={field.name_attr}
               width={field.width}
               options={options}
+              required={field.required}
             />
           ));
           break;
@@ -79,6 +81,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
               name={field.name_attr}
               width={field.width}
               description={field.conf}
+              required={field.required}
             />
           ));
           break;

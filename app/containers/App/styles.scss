@@ -26,8 +26,25 @@ select {
   height: 32px;
   padding: 6px;
   border-radius: 5px;
+
   &:focus {
     border: 1.5px solid $dark-blue;
     outline: 0 none;
   }
+}
+
+::-webkit-input-placeholder {
+  color: $gray;
+}
+
+:-moz-placeholder {
+  color: $gray;
+}
+
+::-moz-placeholder {
+  color: $gray;
+}
+
+:-ms-input-placeholder {
+  color: $gray;
 }

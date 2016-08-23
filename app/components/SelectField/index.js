@@ -16,7 +16,7 @@ function SelectField(props) {
   }
   return (
     <div className={`form-group col-xs-${props.width}`}>
-      <Field name={props.name} component="select" defaultValue="" id={props.label}>
+      <Field name={props.name} component="select" defaultValue="" id={props.label} required={props.required}>
         <option key="option-default" value="" disabled>{props.label}</option>
         {options}
       </Field>
@@ -29,6 +29,7 @@ SelectField.propTypes = {
   label: React.PropTypes.string,
   options: React.PropTypes.array,
   width: React.PropTypes.number,
+  required: React.PropTypes.bool,
 };
 
 export default SelectField;

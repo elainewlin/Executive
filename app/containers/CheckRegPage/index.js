@@ -38,7 +38,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           />
         );
       } else {
-        formBody = this.props.formData.disabled_message;
+        formBody = (<div className={styles.voteOrg}><iframe src="https://verify.vote.org/" className={styles.iframe}></iframe></div>);
       }
     }
 
