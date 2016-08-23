@@ -1,0 +1,53 @@
+---
+- name: Build static site locally
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Build react-redux site
+      command: npm run build
+  tags:
+    - build
+
+- name: Copy static site to host
+  hosts: all
+  gather_facts: no
+  vars_files:
+    - vars.yml
+  tasks:
+    - block:
+        - name: Let slack know we're deploying
+          local_action:
+            module: slack
+            token: "{{ slack_token }}"
+            username: Executive Deploy (Ansible)
+            icon_url: https://votemate.us/favicon.ico
+            msg: Starting deploy of Executive to {{ domain_name }}
+          when: slack_token is defined
+        - name: rsync build directory
+          synchronize:
+            src: "{{ build_dir }}"
+            dest: "{{ app_dir }}"
+          become: yes
+        - name: Let slack know deploy succeeded
+          local_action:
+            module: slack
+            token: "{{ slack_token }}"
+            color: good
+            username: Executive Deploy (Ansible)
+            icon_url: https://votemate.us/favicon.ico
+            msg: "Successfully deployed Executive to {{ domain_name }} :ok_hand:"
+          when: slack_token is defined
+      rescue:
+        - name: Let slack know deploy failed
+          local_action:
+            module: slack
+            token: "{{ slack_token }}"
+            color: danger
+            username: Executive Deploy (Ansible)
+            icon_url: https://votemate.us/favicon.ico
+            msg: "Deploy of Executive to {{ domain_name }} failed :fire:"
+          when: slack_token is defined
+
+  tags:
+    - copy

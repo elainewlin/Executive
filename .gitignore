@@ -15,5 +15,9 @@ npm-debug.log
 # Ansible .retry files
 **/*.retry
 
+# Ansible inventories
+ansible/prod
+ansible/staging
+
 # cli-real-favicon faviconData file
 app/faviconData.json
