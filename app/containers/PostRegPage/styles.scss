@@ -1,11 +1,13 @@
 @import '../../variables.scss';
 
 .postRegPage {
-  text-align: center;
+  margin: auto;
+  width: 60%;
+  min-width: 290px;
 }
-
+  
 .social {
-  margin-top: 13vmin;
+  margin-top: 8vmin;
 
   > * {
     margin-top: 3vmin;

@@ -2,13 +2,13 @@
 
 $header-font: (
   null: 20px,
-  $small-screen: 30px,
-  $mid-screen: 40px,
-  $large-screen: 50px,
+  $small-screen: 25px,
+  $mid-screen: 30px,
+  $large-screen: 35px,
 );
 
 .header {
-  padding-top: 5vh;
+  padding-top: 10vh;
   padding-bottom: 2vh;
   text-align: center;
   @include font-size($header-font);
@@ -16,7 +16,6 @@ $header-font: (
 
 .test {
   text-align: center;
-  padding-bottom: 2vh;
 }
 
 .voteOrg {

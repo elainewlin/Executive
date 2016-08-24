@@ -45,9 +45,9 @@ export class PostRegForm extends React.Component {
       onlineRegButton = (
         <div>
           <a href={onlineLink}>
-          <button className={styles.button}>
-            {messages.unregistered.online}
-          </button>
+            <button className={styles.button}>
+              {messages.unregistered.online}
+            </button>
           </a>
         </div>);
     }
@@ -57,17 +57,15 @@ export class PostRegForm extends React.Component {
         return (
           <div>
             <a href={pollingPlaceLink}>
-            <button className={styles.button}>
-              {messages.registered.cta}
-            </button>
+              <button className={styles.button}>
+                {messages.registered.cta}
+              </button>
             </a>
           </div>
         );
       default:
-
         return (
           <div>
-            <h3 className={styles.subHead}>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h3>
             <button className={styles.button}>
               {messages.unregistered.mail}
             </button>
@@ -77,11 +75,34 @@ export class PostRegForm extends React.Component {
     }
   }
 
+  getMessage(regState, stateAbbreviation) {
+    switch (regState) {
+      case 'registered':
+        return (
+          <div>
+            Yes, vote on <b>Nov 8</b>
+          </div>
+        );
+      case 'not registered':
+        return (
+          <div>
+            No, register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b>
+          </div>
+        );
+      default:
+        return (
+          <div>
+            Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b>
+          </div>
+        );
+    }
+  }
+
   buildPostRegForm(regState, stateAbbreviation) {
     return (
       <div className={styles.postRegForm}>
         <div className={styles.header}>
-          You are {regState} to vote <span className={styles.voteDay}>on <b>Nov 8</b></span>
+          {this.getMessage(regState, stateAbbreviation)}
         </div>
         <div className={styles.regInstructions}>
           {this.getRegInstructions(regState, stateAbbreviation)}

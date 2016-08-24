@@ -24,12 +24,12 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
     if (this.props.params.registered === 'false') {
       registered = 'not registered';
     }
+         // <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} isSubmitted={this.props.isSubmitted} />
 
     return (
       <div className={styles.postRegPage}>
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
-          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} isSubmitted={this.props.isSubmitted} />
           <SocialButtons />
         </div>
       </div>
