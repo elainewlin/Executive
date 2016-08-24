@@ -1,10 +1,5 @@
 @import '../../variables.scss';
 
-$state-select-font: (
-  null: 14px,
-  $mid-screen: 18px
-);
-
 /* StateSelect styles */
 .stateSelect {
   background-color: $dark-blue;

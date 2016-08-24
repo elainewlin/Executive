@@ -1,11 +1,6 @@
 @import '../../variables.scss';
 
-$header-font: (
-  null: 20px,
-  $small-screen: 25px,
-  $mid-screen: 30px,
-  $large-screen: 35px,
-);
+
 
 .header {
   padding-top: 10vh;
@@ -31,8 +26,9 @@ $header-font: (
 }
 
 .checkRegPage {  /* stylelint-ignore */
-  width: 60%;
+  width: 65%;
   min-width: 290px;
+  max-width: 500px;
   margin: auto;
 }
 
@@ -46,18 +42,6 @@ $header-font: (
     border: none;
     background-color: $dark-blue;
     color: #FFF;
-  }
-}
-
-.message {
-  padding-top: $pad;
-  font-size: inherit;
-  text-align: center;
-
-  @media screen and (max-width: $small-screen) {
-    span {
-      display: block;
-    }
   }
 }
 

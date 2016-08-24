@@ -1,20 +1,9 @@
 @import '../../variables.scss';
 @import url(https://fonts.googleapis.com/css?family=Muli);
 
-$subhead-font: (
-  null: 20px,
-  $small-screen: 25px,
-  $mid-screen: 30px,
-  $large-screen: 32px,
-);
-
 .header {
-  @include font-size($subhead-font);
+  @include font-size($header-font);
   padding-top: 20vmin;
-}
-
-.subHead {
-  @include font-size($subhead-font);
 }
 
 .voteDay {
