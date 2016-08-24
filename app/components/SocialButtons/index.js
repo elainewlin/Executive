@@ -28,26 +28,20 @@ function SocialButtons() {
       </span>
 
       <div className={styles.buttons}>
-        <FacebookShareButton
-          url="votemate.us"
-          title="VoteMate - Let's Vote. Together."
-        >
+        <a href="https://www.facebook.com/Votemate-1037798892964684/">
           <svg viewBox="0 0 64 64" className={styles.outer}>
             <g>
               <path d={facebookPath}></path>
             </g>
           </svg>
-        </FacebookShareButton>
-        <TwitterShareButton
-          url="votemate.us"
-          title="Are you registered to vote?"
-        >
+        </a>
+        <a href="https://twitter.com/USVoteMate">
           <svg viewBox="0 0 64 64" className={styles.outer}>
             <g>
               <path d={twitterPath}></path>
             </g>
           </svg>
-        </TwitterShareButton>
+        </a>
       </div>
     </footer>
   );

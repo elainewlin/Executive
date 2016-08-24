@@ -17,9 +17,9 @@ $social-font: (
 .buttons {
   display: inline-block;
   vertical-align: -50%;
-  > div {
+  > a {
     display: inherit;
-    margin-right: -10px;
+    margin-left: -10%;
   }
 }
 
