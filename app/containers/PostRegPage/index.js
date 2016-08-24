@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
 import EmailForm from 'components/EmailForm';
+import EmailModal from 'components/EmailModal';
 import SocialButtons from 'components/SocialButtons';
 import * as selectors from './selectors';
 import * as actions from './actions';
@@ -31,6 +32,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
           <SocialButtons />
+          <EmailModal submitEmail={this.props.onSubmitEmail} isSubmitted={this.props.isSubmitted} />
         </div>
       </div>
     );

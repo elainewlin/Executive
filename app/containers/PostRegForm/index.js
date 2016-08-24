@@ -44,7 +44,7 @@ export class PostRegForm extends React.Component {
     if (onlineLink) {
       onlineRegButton = (
         <div>
-          <a href={onlineLink}>
+          <a href={onlineLink} className={styles.link}>
             <button className={styles.button}>
               {messages.unregistered.online}
             </button>
@@ -56,7 +56,7 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-            <a href={pollingPlaceLink}>
+            <a href={pollingPlaceLink} className={styles.link}>
               <button className={styles.button}>
                 {messages.registered.cta}
               </button>

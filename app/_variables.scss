@@ -3,6 +3,7 @@ $light-red: #ED1212;
 $dark-blue: #003DBF;
 $light-blue: #1212ED;
 $gray: #7F7F87;
+$light-gray: #98989F;
 $field-height: 35px;
 $pad: 0.3 * $field-height;
 
@@ -14,14 +15,23 @@ $header-font: (
   790px: 37px,
 );
 
+@mixin stateSelect() {
+  height: 52px;
+  background-color: $dark-blue;
+  border: none;
+  color: #FFF;
+  font-size: 18px;
+  margin: auto;
+}
+
 @mixin button() {
   border-radius: 5px;
   display: block;
   margin: auto;
   height: $field-height;
-  font-weight: bold;
   width: 50%;
   min-width: 210px;
+  font-weight: bold;
   text-align: center;
   outline: none;
   white-space: nowrap;

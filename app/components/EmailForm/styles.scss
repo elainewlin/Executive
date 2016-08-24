@@ -1,40 +1,41 @@
 @import '../../variables.scss';
 
 .email {
-  border: 1px solid $dark-red;
-  width: 50%;
-  max-width: 430px;
+  border: 1px solid $gray;
+  width: 60%;
+  max-width: 480px;
   min-width: 290px;
   margin: auto;
   border-radius: 5px;
-  padding: $pad;
-  text-align: center;
+  padding: 50px 40px;
+  font-size: 22px;
 }
 
-.wrap {
-  @media screen and (max-width: 992px) {
-    display: block;
-  }
+.heading {
+  font-size: 26px;
+  padding-bottom: 10px;
 }
 
 .input {
   border: none;
   border-bottom: 1px solid $gray;
   border-radius: 0;
-  width: 60%;
+  width: 100%;
   &:focus {
     border: none;
-    border-bottom: 1px solid $dark-red;
+    border-bottom: 1px solid $light-red;
   }
 }
 
 .submit {
-  margin-left: $pad;
+  @include button()
   background-color: $dark-red;
   border: none;
+  height: 52px;
   color: #FFF;
   border-radius: 5px;
-  outline: none;
+  margin-top: 20px;
+  width: 100%;
   &:hover {
     background-color: $light-red;
   }

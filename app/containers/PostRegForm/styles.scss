@@ -12,16 +12,19 @@
 
 .button {
   @include button();
-  height: 52px;
+  @include stateSelect();
+  
   width: 290px;
-  font-size: 18px;
-  margin: auto;
   margin-top: 2vh;
-  background-color: $dark-blue;
-  border: none;
-  color: #FFF;
 
   &:hover {
     background-color: $light-blue;
+  }
+}
+
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
   }
 }
