@@ -42,24 +42,25 @@ export class PostRegForm extends React.Component {
     let onlineRegButton;
 
     if (onlineLink) {
-      onlineRegButton = (<button
-        className={styles.button}
-        onClick={function() { window.location.href = onlineLink; }}
-      >
-        {messages.unregistered.online}
-      </button>);
+      onlineRegButton = (
+        <div>
+          <a href={onlineLink}>
+          <button className={styles.button}>
+            {messages.unregistered.online}
+          </button>
+          </a>
+        </div>);
     }
 
     switch (regState) {
       case 'registered':
         return (
           <div>
-            <button
-              className={styles.button}
-              onClick={function() { window.location.href = pollingPlaceLink; }}
-            >
+            <a href={pollingPlaceLink}>
+            <button className={styles.button}>
               {messages.registered.cta}
             </button>
+            </a>
           </div>
         );
       default:
