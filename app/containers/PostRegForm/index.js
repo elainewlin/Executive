@@ -80,13 +80,13 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-            Yes, vote on <b>Nov 8</b>
+            Yes, vote on <b>November 8</b>
           </div>
         );
       case 'not registered':
         return (
           <div>
-            No, register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b>
+            No, register by <b>{this.getMailInDate(stateAbbreviation)}</b>
           </div>
         );
       default:

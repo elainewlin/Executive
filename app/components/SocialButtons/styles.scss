@@ -10,16 +10,17 @@
 }
 
 .socialText {
-  // @include font-size($social-font);
+  font-size: 22px;
   color: $gray;
+  margin-right: 10px;
 }
 
 .buttons {
   display: inline-block;
-  vertical-align: -50%;
+  vertical-align: -60%;
   > a {
     display: inherit;
-    margin-left: -10%;
+    margin-left: -12px;
   }
 }
 

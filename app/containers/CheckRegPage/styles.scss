@@ -1,7 +1,5 @@
 @import '../../variables.scss';
 
-
-
 .header {
   padding-top: 10vh;
   padding-bottom: 2vh;
@@ -9,8 +7,10 @@
   @include font-size($header-font);
 }
 
-.test {
+.registerText {
   text-align: center;
+  font-size: 14px;
+  padding-bottom: 1vh;
 }
 
 .voteOrg {
