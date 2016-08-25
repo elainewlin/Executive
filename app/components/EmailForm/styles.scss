@@ -1,8 +1,7 @@
 @import '../../variables.scss';
 
 .heading {
-  font-size: 26px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .input {
@@ -17,15 +16,26 @@
 }
 
 .submit {
-  @include button()
   background-color: $dark-red;
   border: none;
-  height: 52px;
+  height: 8vmin;
   color: #FFF;
   border-radius: 5px;
-  margin-top: 20px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
   width: 100%;
+  min-width: 150px;
   &:hover {
     background-color: $light-red;
   }
+}
+
+$font: (
+  null: 14px,
+  630px: 22px,
+);
+
+.email {
+  @include font-size($font);
 }
