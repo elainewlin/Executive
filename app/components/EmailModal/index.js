@@ -9,15 +9,14 @@ import styles from './styles.scss';
 import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
 import EmailForm from 'components/EmailForm';
+import close from './x.png';
 
 function EmailModal(props) {
   let modal;
   
   if (props.isOpen) {
     modal = (<div className={styles.email}>
-      <div className={styles.close} onClick={props.closeModal}>
-      x
-      </div>
+      <img src={close} className={styles.close} onClick={props.closeModal} />
       <EmailForm {...props}></EmailForm>
     </div>);
   }

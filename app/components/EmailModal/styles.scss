@@ -20,9 +20,9 @@
 // this is going to be an image
 .close {
   position: absolute;
-  top: 0px;
-  right: 10px;
-  font-size: 30px;
+  top: 5px;
+  right: 5px;
+  width: 30px;
 
   &:hover {
     cursor: pointer;
