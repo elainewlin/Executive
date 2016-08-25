@@ -25,7 +25,7 @@ export function* submitEmail() {
   let status = 'Server error. Try again later.';
   if (!subscribeResult.err) {
     if (subscribeResult.data.status === 'subscribed') {
-      status = 'Success!';
+      yield put(actions.closeModal());
     } else if (subscribeResult.data.title === 'Member Exists') {
       status = 'You were already subscribed.';
     } else if (subscribeResult.data.title === 'Invalid Resource') {

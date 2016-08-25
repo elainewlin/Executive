@@ -39,6 +39,7 @@ export class PostRegForm extends React.Component {
   getRegInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
+    const mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
     let onlineRegButton;
 
     if (onlineLink) {
@@ -66,9 +67,11 @@ export class PostRegForm extends React.Component {
       default:
         return (
           <div>
-            <button className={styles.button}>
-              {messages.unregistered.mail}
-            </button>
+            <a href={mailInLink} download className={styles.link}>
+              <button className={styles.button}>
+                {messages.unregistered.mail}
+              </button>
+            </a>
             {onlineRegButton}
           </div>
         );
@@ -80,13 +83,13 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-            Yes, vote on <b>November 8</b>
+            Vote on <b>November 8</b>
           </div>
         );
       case 'not registered':
         return (
           <div>
-            No, register by <b>{this.getMailInDate(stateAbbreviation)}</b>
+            Register by <b>{this.getMailInDate(stateAbbreviation)}</b>
           </div>
         );
       default:

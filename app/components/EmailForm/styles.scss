@@ -1,7 +1,21 @@
 @import '../../variables.scss';
 
+.result {
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+.yes {
+  color: $green;
+}
+
+.no {
+  color: $dark-red;
+}
+
 .heading {
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .input {

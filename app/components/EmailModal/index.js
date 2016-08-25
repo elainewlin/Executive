@@ -34,6 +34,8 @@ EmailModal.propTypes = {
   submitEmail: React.PropTypes.func,
   status: React.PropTypes.string,
   closeModal: React.PropTypes.func,
+  registered: React.PropTypes.string,
+  state: React.PropTypes.string,
 };
 
 export default EmailModal;

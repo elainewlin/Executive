@@ -3,8 +3,8 @@
 
 .header {
   @include font-size($header-font);
-  padding-top: 15vh;
-  padding-bottom: 4vh;
+  padding-top: 10vmin;
+  padding-bottom: 3vmin;
 }
 
 .postRegForm {
@@ -16,7 +16,7 @@
   @include stateSelect();
   
   width: 290px;
-  margin-top: 2vh;
+  margin-top: 3vh;
 
   &:hover {
     background-color: $light-blue;

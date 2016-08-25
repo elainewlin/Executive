@@ -24,13 +24,14 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
     if (this.props.params.registered === 'false') {
       registered = 'not registered';
     }
-         // <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} isSubmitted={this.props.isSubmitted} />
 
     return (
       <div className={styles.postRegPage}>
-        <EmailModal submitEmail={this.props.onSubmitEmail} isOpen={this.props.isOpen} closeModal={this.props.closeModal} className={styles.email} status={this.props.emailStatus} />
+        <EmailModal {...this.props} className={styles.email} registered={registered} state={this.props.params.state} />
         <PostRegForm registered={registered} state={this.props.params.state} />
-        <SocialButtons />
+        <div className={styles.social}>
+          <SocialButtons />
+        </div>
       </div>
     );
   }
