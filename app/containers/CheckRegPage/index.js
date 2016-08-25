@@ -55,7 +55,6 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
       );
     }
-          // 
 
     if (this.props.currentState !== '') {
       registerComponent = (
@@ -75,7 +74,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <div>
             <div className={styles.header}>
               <FormattedMessage {...messages.header} />
-            </div> 
+            </div>
             <div className={styles.checkRegPage}>
               <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
               {apiErrMsg}

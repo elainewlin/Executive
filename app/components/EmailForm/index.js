@@ -8,16 +8,14 @@ import React from 'react';
 import styles from './styles.scss';
 import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
-import EmailModal from 'components/EmailModal';
 
 function EmailForm(props) {
-
   let helperText = 'Get reminders to register';
   let result;
 
   if (props.registered === 'registered') {
     result = (<div className={styles.yes}>Registered in {props.state}</div>);
-    helperText='Get reminders to vote';
+    helperText = 'Get reminders to vote';
   }
   if (props.registered === 'not registered') {
     result = (<div className={styles.no}> Not registered in {props.state}</div>);

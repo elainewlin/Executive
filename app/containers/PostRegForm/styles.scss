@@ -14,7 +14,7 @@
 .button {
   @include button();
   @include stateSelect();
-  
+
   width: 290px;
   margin-top: 3vh;
 

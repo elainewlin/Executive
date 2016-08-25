@@ -2,8 +2,7 @@
 
 /* StateSelect styles */
 .stateSelect {
-  @include stateSelect()
-
+  @include stateSelect();
   font-weight: bold;
   width: 100%;
   display: block;

@@ -4,15 +4,6 @@
 *
 */
 
-import {
-  ShareButtons,
-} from 'react-share';
-
-const {
-  FacebookShareButton,
-  TwitterShareButton,
-} = ShareButtons;
-
 import React from 'react';
 
 import styles from './styles.scss';
