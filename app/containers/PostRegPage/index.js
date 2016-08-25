@@ -29,7 +29,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
       <div className={styles.postRegPage}>
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
-          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} isSubmitted={this.props.isSubmitted} />
+          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} status={this.props.emailStatus} />
           <SocialButtons />
         </div>
       </div>
@@ -41,7 +41,7 @@ PostRegPage.propTypes = {
   params: React.PropTypes.object,
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  isSubmitted: React.PropTypes.bool,
+  emailStatus: React.PropTypes.string,
 };
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -55,7 +55,7 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  isSubmitted: selectors.selectSubmitted(),
+  emailStatus: selectors.selectEmailStatus(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);

@@ -10,15 +10,12 @@ import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
 
 function EmailForm(props) {
-  let form;
-  if (props.isSubmitted) {
-    form = (<div>Currently not working. Please try again later.</div>);
-  } else {
-    form = (<form onSubmit={props.submitEmail} className="form-inline">
+  const form = (
+    <form onSubmit={props.submitEmail} className="form-inline">
       <Field type="text" name="email" className={styles.input} placeholder="Email" component="input" required />
       <button type="submit" className={styles.submit}>Submit</button>
-    </form>);
-  }
+    </form>
+  );
 
   return (
     <div className={styles.email}>
@@ -26,13 +23,14 @@ function EmailForm(props) {
         Don't forget to vote! <span className={styles.wrap}>Sign up for reminders.</span>
       </div>
       {form}
+      <div>{props.status}</div>
     </div>
   );
 }
 
 EmailForm.propTypes = {
   submitEmail: React.PropTypes.func,
-  isSubmitted: React.PropTypes.bool,
+  status: React.PropTypes.string,
 };
 
 export default reduxForm({

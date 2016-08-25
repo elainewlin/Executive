@@ -8,7 +8,8 @@ Executive
 
 1. Clone this repo
 2. `npm install`
-3. `npm start`
+3. Copy `config-example.js` to `config.js` and fill with the appropriate values
+4. `npm start`
 
 The development server by default is at `localhost:3000`
 
