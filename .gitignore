@@ -21,3 +21,6 @@ ansible/staging
 
 # cli-real-favicon faviconData file
 app/faviconData.json
+
+# Config (with secrets)
+config.js

@@ -6,3 +6,10 @@ export function submitEmail(params) {
     params,
   };
 }
+
+export function updateEmailStatus(status) {
+  return {
+    type: c.UPDATE_EMAIL_STATUS,
+    status,
+  };
+}
