@@ -4,8 +4,6 @@
  *
  */
 
-import * as cfg from 'config';
-
 /* action constants */
 export const FETCH_STATES = 'app/CheckRegPage/FETCH_STATES';
 export const FETCH_INITIAL_STATE = 'app/CheckRegPage/FETCH_INITIAL_STATE';
@@ -18,7 +16,7 @@ export const LOAD_RESULTS = 'app/CheckRegPage/LOAD_RESULTS';
 export const SET_API_ERR_MSG = 'app/CheckRegpage/SET_API_ERR_MSG';
 
 /* API URLs */
-export const FETCH_STATES_URL = `${cfg.API_BASE}/check-registration-form/`;
+export const FETCH_STATES_URL = `${API_BASE}/check-registration-form/`; // eslint-disable-line no-undef
 export const FETCH_STATE_URL = (state) => `${FETCH_STATES_URL}${state}/`;
-export const FETCH_LOCATION_URL = `https://www.googleapis.com/geolocation/v1/geolocate?key=${cfg.GOOGLE_MAPS_API}`;
-export const FETCH_ADDRESS_URL = (lat, lng) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${cfg.GOOGLE_MAPS_API}`;
+export const FETCH_LOCATION_URL = `https://www.googleapis.com/geolocation/v1/geolocate?key=${GOOGLE_MAPS_API_KEY}`; // eslint-disable-line no-undef
+export const FETCH_ADDRESS_URL = (lat, lng) => `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${GOOGLE_MAPS_API_KEY}`; // eslint-disable-line no-undef

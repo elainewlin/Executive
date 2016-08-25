@@ -11,7 +11,6 @@ import { reduxForm } from 'redux-form/immutable';
 import EmailModal from 'components/EmailModal';
 
 function EmailForm(props) {
-  let form;
 
   return (
     <div className={styles.email}>
@@ -22,12 +21,14 @@ function EmailForm(props) {
         <Field type="text" name="email" className={styles.input} placeholder="example@votemate.com" component="input" required />
         <button type="submit" className={styles.submit}>Submit</button>
       </form>
+      <div>{props.status}</div>
     </div>
   );
 }
 
 EmailForm.propTypes = {
   submitEmail: React.PropTypes.func,
+  status: React.PropTypes.string,
 };
 
 export default reduxForm({

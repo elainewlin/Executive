@@ -15,7 +15,7 @@ function EmailModal(props) {
   
   if (props.isOpen) {
     modal = (<div className={styles.email}>
-      <div className={styles.close}>
+      <div className={styles.close} onClick={props.closeModal}>
       x
       </div>
       <EmailForm {...props}></EmailForm>
@@ -32,6 +32,8 @@ function EmailModal(props) {
 EmailModal.propTypes = {
   isOpen: React.PropTypes.bool,
   submitEmail: React.PropTypes.func,
+  status: React.PropTypes.string,
+  closeModal: React.PropTypes.func,
 };
 
 export default EmailModal;

@@ -9,6 +9,7 @@ import * as c from './constants';
 
 const initialState = fromJS({
   isSubmitted: false,
+  isOpen: true,
 });
 
 function postRegPageReducer(state = initialState, action) {
@@ -17,6 +18,12 @@ function postRegPageReducer(state = initialState, action) {
       return state
         .set('params', action.params)
         .set('isSubmitted', true);
+    case c.UPDATE_EMAIL_STATUS:
+      return state
+        .set('emailStatus', action.status);
+    case c.CLOSE_MODAL:
+      return state
+        .set('isOpen', false);
     default:
       return state;
   }

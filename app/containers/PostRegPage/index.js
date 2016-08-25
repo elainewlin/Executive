@@ -28,11 +28,9 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
     return (
       <div className={styles.postRegPage}>
-        <EmailModal submitEmail={this.props.onSubmitEmail} isOpen={!this.props.isSubmitted} className={styles.email} />
+        <EmailModal submitEmail={this.props.onSubmitEmail} isOpen={this.props.isOpen} closeModal={this.props.closeModal} className={styles.email} status={this.props.emailStatus} />
         <PostRegForm registered={registered} state={this.props.params.state} />
-        <div className={styles.social}>
-          <SocialButtons />
-        </div>
+        <SocialButtons />
       </div>
     );
   }
@@ -42,7 +40,9 @@ PostRegPage.propTypes = {
   params: React.PropTypes.object,
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  isSubmitted: React.PropTypes.bool,
+  emailStatus: React.PropTypes.string,
+  closeModal: React.PropTypes.func,
+  isOpen: React.PropTypes.bool,
 };
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -51,12 +51,16 @@ function mapDispatchToProps(dispatch, ownProps) {
       evt.preventDefault();
       dispatch(actions.submitEmail(ownProps.params));
     },
+    closeModal: () => {
+      dispatch(actions.closeModal());
+    },
     dispatch,
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  isSubmitted: selectors.selectSubmitted(),
+  emailStatus: selectors.selectEmailStatus(),
+  isOpen: selectors.selectIsOpen(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);
