@@ -55,12 +55,13 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
         </div>
       );
     }
+          // 
 
     if (this.props.currentState !== '') {
       registerComponent = (
         <div>
           <hr></hr>
-          <div className={styles.test}>Know you aren't registered?</div>
+          <div className={styles.registerText}>Know you aren't registered?</div>
           <button onClick={this.props.registerNow} className={styles.registerButton}>
             Register in {stateNames[this.props.currentState]}
           </button>
@@ -71,10 +72,10 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     return (
       <div>
         <div>
-          <div className={styles.header}>
-            <FormattedMessage {...messages.header} />
-          </div>
-          <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+          <div>
+            <div className={styles.header}>
+              <FormattedMessage {...messages.header} />
+            </div> 
             <div className={styles.checkRegPage}>
               <StateSelect states={this.props.states} onChange={this.props.onChangeState} currentState={this.props.currentState} />
               {apiErrMsg}

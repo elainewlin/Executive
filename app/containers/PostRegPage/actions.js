@@ -13,3 +13,9 @@ export function updateEmailStatus(status) {
     status,
   };
 }
+
+export function closeModal() {
+  return {
+    type: c.CLOSE_MODAL,
+  };
+}

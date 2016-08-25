@@ -1,25 +1,26 @@
 @import '../../variables.scss';
-$social-font: (
-  null: 20px,
-  $mid-screen: 24px,
-  $large-screen: 28px,
-);
+// $social-font: (
+//   null: 20px,
+//   $mid-screen: 24px,
+//   $large-screen: 28px,
+// );
 
 .footer {
   text-align: center;
 }
 
 .socialText {
-  @include font-size($social-font);
+  font-size: 22px;
   color: $gray;
+  margin-right: 10px;
 }
 
 .buttons {
   display: inline-block;
-  vertical-align: -50%;
-  > div {
+  vertical-align: -60%;
+  > a {
     display: inherit;
-    margin-right: -10px;
+    margin-left: -12px;
   }
 }
 

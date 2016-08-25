@@ -1,21 +1,12 @@
 @import '../../variables.scss';
 
-$state-select-font: (
-  null: 14px,
-  $mid-screen: 18px
-);
-
 /* StateSelect styles */
 .stateSelect {
-  background-color: $dark-blue;
-  border: none;
-  color: #FFF;
+  @include stateSelect()
+
   font-weight: bold;
-  font-size: 18px;
   width: 100%;
   display: block;
-  margin: 0 auto;
-  height: 52px;
 
   &:focus {
     box-shadow: 0 2px 2px $dark-blue inset, 0 0 5px $dark-blue;
@@ -25,6 +16,6 @@ $state-select-font: (
 select.stateSelect {
   text-align: center;
   text-align-last: center;
-  background-size: 1.5rem;
+  background-size: 2.5rem;
   background-image: url(http://www.escriga.lv/wp-content/uploads/2014/03/arrow.png);
 }

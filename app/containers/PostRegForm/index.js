@@ -39,38 +39,63 @@ export class PostRegForm extends React.Component {
   getRegInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
+    const mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
     let onlineRegButton;
 
     if (onlineLink) {
-      onlineRegButton = (<button
-        className={styles.button}
-        onClick={function() { window.location.href = onlineLink; }}
-      >
-        {messages.unregistered.online}
-      </button>);
+      onlineRegButton = (
+        <div>
+          <a href={onlineLink} className={styles.link}>
+            <button className={styles.button}>
+              {messages.unregistered.online}
+            </button>
+          </a>
+        </div>);
     }
 
     switch (regState) {
       case 'registered':
         return (
           <div>
-            <button
-              className={styles.button}
-              onClick={function() { window.location.href = pollingPlaceLink; }}
-            >
-              {messages.registered.cta}
-            </button>
+            <a href={pollingPlaceLink} className={styles.link}>
+              <button className={styles.button}>
+                {messages.registered.cta}
+              </button>
+            </a>
           </div>
         );
       default:
-
         return (
           <div>
-            <h3 className={styles.subHead}>Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b></h3>
-            <button className={styles.button}>
-              {messages.unregistered.mail}
-            </button>
+            <a href={mailInLink} download className={styles.link}>
+              <button className={styles.button}>
+                {messages.unregistered.mail}
+              </button>
+            </a>
             {onlineRegButton}
+          </div>
+        );
+    }
+  }
+
+  getMessage(regState, stateAbbreviation) {
+    switch (regState) {
+      case 'registered':
+        return (
+          <div>
+            Vote on <b>November 8</b>
+          </div>
+        );
+      case 'not registered':
+        return (
+          <div>
+            Register by <b>{this.getMailInDate(stateAbbreviation)}</b>
+          </div>
+        );
+      default:
+        return (
+          <div>
+            Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b>
           </div>
         );
     }
@@ -80,7 +105,7 @@ export class PostRegForm extends React.Component {
     return (
       <div className={styles.postRegForm}>
         <div className={styles.header}>
-          You are {regState} to vote <span className={styles.voteDay}>on <b>Nov 8</b></span>
+          {this.getMessage(regState, stateAbbreviation)}
         </div>
         <div className={styles.regInstructions}>
           {this.getRegInstructions(regState, stateAbbreviation)}

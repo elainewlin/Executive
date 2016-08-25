@@ -1,0 +1,30 @@
+@import '../../variables.scss';
+
+
+.email {
+  border: 1px solid $gray;
+  background-color: #FFF;
+  width: 60%;
+  max-width: 480px;
+  min-width: 290px;
+  border-radius: 5px;
+  padding: 50px;
+  box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+// this is going to be an image
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

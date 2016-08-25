@@ -2,6 +2,11 @@ import { createSelector } from 'reselect';
 
 const selectPostRegPageDomain = () => (state) => state.get('PostRegPage');
 
+const selectIsOpen = () => createSelector(
+  selectPostRegPageDomain(),
+  (postRegDomain) => postRegDomain.get('isOpen')
+);
+
 const selectEmailStatus = () => createSelector(
   selectPostRegPageDomain(),
   (postRegDomain) => postRegDomain.get('emailStatus')
@@ -25,6 +30,7 @@ const selectEmail = () => createSelector(
 );
 
 export {
+  selectIsOpen,
   selectEmailStatus,
   selectState,
   selectRegistered,

@@ -2,21 +2,37 @@ $dark-red: #DA2D2D;
 $light-red: #ED1212;
 $dark-blue: #003DBF;
 $light-blue: #1212ED;
+$green: #00BF3D;
 $gray: #7F7F87;
-$small-screen: 424px;
-$mid-screen: 600px;
-$large-screen: 1000px;
+$light-gray: #98989F;
 $field-height: 35px;
 $pad: 0.3 * $field-height;
+
+$header-font: (
+  null: 22px,
+  550px: 24px,
+  630px: 30px,
+  660px: 33px,
+  790px: 37px,
+);
+
+@mixin stateSelect() {
+  height: 52px;
+  background-color: $dark-blue;
+  border: none;
+  color: #FFF;
+  font-size: 18px;
+  margin: auto;
+}
 
 @mixin button() {
   border-radius: 5px;
   display: block;
   margin: auto;
   height: $field-height;
-  font-weight: bold;
   width: 50%;
   min-width: 210px;
+  font-weight: bold;
   text-align: center;
   outline: none;
   white-space: nowrap;

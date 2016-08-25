@@ -9,11 +9,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
-import EmailForm from 'components/EmailForm';
 import SocialButtons from 'components/SocialButtons';
 import * as selectors from './selectors';
 import * as actions from './actions';
 import styles from './styles.scss';
+import EmailModal from 'components/EmailModal';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -27,9 +27,9 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
     return (
       <div className={styles.postRegPage}>
+        <EmailModal {...this.props} className={styles.email} registered={registered} state={this.props.params.state} />
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
-          <EmailForm submitEmail={this.props.onSubmitEmail} state={this.props.params.state} status={this.props.emailStatus} />
           <SocialButtons />
         </div>
       </div>
@@ -42,6 +42,8 @@ PostRegPage.propTypes = {
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
   emailStatus: React.PropTypes.string,
+  closeModal: React.PropTypes.func,
+  isOpen: React.PropTypes.bool,
 };
 
 function mapDispatchToProps(dispatch, ownProps) {
@@ -50,12 +52,16 @@ function mapDispatchToProps(dispatch, ownProps) {
       evt.preventDefault();
       dispatch(actions.submitEmail(ownProps.params));
     },
+    closeModal: () => {
+      dispatch(actions.closeModal());
+    },
     dispatch,
   };
 }
 
 const mapStateToProps = createStructuredSelector({
   emailStatus: selectors.selectEmailStatus(),
+  isOpen: selectors.selectIsOpen(),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostRegPage);
