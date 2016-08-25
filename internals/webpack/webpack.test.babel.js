@@ -2,6 +2,7 @@
  * TEST WEBPACK CONFIGURATION
  */
 
+const CONFIG = require('../../config.js');
 const path = require('path');
 const webpack = require('webpack');
 const modules = [
@@ -54,11 +55,13 @@ module.exports = {
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
     // inside your code for any environment checks; UglifyJS will automatically
     // drop any unreachable code.
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
-    })],
+    new webpack.DefinePlugin(
+      Object.assign({
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        },
+      }, CONFIG[process.env.NODE_ENV])
+    )],
 
   // Some node_modules pull in Node-specific dependencies.
   // Since we're running in a browser we have to stub them out. See:
