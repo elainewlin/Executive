@@ -6,9 +6,11 @@
 }
   
 .social {
-  margin-top: 8vmin;
+  margin-top: 10vmin;
+}
 
-  > * {
-    margin-top: 3vmin;
-  }
+.email {
+  bottom: 100;
+  margin-left: 100px;
+  position: fixed;
 }

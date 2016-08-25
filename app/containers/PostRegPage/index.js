@@ -9,12 +9,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import PostRegForm from 'containers/PostRegForm';
-import EmailForm from 'components/EmailForm';
-import EmailModal from 'components/EmailModal';
 import SocialButtons from 'components/SocialButtons';
 import * as selectors from './selectors';
 import * as actions from './actions';
 import styles from './styles.scss';
+import EmailModal from 'components/EmailModal';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -29,11 +28,9 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
     return (
       <div className={styles.postRegPage}>
+        <EmailModal submitEmail={this.props.onSubmitEmail} isOpen={!this.props.isSubmitted} className={styles.email} />
         <PostRegForm registered={registered} state={this.props.params.state} />
-        <div className={styles.social}>
-          <SocialButtons />
-          <EmailModal submitEmail={this.props.onSubmitEmail} isSubmitted={this.props.isSubmitted} />
-        </div>
+        <SocialButtons className={styles.social}/>
       </div>
     );
   }

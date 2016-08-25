@@ -11,10 +11,20 @@ import { reduxForm } from 'redux-form/immutable';
 import EmailForm from 'components/EmailForm';
 
 function EmailModal(props) {
+  let modal;
+  
+  if (props.isOpen) {
+    modal = (<div className={styles.email}>
+      <div className={styles.close}>
+      x
+      </div>
+      <EmailForm {...props}></EmailForm>
+    </div>);
+  }
 
   return (
     <div>
-      <EmailForm {...props}></EmailForm>
+      {modal}
     </div>
   );
 }
@@ -22,7 +32,6 @@ function EmailModal(props) {
 EmailModal.propTypes = {
   isOpen: React.PropTypes.bool,
   submitEmail: React.PropTypes.func,
-  isSubmitted: React.PropTypes.bool,
 };
 
 export default EmailModal;

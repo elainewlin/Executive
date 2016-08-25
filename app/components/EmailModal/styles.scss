@@ -2,11 +2,26 @@
 
 .email {
   border: 1px solid $gray;
+  background-color: #FFF;
   width: 60%;
   max-width: 480px;
   min-width: 290px;
-  margin: auto;
   border-radius: 5px;
-  padding: 50px 40px;
+  padding: 50px;
   font-size: 22px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
