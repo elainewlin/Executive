@@ -33,14 +33,14 @@ function SocialButtons() {
           title="VoteMate - Let's Vote. Together."
           className={styles.social}
         >
-        <FacebookIcon size={32} round />
+          <FacebookIcon size={32} round />
         </FacebookShareButton>
         <TwitterShareButton
           url="votemate.us"
           title="Are you registered to vote?"
           className={styles.social}
         >
-        <TwitterIcon size={32} round />
+          <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
     </footer>
