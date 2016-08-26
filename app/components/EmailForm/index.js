@@ -26,12 +26,9 @@ function EmailForm(props) {
       <div className={styles.result}>
         {result}
       </div>
-      <div className={styles.heading}>
-        {helperText}
-      </div>
       <form onSubmit={props.submitEmail} className="form">
-        <Field type="text" name="email" className={styles.input} placeholder="example@votemate.com" component="input" required />
-        <button type="submit" className={styles.submit}>Submit</button>
+        <Field type="text" name="email" className={styles.input} placeholder="example@votemate.us" component="input" required />
+        <button type="submit" className={styles.submit}>{helperText}</button>
       </form>
       <div>{props.status}</div>
     </div>

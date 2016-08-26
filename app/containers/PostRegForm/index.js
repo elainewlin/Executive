@@ -18,6 +18,7 @@ import stateDeadlines from './state_deadlines';
 import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
+import stateNames from 'utils/state_names';
 
 export class PostRegForm extends React.Component {
 
@@ -36,20 +37,16 @@ export class PostRegForm extends React.Component {
     return stateDeadlines[state];
   }
 
-  getRegInstructions(regState, stateAbbreviation) {
+  getInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
     const mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
-    let onlineRegButton;
+    let onlineReg;
 
     if (onlineLink) {
-      onlineRegButton = (
-        <div>
-          <a href={onlineLink} className={styles.link}>
-            <button className={styles.button}>
-              {messages.unregistered.online}
-            </button>
-          </a>
+      onlineReg = (
+        <div className={styles.onlineReg}>
+          If you have a {stateNames[stateAbbreviation]} driver's license, <a href={onlineLink} className={styles.link}>{messages.unregistered.online}</a>
         </div>);
     }
 
@@ -57,22 +54,33 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-            <a href={pollingPlaceLink} className={styles.link}>
-              <button className={styles.button}>
-                {messages.registered.cta}
-              </button>
-            </a>
+          <div className={styles.test}>To register for the national election,</div>
+            <ol className={styles.instructions}>
+              <li>Find polling place</li>
+              <li>Bring ID</li>
+              <li>Vote between 7 am and 8 pm </li>
+            </ol>
+
+           <a href={pollingPlaceLink} className={styles.button}>
+            <i className="glyphicon glyphicon-map-marker"></i>
+              Polling Place
+          </a>
           </div>
         );
       default:
         return (
           <div>
-            <a href={mailInLink} download className={styles.link}>
-              <button className={styles.button}>
-                {messages.unregistered.mail}
-              </button>
-            </a>
-            {onlineRegButton}
+            <div className={styles.test}>To register for the national election,</div>
+            <ol className={styles.instructions}>
+              <li>Print form </li>
+              <li>Fill out form</li>
+              <li>Mail form</li>
+            </ol>
+           <a href={mailInLink} download className={styles.button}>
+            <i className="glyphicon glyphicon-download-alt"></i>
+              {messages.unregistered.mail}
+          </a>
+            {onlineReg}
           </div>
         );
     }
@@ -95,7 +103,7 @@ export class PostRegForm extends React.Component {
       default:
         return (
           <div>
-            Register to vote by <b>{this.getMailInDate(stateAbbreviation)}</b>
+            Register by <b>{this.getMailInDate(stateAbbreviation)}</b>
           </div>
         );
     }
@@ -108,7 +116,7 @@ export class PostRegForm extends React.Component {
           {this.getMessage(regState, stateAbbreviation)}
         </div>
         <div className={styles.regInstructions}>
-          {this.getRegInstructions(regState, stateAbbreviation)}
+          {this.getInstructions(regState, stateAbbreviation)}
         </div>
       </div>
     );
