@@ -7,6 +7,7 @@
   font-size: 22px;
   color: $gray;
   vertical-align: super;
+  padding-right: 10px;
 }
 
 .buttons {
@@ -16,9 +17,9 @@
 
 .social {
   display: inline-block;
-  padding-left: 5px;
+  padding-left: 6px;
   &:hover {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.7;
   }
 }
