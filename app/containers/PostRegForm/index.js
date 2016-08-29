@@ -54,14 +54,14 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-          <div className={styles.instructions}>
-            <div>To register for the national election,</div>
-            <ol>
-              <li>Find polling place</li>
-              <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
-              <li>Vote between 7 am and 8 pm </li>
-            </ol>
-          </div>
+            <div className={styles.instructions}>
+              <div>To register for the national election,</div>
+              <ol>
+                <li>Find polling place</li>
+                <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
+                <li>Vote between 7 am and 8 pm </li>
+              </ol>
+            </div>
 
             <a href={pollingPlaceLink} className={styles.button}>
               <i className="glyphicon glyphicon-map-marker"></i> Polling Place
