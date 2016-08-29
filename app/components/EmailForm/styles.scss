@@ -1,9 +1,16 @@
 @import '../../variables.scss';
 
+$result-font: (
+  null: 18px,
+  550px: 20px,
+  630px: 22px,
+  660px: 26px,
+  790px: 30px,
+);
+
 .result {
   text-align: center;
-  font-size: 30px;
-  padding-bottom: 20px;
+  @include font-size($result-font);
 }
 
 .yes {
@@ -19,6 +26,7 @@
 }
 
 .input {
+  margin-top: 20px;
   border: none;
   border-bottom: 1px solid $gray;
   border-radius: 0;

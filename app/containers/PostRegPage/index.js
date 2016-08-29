@@ -53,7 +53,6 @@ function mapDispatchToProps(dispatch, ownProps) {
     onSubmitEmail: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitEmail(ownProps.params));
-      dispatch(actions.closeModal());
     },
     closeModal: () => {
       dispatch(actions.closeModal());

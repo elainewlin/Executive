@@ -8,7 +8,6 @@ import { fromJS } from 'immutable';
 import * as c from './constants';
 
 const initialState = fromJS({
-  isSubmitted: false,
   isOpen: true,
 });
 
@@ -17,7 +16,7 @@ function postRegPageReducer(state = initialState, action) {
     case c.SUBMIT_EMAIL:
       return state
         .set('params', action.params)
-        .set('isSubmitted', true);
+        .set('isOpen', false);
     case c.UPDATE_EMAIL_STATUS:
       return state
         .set('emailStatus', action.status);

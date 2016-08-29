@@ -17,6 +17,10 @@
   overflow: hidden;
 }
 
+.divider {
+  border-color: $line-gray;
+}
+
 .iframe {
   width: 102%;
   height: 500px;
