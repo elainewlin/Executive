@@ -35,15 +35,9 @@
 
 .registerButton {
   @include button();
-  background-color: #FFF;
-  border: 1px solid $dark-blue;
-  color: $dark-blue;
-
-  &:hover {
-    border: none;
-    background-color: $dark-blue;
-    color: #FFF;
-  }
+  color: #FFF;
+  background-color: $dark-blue;
+  border: none;
 }
 
 [class*='col-'] {

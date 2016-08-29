@@ -63,12 +63,9 @@ export class PostRegForm extends React.Component {
             </ol>
           </div>
 
-           <a href={pollingPlaceLink} className={styles.button}>
-              <i className="glyphicon glyphicon-map-marker"></i>
-              <span className={styles.buttonText}>
-              Polling Place
-              </span>
-          </a>
+            <a href={pollingPlaceLink} className={styles.button}>
+              <i className="glyphicon glyphicon-map-marker"></i> Polling Place
+            </a>
           </div>
         );
       default:
@@ -83,11 +80,7 @@ export class PostRegForm extends React.Component {
               </ol>
             </div>
             <a href={mailInLink} download className={styles.button}>
-              <i className="glyphicon glyphicon-download-alt"></i>
-              <span className={styles.buttonText}>
-              {messages.unregistered.mail}
-              </span>
-            </a>
+              <i className="glyphicon glyphicon-download-alt"></i> Download PDF</a>
             {onlineReg}
           </div>
         );

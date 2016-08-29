@@ -16,19 +16,12 @@
 
 .button {
   @include button();
-  @include stateSelect();
   background-color: $dark-red;
-  width: 290px;
   padding-top: 8px;
 
-  .buttonText {
-    padding-left: 5px;
-  }
-
   &:hover {
-    background-color: $light-red;
-    text-decoration: none;
     color: #FFF;
+    text-decoration: none;
   }
 }
 

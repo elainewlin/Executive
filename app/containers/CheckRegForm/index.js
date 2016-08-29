@@ -96,14 +96,12 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
 
     if (formBody.length > 0) {
       formBody.push((
-        <input
+        <button
           key="form-submit"
           type="submit"
-          className={`btn btn-default ${styles.button}`}
-          id={styles.button}
+          className={styles.checkReg}
           name="checkregbutton"
-          value="Check Registration"
-        />
+        ><i className="glyphicon glyphicon-check"></i> Check Registration</button>
       ));
     }
     return formBody;

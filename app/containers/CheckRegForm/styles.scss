@@ -1,12 +1,6 @@
 @import '../../variables.scss';
 
-#button {
+.checkReg {
   @include button();
   background-color: $dark-red;
-  border: none;
-  color: #FFF;
-
-  &:hover {
-    background-color: $light-red;
-  }
 }
