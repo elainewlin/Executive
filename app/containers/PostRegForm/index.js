@@ -54,32 +54,40 @@ export class PostRegForm extends React.Component {
       case 'registered':
         return (
           <div>
-          <div className={styles.test}>To register for the national election,</div>
-            <ol className={styles.instructions}>
+          <div className={styles.instructions}>
+            <div>To register for the national election,</div>
+            <ol>
               <li>Find polling place</li>
               <li>Bring ID</li>
               <li>Vote between 7 am and 8 pm </li>
             </ol>
+          </div>
 
            <a href={pollingPlaceLink} className={styles.button}>
-            <i className="glyphicon glyphicon-map-marker"></i>
+              <i className="glyphicon glyphicon-map-marker"></i>
+              <span className={styles.buttonText}>
               Polling Place
+              </span>
           </a>
           </div>
         );
       default:
         return (
           <div>
-            <div className={styles.test}>To register for the national election,</div>
-            <ol className={styles.instructions}>
-              <li>Print form </li>
-              <li>Fill out form</li>
-              <li>Mail form</li>
-            </ol>
-           <a href={mailInLink} download className={styles.button}>
-            <i className="glyphicon glyphicon-download-alt"></i>
+            <div className={styles.instructions}>
+              <div className={styles.test}>To register for the national election,</div>
+              <ol>
+                <li>Print form </li>
+                <li>Fill out form</li>
+                <li>Mail form</li>
+              </ol>
+            </div>
+            <a href={mailInLink} download className={styles.button}>
+              <i className="glyphicon glyphicon-download-alt"></i>
+              <span className={styles.buttonText}>
               {messages.unregistered.mail}
-          </a>
+              </span>
+            </a>
             {onlineReg}
           </div>
         );

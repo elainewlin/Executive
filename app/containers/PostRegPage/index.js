@@ -26,7 +26,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
     }
 
     return (
-      <div>
+      <div className={styles.postRegPage}>
       <EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered={registered} state={this.props.params.state} />
       <div>
         <PostRegForm registered={registered} state={this.props.params.state} />

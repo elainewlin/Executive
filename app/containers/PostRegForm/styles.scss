@@ -9,21 +9,21 @@
 }
 
 .instructions {
-  font-size: 22px;
-  margin-left: 40px;
-  padding-top: 10px;
+  @include font-size($instructions-font);
+  margin-left: 3vw;
 }
 
-.postRegForm {
-  margin: auto;
-  width: 38%;
-}
+
 .button {
   @include button();
   @include stateSelect();
   background-color: $dark-red;
   width: 290px;
-  padding-top: 13px;
+  padding-top: 8px;
+
+  .buttonText {
+    padding-left: 5px;
+  }
 
   &:hover {
     background-color: $light-red;
@@ -32,11 +32,6 @@
   }
 }
 
-.test {
-  font-size: 22px;
-  text-align: center;
-  padding-top: 10px;
-}
 .link {
   color: $dark-blue;
   font-weight: 800;
@@ -47,7 +42,7 @@
 }
 
 .onlineReg {
-  margin-left: 28px;
+  text-align: center;
   padding-top: 20px;
-  font-size: 16px;
+  font-size: 14px;
 }

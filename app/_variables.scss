@@ -16,6 +16,21 @@ $header-font: (
   790px: 37px,
 );
 
+$instructions-font: (
+  null: 16px,
+  550px: 18px,
+  630px: 20px,
+  660px: 22px,
+  790px: 24px,
+);
+
+@mixin page() {
+  width: 65%;
+  min-width: 290px;
+  max-width: 500px;
+  margin: auto;
+}
+
 @mixin stateSelect() {
   height: 40px;
   background-color: $dark-blue;

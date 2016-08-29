@@ -26,10 +26,7 @@
 }
 
 .checkRegPage {  /* stylelint-ignore */
-  width: 65%;
-  min-width: 290px;
-  max-width: 500px;
-  margin: auto;
+  @include page();
 }
 
 .registerButton {

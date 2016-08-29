@@ -1,6 +1,10 @@
 @import '../../variables.scss';
 
+.postRegPage {
+  @include page();
+}
+
 .social {
+  margin: auto;
   margin-top: 4vh;
-  margin-left: -50px;
 }

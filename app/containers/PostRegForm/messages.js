@@ -10,7 +10,7 @@ export default defineMessages({
     cta: 'Find polling place',
   },
   unregistered: {
-    mail: '        Registration Form',
+    mail: 'Registration Form',
     online: 'register online',
   },
 });
