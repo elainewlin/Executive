@@ -43,16 +43,21 @@ $instructions-font: (
 
 @mixin button() {
   border-radius: 5px;
+  border: none;
+  color: #FFF;
   display: block;
   margin: auto;
   height: $field-height;
-  border-bottom-color: #e00007;
   width: 50%;
   min-width: 210px;
   font-weight: bold;
   text-align: center;
   outline: none;
   white-space: nowrap;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 @mixin font-size($fs-map) {

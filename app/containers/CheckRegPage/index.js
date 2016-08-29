@@ -62,7 +62,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <hr className={styles.divider}></hr>
           <div className={styles.registerText}>Know you aren't registered?</div>
           <button onClick={this.props.registerNow} className={styles.registerButton}>
-            Register in {stateNames[this.props.currentState]}   <i className="glyphicon glyphicon-circle-arrow-right" />
+            Register in {stateNames[this.props.currentState]}   <i className="glyphicon glyphicon-arrow-right" />
           </button>
         </div>
       );

@@ -3,10 +3,4 @@
 .checkReg {
   @include button();
   background-color: $dark-red;
-  border: none;
-  color: #FFF;
-
-  &:hover {
-    opacity: 0.7;
-  }
 }

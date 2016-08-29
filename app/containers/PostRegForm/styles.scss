@@ -16,15 +16,11 @@
 
 .button {
   @include button();
-  @include stateSelect();
   background-color: $dark-red;
-  width: 290px;
   padding-top: 8px;
 
   &:hover {
-    // background-color: $light-red;
     color: #FFF;
-    opacity: 0.7;
     text-decoration: none;
   }
 }
