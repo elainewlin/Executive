@@ -13,12 +13,17 @@ function EmailForm(props) {
   let helperText = 'Get reminders to register';
   let result;
 
+
   if (props.registered === 'registered') {
     result = (<div className={styles.yes}>Registered in {props.state}</div>);
     helperText = 'Get reminders to vote';
   }
   if (props.registered === 'not registered') {
     result = (<div className={styles.no}> Not registered in {props.state}</div>);
+  }
+  if (props. registered === 'registering') {
+    result = (<div>{helperText}</div>);
+    helperText = 'Submit';
   }
 
   return (
@@ -27,7 +32,7 @@ function EmailForm(props) {
         {result}
       </div>
       <form onSubmit={props.submitEmail} className="form">
-        <Field type="text" name="email" className={styles.input} placeholder="example@votemate.us" component="input" required />
+        <Field type="text" name="email" className={styles.input} placeholder="example@votemate.us" component="input" required autoFocus={true} />
         <button type="submit" className={styles.submit}>{helperText}</button>
       </form>
       <div>{props.status}</div>

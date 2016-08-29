@@ -12,6 +12,9 @@ function StateSelect(props) {
 
   return (
     <div className="form-group">
+      <div className="col-xs-12" key="stateSelect">
+        <label>Select your state</label>
+      </div>
       <select className={styles.stateSelect} onChange={props.onChange} value={props.currentState} id="stateSelect">
         <option key={"state-default"} value="" className={styles.default} disabled>Select your state</option>
         {options}

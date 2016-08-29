@@ -25,6 +25,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
   }
 
   buildFormBody() {
+    let isFirst = true;
     const formBody = [];
     const formLabels = new Set();
     const fieldsetToLabel = {
@@ -54,8 +55,10 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
               width={field.width}
               validation={field.conf}
               required={field.required}
+              autoFocus={isFirst}
             />
           ));
+          isFirst = false;
           break;
         case c.SELECT_FIELD: {
           const options = field.conf.split(',').map(
