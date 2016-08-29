@@ -21,14 +21,11 @@
   width: 290px;
   padding-top: 8px;
 
-  .buttonText {
-    padding-left: 5px;
-  }
-
   &:hover {
-    background-color: $light-red;
-    text-decoration: none;
+    // background-color: $light-red;
     color: #FFF;
+    opacity: 0.7;
+    text-decoration: none;
   }
 }
 
