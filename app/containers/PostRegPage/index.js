@@ -27,7 +27,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
 
     return (
       <div>
-      <EmailModal {...this.props} className={styles.email} registered={registered} state={this.props.params.state} />
+      <EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered={registered} state={this.props.params.state} />
       <div>
         <PostRegForm registered={registered} state={this.props.params.state} />
         <div className={styles.social}>
@@ -53,6 +53,7 @@ function mapDispatchToProps(dispatch, ownProps) {
     onSubmitEmail: (evt) => {
       evt.preventDefault();
       dispatch(actions.submitEmail(ownProps.params));
+      dispatch(actions.closeModal());
     },
     closeModal: () => {
       dispatch(actions.closeModal());
