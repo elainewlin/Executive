@@ -50,3 +50,10 @@ $font: (
 .email {
   @include font-size($font);
 }
+
+.status {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+

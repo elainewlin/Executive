@@ -8,8 +8,6 @@ import * as c from './constants';
 export function* submitEmail() {
 
   const email = yield select(selectors.selectEmail());
-  const state = yield select(selectors.selectState());
-  const registered = yield select(selectors.selectRegistered());
   const subscribeResult = yield call(
     request,
     c.SUBSCRIBE_EMAIL_URL,
@@ -18,16 +16,29 @@ export function* submitEmail() {
       body: JSON.stringify({
         email_address: email.email,
         status: 'subscribed',
-        merge_fields: { STATE: state, REGISTERED: registered },
+        merge_fields: { STATE: '', REGISTERED: 'true' },
       }),
     }
   );
+
+  let status = 'Server error. Try again later.';
+  if (!subscribeResult.err) {
+    if (subscribeResult.data.status === 'subscribed') {
+      status = 'Subscribed.';
+    } else if (subscribeResult.data.title === 'Member Exists') {
+      status = 'You were already subscribed.';
+    } else if (subscribeResult.data.title === 'Invalid Resource') {
+      status = subscribeResult.data.detail;
+    }
+  }
+  yield put(actions.updateEmailStatus(status));
+  
 }
 
-export function* postRegSaga() {
+export function* aboutPageSaga() {
   yield fork(takeLatest, c.SUBMIT_EMAIL, submitEmail);
 }
 
 export default [
-  postRegSaga,
+  aboutPageSaga,
 ];

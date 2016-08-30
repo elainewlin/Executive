@@ -10,11 +10,15 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
 import styles from './styles.scss';
 import EmailForm from 'components/EmailForm';
+import * as actions from './actions';
+import * as selectors from './selectors';
+import { createStructuredSelector } from 'reselect';
 
-export default class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
@@ -45,9 +49,31 @@ export default class AboutPage extends React.Component { // eslint-disable-line 
         We would like to thank the MIT Sandbox Initiative, Professor Charles Stewart, and Andy Sellars for their continued mentorship and support.
         </div>
         <div className={styles.email}>
-          <EmailForm registered='voting' />
+          <EmailForm registered='voting' submitEmail={this.props.onSubmitEmail} status={this.props.emailStatus} />
         </div>
       </div>
     );
   }
 }
+
+AboutPage.propTypes = {
+  onSubmitEmail: React.PropTypes.func,
+  dispatch: React.PropTypes.func,
+  emailStatus: React.PropTypes.string,
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSubmitEmail: (evt) => {
+      evt.preventDefault();
+      dispatch(actions.submitEmail());
+    },
+    dispatch,
+  };
+}
+
+const mapStateToProps = createStructuredSelector({
+  emailStatus: selectors.selectEmailStatus(),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AboutPage);

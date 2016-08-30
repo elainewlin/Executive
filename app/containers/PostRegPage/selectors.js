@@ -7,11 +7,6 @@ const selectIsOpen = () => createSelector(
   (postRegDomain) => postRegDomain.get('isOpen')
 );
 
-const selectEmailStatus = () => createSelector(
-  selectPostRegPageDomain(),
-  (postRegDomain) => postRegDomain.get('emailStatus')
-);
-
 const selectState = () => createSelector(
   selectPostRegPageDomain(),
   (postRegDomain) => postRegDomain.get('params').state
@@ -31,7 +26,6 @@ const selectEmail = () => createSelector(
 
 export {
   selectIsOpen,
-  selectEmailStatus,
   selectState,
   selectRegistered,
   selectEmail,

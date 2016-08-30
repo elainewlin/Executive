@@ -7,13 +7,6 @@ export function submitEmail(params) {
   };
 }
 
-export function updateEmailStatus(status) {
-  return {
-    type: c.UPDATE_EMAIL_STATUS,
-    status,
-  };
-}
-
 export function closeModal() {
   return {
     type: c.CLOSE_MODAL,
