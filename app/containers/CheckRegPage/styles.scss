@@ -38,6 +38,9 @@
   color: #FFF;
   background-color: $dark-blue;
   border: none;
+  i {
+    padding-left: 8px;
+  }
 }
 
 [class*='col-'] {
