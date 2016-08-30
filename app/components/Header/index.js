@@ -19,10 +19,10 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <Link to="/">
+        <a href="" className={styles.link}>
           <span className={styles.vote}>vote</span>
           <span className={styles.mate}>mate</span>
-        </Link>
+        </a>
       </div>
 
       <span className={styles.buttons}>

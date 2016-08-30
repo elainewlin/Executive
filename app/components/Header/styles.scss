@@ -12,6 +12,12 @@
   margin-left: 20px;
 }
 
+.link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .vote {
   color: $light-blue;
 }
