@@ -22,7 +22,7 @@ export default class AboutPage extends React.Component { // eslint-disable-line 
           Voting is confusing, but it shouldn’t be. 
         </h1>
         <div>
-          We are a small group of MIT students and friends, and we built votemate to make voting less work. 
+          We, a small team at MIT, built votemate to make voting easier.
         </div>
         <div>
         Here’s what votemate does for you:
