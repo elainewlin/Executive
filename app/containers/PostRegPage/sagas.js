@@ -18,7 +18,7 @@ export function* submitEmail() {
       body: JSON.stringify({
         email_address: email.email,
         status: 'subscribed',
-        merge_fields: { state, registered },
+        merge_fields: { STATE: state, REGISTERED: registered },
       }),
     }
   );
