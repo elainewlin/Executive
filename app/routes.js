@@ -60,6 +60,22 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/about',
+      name: 'about',
+      getComponent(nextState, cb) {
+        System.import('containers/AboutPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    },  {
+      path: '/privacy',
+      name: 'privacy',
+      getComponent(nextState, cb) {
+        System.import('containers/PrivacyPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
