@@ -19,3 +19,9 @@ export function closeModal() {
     type: c.CLOSE_MODAL,
   };
 }
+
+export function showModal() {
+  return {
+    type: c.SHOW_MODAL,
+  };
+}

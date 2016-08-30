@@ -16,6 +16,11 @@ import styles from './styles.scss';
 import EmailModal from 'components/EmailModal';
 
 export class PostRegPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.dispatch(actions.showModal());
+  }
+  
   render() {
     let registered = 'registering';
     if (this.props.params.registered === 'true') {
