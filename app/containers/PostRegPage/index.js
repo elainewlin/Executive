@@ -20,7 +20,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
   componentDidMount() {
     this.props.dispatch(actions.showModal());
   }
-  
+
   render() {
     let registered = 'registering';
     if (this.props.params.registered === 'true') {

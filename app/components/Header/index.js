@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router';
 
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
