@@ -55,7 +55,7 @@ export class PostRegForm extends React.Component {
         return (
           <div>
             <div className={styles.instructions}>
-              <div>To register for the national election,</div>
+              <div>To vote in the national election,</div>
               <ol>
                 <li>Find polling place</li>
                 <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>

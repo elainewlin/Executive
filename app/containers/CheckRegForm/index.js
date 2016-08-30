@@ -101,7 +101,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           type="submit"
           className={styles.checkReg}
           name="checkregbutton"
-        ><i className="glyphicon glyphicon-check"></i> Check Registration</button>
+        >Check Registration <i className="glyphicon glyphicon-check"></i> </button>
       ));
     }
     return formBody;
