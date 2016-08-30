@@ -24,9 +24,6 @@ function Header() {
       <Link to="/about" className={styles.link}>
         About Us
       </Link>
-      <Link to="/privacy" className={styles.link}>
-        Privacy
-      </Link>
       <span className={styles.buttons}>
         <a href="https://www.facebook.com/Votemate-1037798892964684/">
           <svg viewBox="0 0 64 64" className={styles.outer}>

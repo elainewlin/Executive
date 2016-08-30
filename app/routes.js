@@ -76,6 +76,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/terms',
+      name: 'terms',
+      getComponent(nextState, cb) {
+        System.import('containers/TermsOfServicePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
