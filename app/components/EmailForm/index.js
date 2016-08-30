@@ -22,7 +22,11 @@ function EmailForm(props) {
     result = (<div className={styles.result}><div className={styles.no}> Not registered in {props.state}</div></div>);
   }
   if (props.registered === 'registering') {
-    result = (<div>{helperText}</div>);
+    result = (<div>Get reminders to register</div>);
+    helperText = 'Submit Email';
+  }
+  if (props.registered === 'voting') {
+    result = (<div>Get reminders to vote</div>);
     helperText = 'Submit Email';
   }
 

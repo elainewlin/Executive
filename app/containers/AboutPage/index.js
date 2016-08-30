@@ -12,6 +12,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styles from './styles.scss';
+import EmailForm from 'components/EmailForm';
 
 export default class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -42,6 +43,9 @@ export default class AboutPage extends React.Component { // eslint-disable-line 
         </div>
         <div>
         We would like to thank the MIT Sandbox Initiative, Professor Charles Stewart, and Andy Sellars for their continued mentorship and support.
+        </div>
+        <div className={styles.email}>
+          <EmailForm registered='voting' />
         </div>
       </div>
     );
