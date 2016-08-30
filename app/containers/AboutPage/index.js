@@ -40,7 +40,7 @@ export default class AboutPage extends React.Component { // eslint-disable-line 
           Want to help your friends register? Share votemate on Facebook or Twitter, or even run your own voter registration drive. 
           Feel free to contact us at info@votemate.us for any questions or comments.
         </div>
-        <div className={styles.credits}>
+        <div>
         We would like to thank the MIT Sandbox Initiative, Professor Charles Stewart, and Andy Sellars for their continued mentorship and support.
         </div>
       </div>
