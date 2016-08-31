@@ -28,10 +28,6 @@ function EmailForm(props) {
     result = (<div>{registerText}</div>);
     helperText = 'Submit Email';
   }
-  
-  if (props.state === 'ND') {
-    result = (<div>No voter registration in {props.state}</div>);
-  }
 
   return (
     <div className={styles.email}>

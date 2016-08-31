@@ -115,18 +115,22 @@ export class PostRegForm extends React.Component {
 
   getMessage(regState, stateAbbreviation) {
 
-    let sameDayReg;
+    let special;
 
     // same day voter registration for NH and WY
     if (stateAbbreviation === 'NH' || stateAbbreviation === 'WY') {
-      sameDayReg = (<div>Same day registration</div>);
+      special = (<div>Same day registration</div>);
+    }
+
+    if (stateAbbreviation === 'ND') {
+      special = (<div>No voter registration</div>);
     }
 
     switch (regState) {
       case 'registered':
         return (
           <div>
-            {sameDayReg}
+            {special}
             Vote on <b>November 8</b>
           </div>
         );
