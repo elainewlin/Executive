@@ -40,7 +40,13 @@ export class PostRegForm extends React.Component {
   getInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
-    const mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
+    let mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
+
+    // WY doesn't do national voter registration
+    if (stateAbbreviation === 'WY') {
+      mailInLink = 'http://soswy.state.wy.us/Forms/Elections/General/VoterRegistrationForm.pdf';
+    }
+
     let onlineReg;
 
     if (onlineLink) {
