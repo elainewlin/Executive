@@ -41,6 +41,11 @@ export function* fetchStates() {
 
 export function* changeState(action) {
   const stateForm = yield call(request, c.FETCH_STATE_URL(action.state));
+
+  if (action.state === 'ND') {
+    browserHistory.push(`/check/${action.state}/true`);
+  }
+
   if (!stateForm.err) {
     yield put(actions.loadStateForm(stateForm.data));
   } else {

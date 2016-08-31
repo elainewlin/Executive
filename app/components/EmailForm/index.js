@@ -10,20 +10,27 @@ import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
 
 function EmailForm(props) {
-  let helperText = 'Get reminders to register';
+  let helperText;
   let result;
 
+  const registerText = 'Get reminders to register';
+  const voteText = 'Get reminders to vote';
 
   if (props.registered === 'registered') {
     result = (<div className={styles.result}><div className={styles.yes}>Registered in {props.state}</div></div>);
-    helperText = 'Get reminders to vote';
+    helperText = voteText;
   }
   if (props.registered === 'not registered') {
     result = (<div className={styles.result}><div className={styles.no}> Not registered in {props.state}</div></div>);
+    helperText = registerText;
   }
   if (props.registered === 'registering') {
     result = (<div>{helperText}</div>);
     helperText = 'Submit Email';
+  }
+  
+  if (props.state === 'ND') {
+    result = (<div>No voter registration in {props.state}</div>);
   }
 
   return (
