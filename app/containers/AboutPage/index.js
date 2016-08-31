@@ -53,7 +53,7 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
           Want to help your friends register? 
           Share votemate on <FacebookShareButton url="https://votemate.us/" title="votemate" className={styles.link}>Facebook</FacebookShareButton> or <TwitterShareButton url="https://votemate.us/" title="Are you registered to vote? Check your voter registration at" className={styles.link}>Twitter</TwitterShareButton>
           , or even run your own voter registration drive. 
-          Feel free to contact us at info@votemate.us for any questions or comments.
+          Feel free to contact us at <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a> for any questions or comments.
         </div>
         <div>
         We would like to thank the MIT Sandbox Initiative, Professor Charles Stewart, and Andy Sellars for their continued mentorship and support.

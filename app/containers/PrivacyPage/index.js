@@ -87,7 +87,11 @@ export default class PrivacyPage extends React.Component { // eslint-disable-lin
 
         <h3>Information Concerning Minors</h3>
         <div>
-        Because this is a voter registration and voter services platform, votemate does not anticipate handling any data of those who are under 18, except those minors who are checking their voter information in anticipation of them turning 18 before a given election. If we learn that votemate has collected information from a child under the age of 18, we will delete that information promptly. Please send any such notifications to info@votemate.us
+        Because this is a voter registration and voter services platform, 
+        votemate does not anticipate handling any data of those who are under 18, 
+        except those minors who are checking their voter information in anticipation of them turning 18 before a given election. 
+        If we learn that votemate has collected information from a child under the age of 18, 
+        we will delete that information promptly. Please send any such notifications to <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a>.
         </div>
 
         <h3>Changes to Privacy Policy</h3>
@@ -97,7 +101,7 @@ export default class PrivacyPage extends React.Component { // eslint-disable-lin
 
         <h3>Contact Us</h3>
         <div>
-        If you have any questions about this Privacy Policy, please contact us at info@votemate.us.
+        If you have any questions about this Privacy Policy, please contact us at <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a>.
         </div>
       </div>
     );

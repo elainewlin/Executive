@@ -129,7 +129,7 @@ export default class TermsOfServicePage extends React.Component { // eslint-disa
 
         <h3>11. Contact Us</h3>
         <div>
-        If you have any questions about this Agreement, please contact us at info@votemate.us.
+        If you have any questions about this Agreement, please contact us at <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a>.
         </div>
       </div>
     );
