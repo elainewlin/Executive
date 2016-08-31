@@ -17,9 +17,6 @@ function postRegPageReducer(state = initialState, action) {
       return state
         .set('params', action.params)
         .set('isOpen', false);
-    case c.UPDATE_EMAIL_STATUS:
-      return state
-        .set('emailStatus', action.status);
     case c.CLOSE_MODAL:
       return state
         .set('isOpen', false);

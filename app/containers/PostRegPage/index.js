@@ -55,7 +55,6 @@ PostRegPage.propTypes = {
   params: React.PropTypes.object,
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  emailStatus: React.PropTypes.string,
   closeModal: React.PropTypes.func,
   isOpen: React.PropTypes.bool,
 };
@@ -74,7 +73,6 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  emailStatus: selectors.selectEmailStatus(),
   isOpen: selectors.selectIsOpen(),
 });
 

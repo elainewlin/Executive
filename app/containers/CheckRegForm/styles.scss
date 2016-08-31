@@ -4,3 +4,11 @@
   @include button();
   background-color: $dark-red;
 }
+
+.link {
+  @include link();
+}
+
+.privacy {
+  margin-bottom: 10px;
+}

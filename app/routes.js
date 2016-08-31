@@ -60,6 +60,43 @@ export default function createRoutes(store) {
         importModules.catch(errorLoading);
       },
     }, {
+      path: '/about',
+      name: 'about',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/AboutPage/reducer'),
+          System.import('containers/AboutPage/sagas'),
+          System.import('containers/AboutPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('AboutPage', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    },  {
+      path: '/privacy',
+      name: 'privacy',
+      getComponent(nextState, cb) {
+        System.import('containers/PrivacyPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
+      path: '/terms',
+      name: 'terms',
+      getComponent(nextState, cb) {
+        System.import('containers/TermsOfServicePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {

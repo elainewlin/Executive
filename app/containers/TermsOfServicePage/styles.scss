@@ -1,0 +1,11 @@
+@import '../../variables.scss';
+
+.privacy {
+  > * {
+    padding-bottom: 15px;
+  }
+}
+
+.link {
+  @include link();
+}

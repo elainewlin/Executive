@@ -10,7 +10,7 @@ import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form/immutable';
 
 function EmailForm(props) {
-  let helperText;
+  let helperText = 'Submit Email';
   let result;
 
   const registerText = 'Get reminders to register';
@@ -26,7 +26,9 @@ function EmailForm(props) {
   }
   if (props.registered === 'registering') {
     result = (<div>{registerText}</div>);
-    helperText = 'Submit Email';
+  }
+  if (props.registered === 'voting') {
+    result = (<div>{voteText}</div>);
   }
 
   return (
@@ -36,16 +38,14 @@ function EmailForm(props) {
         <Field type="text" name="email" className={styles.input} placeholder="example@votemate.us" component="input" required autoFocus />
         <button type="submit" className={styles.submit}>{helperText}</button>
       </form>
-      <div>{props.status}</div>
+      <div className={styles.status}>{props.status}</div>
     </div>
   );
 }
 
 EmailForm.propTypes = {
   submitEmail: React.PropTypes.func,
-  status: React.PropTypes.string,
   registered: React.PropTypes.string,
-  state: React.PropTypes.string,
 };
 
 export default reduxForm({
