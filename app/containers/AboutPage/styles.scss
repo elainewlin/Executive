@@ -1,3 +1,5 @@
+@import '../../variables.scss';
+
 .about {
   font-size: 18px;
 
@@ -14,4 +16,13 @@
   width: 40%;
   min-width: 290px;
   float: left;
+}
+
+.link {
+  display: inline-block;
+  @include link();
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 }

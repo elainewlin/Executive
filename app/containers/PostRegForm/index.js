@@ -18,6 +18,7 @@ import stateDeadlines from './state_deadlines';
 import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
+import pollHours from './poll_hours';
 import stateNames from 'utils/state_names';
 
 export class PostRegForm extends React.Component {

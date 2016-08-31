@@ -17,6 +17,14 @@ import EmailForm from 'components/EmailForm';
 import * as actions from './actions';
 import * as selectors from './selectors';
 import { createStructuredSelector } from 'reselect';
+import {
+  ShareButtons,
+} from 'react-share';
+
+const {
+  FacebookShareButton,
+  TwitterShareButton,
+} = ShareButtons;
 
 export class AboutPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -42,7 +50,9 @@ export class AboutPage extends React.Component { // eslint-disable-line react/pr
         We check your registration status directly with your state’s official website or a national database.
         </div>
         <div>
-          Want to help your friends register? Share votemate on Facebook or Twitter, or even run your own voter registration drive. 
+          Want to help your friends register? 
+          Share votemate on <FacebookShareButton url="https://votemate.us/" title="votemate" className={styles.link}>Facebook</FacebookShareButton> or <TwitterShareButton url="https://votemate.us/" title="Are you registered to vote? Check your voter registration at" className={styles.link}>Twitter</TwitterShareButton>
+          , or even run your own voter registration drive. 
           Feel free to contact us at info@votemate.us for any questions or comments.
         </div>
         <div>
