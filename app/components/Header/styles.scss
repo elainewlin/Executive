@@ -6,20 +6,20 @@
 
 .link {
   margin-left: 20px;
-  font-size: 16px;
-  color: $gray;
+  font-size: 18px;
+  @include link();
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .logo {
   display: inline-block;
-  height: 18px;
+  height: 16px;
   font-size: 24px;
   margin-top: 8px;
   margin-left: 20px;
-}
-
-.link {
-  &:hover {
+  a:hover {
     text-decoration: none;
   }
 }

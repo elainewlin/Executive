@@ -15,7 +15,7 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <a href="/" className={styles.link}>
+        <a href="/">
           <span className={styles.vote}>vote</span>
           <span className={styles.mate}>mate</span>
         </a>
