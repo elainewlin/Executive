@@ -18,6 +18,7 @@ import stateDeadlines from './state_deadlines';
 import onlineRegForms from './online_registration_forms';
 import messages from './messages';
 import pollingPlaceLinks from './polling_place_links';
+import pollHours from './poll_hours';
 import stateNames from 'utils/state_names';
 
 export class PostRegForm extends React.Component {
@@ -59,7 +60,7 @@ export class PostRegForm extends React.Component {
               <ol>
                 <li>Find polling place</li>
                 <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
-                <li>Vote between 7 am and 8 pm </li>
+                <li>Vote {pollHours[stateAbbreviation]} </li>
               </ol>
             </div>
 
