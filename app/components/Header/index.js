@@ -5,7 +5,6 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router';
 import styles from './styles.scss';
 
 
@@ -21,9 +20,9 @@ function Header() {
           <span className={styles.mate}>mate</span>
         </a>
       </div>
-      <Link to="/about" className={styles.link}>
+      <a href="/about" className={styles.link}>
         About Us
-      </Link>
+      </a>
       <span className={styles.buttons}>
         <a href="https://www.facebook.com/Votemate-1037798892964684/">
           <svg viewBox="0 0 64 64" className={styles.outer}>

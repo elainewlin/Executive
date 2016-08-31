@@ -20,6 +20,9 @@ function postRegPageReducer(state = initialState, action) {
     case c.CLOSE_MODAL:
       return state
         .set('isOpen', false);
+    case c.SHOW_MODAL:
+      return state
+        .set('isOpen', true);
     default:
       return state;
   }
