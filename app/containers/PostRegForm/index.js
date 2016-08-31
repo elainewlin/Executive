@@ -40,8 +40,38 @@ export class PostRegForm extends React.Component {
   getInstructions(regState, stateAbbreviation) {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
-    const mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
     let onlineReg;
+
+    let voteButtonText = (
+      <span>
+        <i className="glyphicon glyphicon-map-marker"></i> Polling Place
+      </span>
+    );
+
+    let voteInstructions = (
+      <ol>
+        <li>Find polling place</li>
+        <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
+        <li>Vote between 7 am and 8 pm </li>
+      </ol>
+    );
+    let mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
+
+    // instructions for OR and WA, no polling place, mail-in ballot
+    if (stateAbbreviation === 'OR' || stateAbbreviation === 'WA') {
+      voteInstructions = (
+        <ol>
+          <li>Receive ballot in mail</li>
+          <li>Complete ballot</li>
+          <li>Mail in ballot</li>
+        </ol>
+        );
+      voteButtonText = (
+        <span>
+          <i className="glyphicon glyphicon-check"></i> Check Ballot
+        </span>
+      );
+    }
 
     if (onlineLink) {
       onlineReg = (
@@ -56,15 +86,10 @@ export class PostRegForm extends React.Component {
           <div>
             <div className={styles.instructions}>
               <div>To vote in the national election,</div>
-              <ol>
-                <li>Find polling place</li>
-                <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
-                <li>Vote between 7 am and 8 pm </li>
-              </ol>
+              {voteInstructions}
             </div>
-
             <a href={pollingPlaceLink} className={styles.button}>
-              <i className="glyphicon glyphicon-map-marker"></i> Polling Place
+              {voteButtonText}
             </a>
           </div>
         );
@@ -80,7 +105,8 @@ export class PostRegForm extends React.Component {
               </ol>
             </div>
             <a href={mailInLink} download className={styles.button}>
-              <i className="glyphicon glyphicon-download-alt"></i> Download PDF</a>
+              <i className="glyphicon glyphicon-download-alt"></i> Download PDF
+            </a>
             {onlineReg}
           </div>
         );
@@ -88,10 +114,23 @@ export class PostRegForm extends React.Component {
   }
 
   getMessage(regState, stateAbbreviation) {
+
+    let special;
+
+    // same day voter registration for NH and WY
+    if (stateAbbreviation === 'NH' || stateAbbreviation === 'WY') {
+      special = (<div>Same day registration</div>);
+    }
+
+    if (stateAbbreviation === 'ND') {
+      special = (<div>No voter registration</div>);
+    }
+
     switch (regState) {
       case 'registered':
         return (
           <div>
+            {special}
             Vote on <b>November 8</b>
           </div>
         );

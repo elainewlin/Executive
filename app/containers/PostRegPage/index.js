@@ -30,11 +30,18 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
       registered = 'not registered';
     }
 
+    let postRegForm = (<PostRegForm registered={registered} state={this.props.params.state} />);
+
+    // same day voter registration
+    if (this.props.params.state === 'NH' || this.props.params.state === 'WY') {
+      postRegForm = (<PostRegForm registered='registered' state={this.props.params.state} />);
+    }
+
     return (
       <div className={styles.postRegPage}>
         <EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered={registered} state={this.props.params.state} />
         <div>
-          <PostRegForm registered={registered} state={this.props.params.state} />
+          {postRegForm}
           <div className={styles.social}>
             <SocialButtons />
           </div>
