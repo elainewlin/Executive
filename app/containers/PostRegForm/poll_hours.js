@@ -21,7 +21,7 @@ export default {
   ME: 'by 8 pm',
   MD: 'between 7 am and 8 pm',
   MA: 'between 7 am and 8 pm',
-  MI: 'between 7 am and 8 pm', 
+  MI: 'between 7 am and 8 pm',
   MN: 'between 7 am and 8 pm',
   MS: 'between 7 am and 7 pm',
   MO: 'between 6 am and 7 pm',
