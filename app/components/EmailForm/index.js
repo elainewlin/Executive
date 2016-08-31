@@ -25,7 +25,7 @@ function EmailForm(props) {
     helperText = registerText;
   }
   if (props.registered === 'registering') {
-    result = (<div>{helperText}</div>);
+    result = (<div>{registerText}</div>);
     helperText = 'Submit Email';
   }
   

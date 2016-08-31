@@ -57,11 +57,6 @@ export class PostRegForm extends React.Component {
     );
     let mailInLink = `http://static.votemate.us/voter_registration_forms/${stateAbbreviation}.pdf`;
 
-    // WY doesn't do national voter registration
-    if (stateAbbreviation === 'WY') {
-      mailInLink = 'http://soswy.state.wy.us/Forms/Elections/General/VoterRegistrationForm.pdf';
-    }
-
     // instructions for OR and WA, no polling place, mail-in ballot
     if (stateAbbreviation === 'OR' || stateAbbreviation === 'WA') {
       voteInstructions = (
@@ -119,10 +114,19 @@ export class PostRegForm extends React.Component {
   }
 
   getMessage(regState, stateAbbreviation) {
+
+    let sameDayReg;
+
+    // same day voter registration for NH and WY
+    if (stateAbbreviation === 'NH' || stateAbbreviation === 'WY') {
+      sameDayReg = (<div>Same day registration</div>);
+    }
+
     switch (regState) {
       case 'registered':
         return (
           <div>
+            {sameDayReg}
             Vote on <b>November 8</b>
           </div>
         );
