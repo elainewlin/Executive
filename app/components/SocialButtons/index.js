@@ -29,15 +29,15 @@ function SocialButtons() {
       </span>
       <div className={styles.buttons}>
         <FacebookShareButton
-          url="https://votemate.us"
+          url="https://votemate.us/"
           title="votemate"
           className={styles.social}
         >
           <FacebookIcon size={32} round />
         </FacebookShareButton>
         <TwitterShareButton
-          url="https://votemate.us"
-          title="Are you registered to vote? Check your voter registration at "
+          url="https://votemate.us/"
+          title="Are you registered to vote? Check your voter registration at"
           className={styles.social}
         >
           <TwitterIcon size={32} round />
