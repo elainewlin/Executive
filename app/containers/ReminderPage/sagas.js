@@ -6,7 +6,6 @@ import * as selectors from './selectors';
 import * as c from './constants';
 
 export function* submitForm() {
-
   const form = yield select(selectors.selectForm());
 
   const subscribeResult = yield call(
@@ -32,16 +31,14 @@ export function* submitForm() {
       status = subscribeResult.data.detail;
     }
   }
-  debugger
-  
+
   yield put(actions.updateEmailStatus(status));
-  
 }
 
-export function* aboutPageSaga() {
+export function* reminderPageSaga() {
   yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
 }
 
 export default [
-  aboutPageSaga,
+  reminderPageSaga,
 ];

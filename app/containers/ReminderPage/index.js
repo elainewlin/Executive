@@ -11,7 +11,6 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import styles from './styles.scss';
 import EmailForm from 'components/EmailForm';
 import * as actions from './actions';
@@ -24,7 +23,7 @@ export class ReminderPage extends React.Component { // eslint-disable-line react
     return (
       <div className={styles.email}>
         <div className={styles.heading}>Sign up for reminders</div>
-        <EmailForm registered='reminders' submitEmail={this.props.onSubmitEmail} status={this.props.emailStatus} />
+        <EmailForm registered="reminders" submitEmail={this.props.onSubmitEmail} status={this.props.emailStatus} />
       </div>
     );
   }

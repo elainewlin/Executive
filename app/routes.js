@@ -59,7 +59,7 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
-    },  {
+    }, {
       path: '/reminders',
       name: 'ReminderPage',
       getComponent(nextState, cb) {
@@ -88,7 +88,7 @@ export default function createRoutes(store) {
           .then(loadModule(cb))
           .catch(errorLoading);
       },
-    },  {
+    }, {
       path: '/privacy',
       name: 'privacy',
       getComponent(nextState, cb) {

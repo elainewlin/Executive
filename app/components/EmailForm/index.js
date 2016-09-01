@@ -30,9 +30,9 @@ function EmailForm(props) {
   }
 
   let stateOptions = [];
-  for (var abbreviation in states) {
+  for (const abbreviation in states) {
     stateOptions.push(<option key={abbreviation} value={abbreviation}>{states[abbreviation]}</option>);
-  } 
+  }
 
   let stateSelect;
   let isRegisteredSelect;
@@ -88,6 +88,8 @@ function EmailForm(props) {
 EmailForm.propTypes = {
   submitEmail: React.PropTypes.func,
   registered: React.PropTypes.string,
+  state: React.PropTypes.string,
+  status: React.PropTypes.string,
 };
 
 export default reduxForm({

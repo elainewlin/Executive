@@ -10,8 +10,6 @@
  */
 
 import React from 'react';
-import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import styles from './styles.scss';
 import {
   ShareButtons,
@@ -22,13 +20,13 @@ const {
   TwitterShareButton,
 } = ShareButtons;
 
-export default class AboutPage extends React.Component  { // eslint-disable-line react/prefer-stateless-function
+export class AboutPage extends React.Component  {
 
   render() {
     return (
       <div className={styles.about}>
         <h1>
-          Voting is confusing, but it shouldn’t be. 
+          Voting is confusing, but it shouldn’t be.
         </h1>
         <div>
           We, a small team at MIT, built votemate to make voting easier.
@@ -46,9 +44,9 @@ export default class AboutPage extends React.Component  { // eslint-disable-line
         We check your registration status directly with your state’s official website or a national database.
         </div>
         <div>
-          Want to help your friends register? 
+          Want to help your friends register?
           Share votemate on <FacebookShareButton url="https://votemate.us/" title="votemate" className={styles.link}>Facebook</FacebookShareButton> or <TwitterShareButton url="https://votemate.us/" title="Are you registered to vote? Check your voter registration at" className={styles.link}>Twitter</TwitterShareButton>
-          , or even run your own <a href="https://static.votemate.us/voter_registration_forms/guide.pdf" className={styles.link} download>voter registration drive</a>. 
+          , or even run your own <a href="https://static.votemate.us/voter_registration_forms/guide.pdf" className={styles.link} download>voter registration drive</a>.
           Feel free to contact us at <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a> for any questions or comments.
         </div>
         <div>
@@ -58,3 +56,5 @@ export default class AboutPage extends React.Component  { // eslint-disable-line
     );
   }
 }
+
+export default AboutPage;
