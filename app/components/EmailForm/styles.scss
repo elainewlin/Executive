@@ -51,4 +51,9 @@ $result-font: (
   font-size: 14px;
 }
 
+.link {
+  @include link();
+}
+
+
 
