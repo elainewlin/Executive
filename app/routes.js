@@ -59,6 +59,27 @@ export default function createRoutes(store) {
 
         importModules.catch(errorLoading);
       },
+    },  {
+      path: '/reminders',
+      name: 'ReminderPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/ReminderPage/reducer'),
+          System.import('containers/ReminderPage/sagas'),
+          System.import('containers/ReminderPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, sagas, component]) => {
+          injectReducer('ReminderPage', reducer.default);
+          injectSagas(sagas.default);
+
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
     }, {
       path: '/about',
       name: 'about',
