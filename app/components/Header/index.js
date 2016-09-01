@@ -5,9 +5,6 @@
 */
 
 import React from 'react';
-
-// import { FormattedMessage } from 'react-intl';
-// import messages from './messages';
 import styles from './styles.scss';
 
 
@@ -18,12 +15,17 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
-        <a href="/" className={styles.link}>
+        <a href="/">
           <span className={styles.vote}>vote</span>
           <span className={styles.mate}>mate</span>
         </a>
       </div>
-
+      <a href="/about" className={styles.link}>
+        About Us
+      </a>
+      <a href="/reminders" className={styles.link}>
+        Reminders
+      </a>
       <span className={styles.buttons}>
         <a href="https://www.facebook.com/Votemate-1037798892964684/">
           <svg viewBox="0 0 64 64" className={styles.outer}>

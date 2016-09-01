@@ -30,11 +30,25 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
       registered = 'not registered';
     }
 
+    let emailModal = (<EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered={registered} state={this.props.params.state} />);
+
+    // no voter registration 
+    if (this.props.params.state === 'ND') {
+      emailModal = (<EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered='voting' state={this.props.params.state} />);
+    }
+    
+    let postRegForm = (<PostRegForm registered={registered} state={this.props.params.state} />);
+
+    // same day voter registration
+    if (this.props.params.state === 'NH' || this.props.params.state === 'WY') {
+      postRegForm = (<PostRegForm registered='registered' state={this.props.params.state} />);
+    }
+
     return (
       <div className={styles.postRegPage}>
-        <EmailModal {...this.props} submitEmail={this.props.onSubmitEmail} className={styles.email} registered={registered} state={this.props.params.state} />
+        {emailModal}
         <div>
-          <PostRegForm registered={registered} state={this.props.params.state} />
+          {postRegForm}
           <div className={styles.social}>
             <SocialButtons />
           </div>
@@ -48,7 +62,6 @@ PostRegPage.propTypes = {
   params: React.PropTypes.object,
   onSubmitEmail: React.PropTypes.func,
   dispatch: React.PropTypes.func,
-  emailStatus: React.PropTypes.string,
   closeModal: React.PropTypes.func,
   isOpen: React.PropTypes.bool,
 };
@@ -67,7 +80,6 @@ function mapDispatchToProps(dispatch, ownProps) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  emailStatus: selectors.selectEmailStatus(),
   isOpen: selectors.selectIsOpen(),
 });
 

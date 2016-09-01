@@ -4,16 +4,23 @@
   background-color: #FFF;
 }
 
+.link {
+  margin-left: 20px;
+  font-size: 18px;
+  @include link();
+  font-weight: normal;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .logo {
   display: inline-block;
-  height: 18px;
+  height: 16px;
   font-size: 24px;
   margin-top: 8px;
   margin-left: 20px;
-}
-
-.link {
-  &:hover {
+  a:hover {
     text-decoration: none;
   }
 }
