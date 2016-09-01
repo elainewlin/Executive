@@ -22,10 +22,9 @@ export class ReminderPage extends React.Component { // eslint-disable-line react
 
   render() {
     return (
-      <div>
-        <div className={styles.email}>
-          <EmailForm registered='voting' submitEmail={this.props.onSubmitEmail} status={this.props.emailStatus} />
-        </div>
+      <div className={styles.email}>
+        <div className={styles.heading}>Sign up for reminders</div>
+        <EmailForm registered='reminders' submitEmail={this.props.onSubmitEmail} status={this.props.emailStatus} />
       </div>
     );
   }
@@ -41,7 +40,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onSubmitEmail: (evt) => {
       evt.preventDefault();
-      dispatch(actions.submitEmail());
+      dispatch(actions.submitForm());
     },
     dispatch,
   };

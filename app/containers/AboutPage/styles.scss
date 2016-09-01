@@ -12,12 +12,6 @@
   font-size: 14px;
 }
 
-.email {
-  width: 40%;
-  min-width: 290px;
-  float: left;
-}
-
 .link {
   display: inline-block;
   @include link();

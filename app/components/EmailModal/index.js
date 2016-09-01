@@ -15,7 +15,9 @@ function EmailModal(props) {
   if (props.isOpen) {
     modal = (<div className={styles.email}>
       <img src={close} alt="x" className={styles.close} onClick={props.closeModal} />
-      <EmailForm {...props} />
+      <div className={styles.form}>
+        <EmailForm {...props} />
+      </div>
     </div>);
   }
 

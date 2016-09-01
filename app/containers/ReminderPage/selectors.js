@@ -9,12 +9,12 @@ const selectEmailStatus = () => createSelector(
 
 const selectFormDomain = () => (state) => state.get('form');
 
-const selectEmail = () => createSelector(
+const selectForm = () => createSelector(
   selectFormDomain(),
   (formDomain) => formDomain.EmailForm.values
 );
 
 export {
   selectEmailStatus,
-  selectEmail,
+  selectForm,
 };

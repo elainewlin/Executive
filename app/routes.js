@@ -84,22 +84,9 @@ export default function createRoutes(store) {
       path: '/about',
       name: 'about',
       getComponent(nextState, cb) {
-        const importModules = Promise.all([
-          System.import('containers/AboutPage/reducer'),
-          System.import('containers/AboutPage/sagas'),
-          System.import('containers/AboutPage'),
-        ]);
-
-        const renderRoute = loadModule(cb);
-
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('AboutPage', reducer.default);
-          injectSagas(sagas.default);
-
-          renderRoute(component);
-        });
-
-        importModules.catch(errorLoading);
+        System.import('containers/AboutPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
       },
     },  {
       path: '/privacy',

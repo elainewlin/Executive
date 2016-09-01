@@ -5,18 +5,19 @@ import * as actions from './actions';
 import * as selectors from './selectors';
 import * as c from './constants';
 
-export function* submitEmail() {
+export function* submitForm() {
 
-  const email = yield select(selectors.selectEmail());
+  const form = yield select(selectors.selectForm());
+
   const subscribeResult = yield call(
     request,
     c.SUBSCRIBE_EMAIL_URL,
     {
       method: 'POST',
       body: JSON.stringify({
-        email_address: email.email,
+        email_address: form.email,
         status: 'subscribed',
-        merge_fields: { STATE: '', REGISTERED: 'true' },
+        merge_fields: { STATE: form.state, REGISTERED: form.regStatus },
       }),
     }
   );
@@ -31,12 +32,14 @@ export function* submitEmail() {
       status = subscribeResult.data.detail;
     }
   }
+  debugger
+  
   yield put(actions.updateEmailStatus(status));
   
 }
 
 export function* aboutPageSaga() {
-  yield fork(takeLatest, c.SUBMIT_EMAIL, submitEmail);
+  yield fork(takeLatest, c.SUBMIT_FORM, submitForm);
 }
 
 export default [

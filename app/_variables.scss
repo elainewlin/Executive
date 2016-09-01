@@ -25,6 +25,14 @@ $instructions-font: (
   790px: 24px,
 );
 
+@mixin centered() {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+
 @mixin link() {
   color: $dark-blue;
   font-weight: 800;

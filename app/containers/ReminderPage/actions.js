@@ -1,8 +1,8 @@
 import * as c from './constants';
 
-export function submitEmail() {
+export function submitForm() {
   return {
-    type: c.SUBMIT_EMAIL,
+    type: c.SUBMIT_FORM,
   };
 }
 
