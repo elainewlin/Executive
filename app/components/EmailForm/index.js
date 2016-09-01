@@ -52,9 +52,9 @@ function EmailForm(props) {
       <div className={styles.formField}>
         <div>Registration Status</div>
         <Field name="regStatus" component="select" required>
-          <option value="">Are you registered to vote?</option>
-          <option value="true" key="true">Yes</option>
-          <option value="false" key="false">No</option>
+          <option value="">What reminders do you need?</option>
+          <option value="false" key="false">Registration and election reminders</option>
+          <option value="true" key="true">Only election reminders</option>
         </Field>
       </div>
     );

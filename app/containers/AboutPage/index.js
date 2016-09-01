@@ -48,7 +48,7 @@ export default class AboutPage extends React.Component  { // eslint-disable-line
         <div>
           Want to help your friends register? 
           Share votemate on <FacebookShareButton url="https://votemate.us/" title="votemate" className={styles.link}>Facebook</FacebookShareButton> or <TwitterShareButton url="https://votemate.us/" title="Are you registered to vote? Check your voter registration at" className={styles.link}>Twitter</TwitterShareButton>
-          , or even run your own voter registration drive. 
+          , or even run your own <a href="https://static.votemate.us/voter_registration_forms/guide.pdf" className={styles.link} download>voter registration drive</a>. 
           Feel free to contact us at <a href="mailto:info@votemate.us" className={styles.link}>info@votemate.us</a> for any questions or comments.
         </div>
         <div>

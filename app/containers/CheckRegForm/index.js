@@ -95,6 +95,11 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     }
 
     formBody.push((
+      <div className={styles.hidden} key="hidden">
+        <input type="text" />
+      </div>));
+
+    formBody.push((
       <div className={styles.privacy} key="privacy">
       By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>.
       </div>));
