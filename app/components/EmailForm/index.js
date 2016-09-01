@@ -28,11 +28,14 @@ function EmailForm(props) {
   if (props.registered === 'registering') {
     result = (<div>{registerText}</div>);
   }
+  if (props.registered === 'voting') {
+    result = (<div>{voteText}</div>);
+  }
 
   let stateOptions = [];
-  for (const abbreviation in states) {
+  Object.keys(states).forEach((abbreviation) => {
     stateOptions.push(<option key={abbreviation} value={abbreviation}>{states[abbreviation]}</option>);
-  }
+  });
 
   let stateSelect;
   let isRegisteredSelect;

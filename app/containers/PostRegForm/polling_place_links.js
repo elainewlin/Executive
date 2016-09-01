@@ -36,7 +36,7 @@ export default {
   ND: 'https://vip.sos.nd.gov/WhereToVote.aspx?tab=AddressandVotingTimes',
   OH: 'http://voterlookup.sos.state.oh.us/voterlookup.aspx',
   OK: 'https://services.okelections.us/voterSearch.aspx',
-  OR: 'https://sos.oregon.gov',
+  OR: 'http://sos.oregon.gov/voting/Pages/myballot.aspx',
   PA: 'https://www.pavoterservices.state.pa.us/Pages/voterregistrationstatus.aspx',
   RI: 'https://sos.ri.gov/vic/',
   SC: 'https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx?PageMode=VoterInfo',
