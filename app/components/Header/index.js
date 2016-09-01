@@ -34,7 +34,7 @@ function Header() {
             </g>
           </svg>
         </a>
-        <a href="https://twitter.com/USVoteMate">
+        <a href="https://twitter.com/votemate_us">
           <svg viewBox="0 0 64 64" className={styles.outer}>
             <g>
               <path d={twitterPath}></path>
