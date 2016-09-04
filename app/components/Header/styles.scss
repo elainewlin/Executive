@@ -1,12 +1,22 @@
 @import '../../variables.scss';
-
+$small-screen: 400px;
 .header {
   background-color: #FFF;
 }
 
+$link-font: (
+  null: 14px,
+  $small-screen: 18px,
+);
+
+$logo-font: (
+  null: 16px,
+  $small-screen: 24px,
+);
+
 .link {
   margin-left: 20px;
-  font-size: 18px;
+  @include font-size($link-font);
   @include link();
   font-weight: normal;
   &:hover {
@@ -17,8 +27,8 @@
 .logo {
   display: inline-block;
   height: 16px;
-  font-size: 24px;
-  margin-top: 8px;
+  @include font-size($logo-font);
+  margin-top: 10px;
   margin-left: 20px;
   a:hover {
     text-decoration: none;
@@ -37,7 +47,7 @@
   display: inline-block;
   float: right;
   margin-top: 5px;
-  margin-right: 20px;
+  margin-right: 5px;
   > * {
     margin-left: -10px;
   }
@@ -48,6 +58,10 @@
   width: 40px;
   height: 40px;
 
+  @media screen and (max-width: 399px) {
+    width: 32px;
+    height: 32px;
+  }
   &:hover {
     cursor: pointer;
     fill: $gray;

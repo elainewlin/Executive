@@ -21,7 +21,7 @@ function Header() {
         </a>
       </div>
       <a href="/about" className={styles.link}>
-        About Us
+        About
       </a>
       <a href="/reminders" className={styles.link}>
         Reminders
