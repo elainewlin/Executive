@@ -37,6 +37,7 @@ function AboutPage() {
           <li>Remind you to register in time</li>
           <li>Inform you where and when to vote on Election Day</li>
         </ul>
+        Our friend vote.org has <a className={styles.link} href="https://www.vote.org/absentee-ballot/">absentee ballot information</a>.
       </div>
       <div>
       We check your registration status directly with your state’s official website or a national database.

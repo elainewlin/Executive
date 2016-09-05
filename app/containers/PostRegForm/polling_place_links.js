@@ -1,10 +1,10 @@
 export default {
   AL: 'https://myinfo.alabamavotes.gov/VoterView/PollingPlaceSearch.do;jsessionid=Y2pMGQidiI20XOhUR8_oIu45zsStumF60UMAmhS-.prim-agency1',
   AK: 'https://myvoterinformation.alaska.gov/',
-  AZ: 'http://www.recorder.maricopa.gov/pollingplace/',
+  AZ: 'https://voter.azsos.gov/VoterView/PollingPlaceSearch.do',
   AR: 'https://www.voterview.ar-nova.org/VoterView/PollingPlaceSearch.do',
   CA: 'http://www.sos.ca.gov/elections/polling-place/',
-  CO: 'https://www.google.com/search?q=post+office+colorado+springs&oq=post+office+colorado+&aqs=chrome.0.0j69i57j0l4.3635j0j7&sourceid=chrome&ie=UTF-8#q=post+office+colorado&rflfq=1&rlha=0&rllag=38920938,-104728472,8740&tbm=lcl&tbs=lf:1,lf_ui:4', // mail-in voting, ^ post offices
+  CO: 'https://www.sos.state.co.us/voter-classic/pages/pub/olvr/findVoterReg.xhtml', // mail-in voting, ^ post offices
   CT: 'http://www.sots.ct.gov/sots/cwp/view.asp?a=3172&q=512796',
   DE: 'https://ivote.de.gov/voterlogin.aspx',
   DC: 'https://www.vote4dc.com/SearchElection/SearchByAddress',
@@ -31,7 +31,7 @@ export default {
   NH: 'http://app.sos.nh.gov/Public/PollingPlaceSearch.aspx',
   NJ: 'https://voter.njsvrs.com/PublicAccess/servlet/com.saber.publicaccess.control.PublicAccessNavigationServlet?USERPROCESS=PollingPlace',
   NM: 'http://pollingmap.sos.state.nm.us/#',
-  NY: 'http://nyc.pollsitelocator.com/search',
+  NY: 'https://voterlookup.elections.state.ny.us/votersearch.aspx',
   NC: 'https://enr.ncsbe.gov/pollingplace_search/',
   ND: 'https://vip.sos.nd.gov/WhereToVote.aspx?tab=AddressandVotingTimes',
   OH: 'http://voterlookup.sos.state.oh.us/voterlookup.aspx',

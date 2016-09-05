@@ -42,6 +42,7 @@ export class PostRegForm extends React.Component {
     const pollingPlaceLink = pollingPlaceLinks[stateAbbreviation];
     const onlineLink = onlineRegForms[stateAbbreviation];
     let onlineReg;
+    let voteOrg;
 
     let voteButtonText = (
       <span>
@@ -81,6 +82,8 @@ export class PostRegForm extends React.Component {
         </div>);
     }
 
+    voteOrg = (<div className={styles.voteOrg}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>)
+    const stateWebsite = "www.google.com";
     switch (regState) {
       case 'registered':
         return (
@@ -109,6 +112,7 @@ export class PostRegForm extends React.Component {
               <i className="glyphicon glyphicon-download-alt"></i> Download PDF
             </a>
             {onlineReg}
+            {voteOrg}
           </div>
         );
     }
