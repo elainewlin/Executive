@@ -39,7 +39,7 @@ function EmailForm(props) {
 
   let stateSelect;
   let isRegisteredSelect;
-  let emailField = (<Field type="text" name="email" className={styles.input} placeholder="example@votemate.us" component="input" required autoFocus />);
+  let emailField = (<Field type="text" name="email" className={styles.input} placeholder="Email Address" component="input" required autoFocus />);
   let legal;
 
   if (props.registered === 'reminders') {
@@ -65,7 +65,7 @@ function EmailForm(props) {
     emailField = (
       <div className={styles.formField}>
         <div>Email</div>
-        <Field type="text" name="email" placeholder="example@votemate.us" component="input" required />
+        <Field type="text" name="email" placeholder="Email Address" component="input" required />
       </div>
     );
     legal = (<div className={styles.formField}>
