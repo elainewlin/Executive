@@ -17,6 +17,7 @@
   @include button();
   background-color: $dark-red;
   padding-top: 8px;
+  margin-bottom: 20px;
 
   &:hover {
     color: #FFF;

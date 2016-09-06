@@ -95,6 +95,9 @@ export class PostRegForm extends React.Component {
             <a href={pollingPlaceLink} className={styles.button}>
               {voteButtonText}
             </a>
+            <div className={styles.voteOrg}>
+              Not here? Get <a href="https://www.vote.org/absentee-ballot/" className={styles.link}>absentee ballot information</a>.
+            </div>
           </div>
         );
       default:
