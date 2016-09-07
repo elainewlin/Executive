@@ -82,8 +82,8 @@ export class PostRegForm extends React.Component {
         </div>);
     }
 
-    voteOrg = (<div className={styles.voteOrg}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>)
-    const stateWebsite = "www.google.com";
+    voteOrg = (<div className={styles.voteOrg}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>);
+    const stateWebsite = 'www.google.com';
     switch (regState) {
       case 'registered':
         return (

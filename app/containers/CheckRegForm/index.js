@@ -99,10 +99,22 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
         <input type="text" />
       </div>));
 
-    formBody.push((
-      <div className={styles.privacy} key="privacy">
-        By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>.
-      </div>));
+    let termsStatement;
+    if (this.props.voteOrg) {
+      termsStatement = (
+        <div className={styles.privacy} key="privacy">
+          By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>, and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
+        </div>
+      );
+    } else {
+      termsStatement = (
+        <div className={styles.privacy} key="privacy">
+          By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>.
+        </div>
+      );
+    }
+
+    formBody.push(termsStatement);
 
     if (formBody.length > 0) {
       formBody.push((
@@ -129,6 +141,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
 CheckRegForm.propTypes = {
   fields: React.PropTypes.array,
   hidden_fields: React.PropTypes.object,
+  voteOrg: React.PropTypes.bool,
   dispatch: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
 };

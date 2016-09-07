@@ -30,16 +30,13 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
     let registerComponent;
 
     if (!this.props.loading && this.props.formData) {
-      if (this.props.formData.enabled) {
-        formBody = (
-          <CheckRegForm
-            fields={this.props.formData.fields}
-            onSubmit={this.props.onSubmit}
-          />
-        );
-      } else {
-        formBody = (<div className={styles.voteOrg}><iframe src="https://verify.vote.org/" className={styles.iframe}></iframe></div>);
-      }
+      formBody = (
+        <CheckRegForm
+          fields={this.props.formData.fields}
+          voteOrg={!this.props.formData.enabled}
+          onSubmit={this.props.onSubmit}
+        />
+      );
     }
 
     if (this.props.results) {
