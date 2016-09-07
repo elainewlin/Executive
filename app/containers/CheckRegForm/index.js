@@ -36,10 +36,19 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     };
     for (const field of this.props.fields) {
       const label = fieldsetToLabel[field.fieldset];
-      if (!formLabels.has(label)) {
+      if (!formLabels.has(label) && label) {
         formBody.push((
           <div className="col-xs-12" key={label}>
             <label>{label}</label>
+          </div>
+        ));
+        formLabels.add(label);
+      }
+
+      if(field.label === 'Email Address') {
+        formBody.push((
+          <div className="col-xs-12" key="Email">
+            <label>Email</label>
           </div>
         ));
         formLabels.add(label);
@@ -64,16 +73,30 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           const options = field.conf.split(',').map(
             (option) => option.split(':')
           );
-          formBody.push((
-            <SelectField
-              key={field.name_attr}
-              label={field.label}
-              name={field.name_attr}
-              width={field.width}
-              options={options}
-              required={field.required}
-            />
-          ));
+          
+          if(field.label === "State") {
+            formBody.push((
+              <SelectField
+                key={field.name_attr}
+                label={field.label}
+                name={field.name_attr}
+                width={field.width}
+                options={options}
+                required={field.required}
+                default={this.props.state}
+              />));
+          }
+          else {
+            formBody.push((
+              <SelectField
+                key={field.name_attr}
+                label={field.label}
+                name={field.name_attr}
+                width={field.width}
+                options={options}
+                required={field.required}
+              />));
+          }
           break;
         }
         case c.CHECK_FIELD:
@@ -103,7 +126,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     if (this.props.voteOrg) {
       termsStatement = (
         <div className={styles.privacy} key="privacy">
-          Built on Vote.org’s voter database. By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>, and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
+          Built on vote.org’s voter database. By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>, and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
         </div>
       );
     } else {
@@ -144,6 +167,7 @@ CheckRegForm.propTypes = {
   voteOrg: React.PropTypes.bool,
   dispatch: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
+  state: React.PropTypes.string,
 };
 
 export default reduxForm({

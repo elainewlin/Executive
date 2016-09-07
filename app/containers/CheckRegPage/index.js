@@ -35,6 +35,7 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           fields={this.props.formData.fields}
           voteOrg={!this.props.formData.enabled}
           onSubmit={this.props.onSubmit}
+          state={this.props.currentState}
         />
       );
     }
