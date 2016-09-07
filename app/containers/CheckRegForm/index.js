@@ -45,7 +45,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
         formLabels.add(label);
       }
 
-      if(field.label === 'Email Address') {
+      if (field.label === 'Email Address') {
         formBody.push((
           <div className="col-xs-12" key="Email">
             <label>Email</label>
@@ -73,8 +73,8 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
           const options = field.conf.split(',').map(
             (option) => option.split(':')
           );
-          
-          if(field.label === "State") {
+
+          if (field.label === 'State') {
             formBody.push((
               <SelectField
                 key={field.name_attr}
@@ -85,8 +85,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
                 required={field.required}
                 default={this.props.state}
               />));
-          }
-          else {
+          } else {
             formBody.push((
               <SelectField
                 key={field.name_attr}
@@ -126,7 +125,7 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
     if (this.props.voteOrg) {
       termsStatement = (
         <div className={styles.privacy} key="privacy">
-          Built on vote.org’s voter database. By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a>, and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
+          Built on vote.org’s voter database. By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a> and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
         </div>
       );
     } else {

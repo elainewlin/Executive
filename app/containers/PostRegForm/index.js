@@ -84,7 +84,6 @@ export class PostRegForm extends React.Component {
     }
 
     const stateWebsite = stateSites[stateAbbreviation];
-    console.log(stateWebsite);
     if (regState === 'not registered' && stateWebsite) {
       stateSite = (<div className={styles.notRegText}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>);
     }

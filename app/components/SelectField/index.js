@@ -30,6 +30,7 @@ SelectField.propTypes = {
   options: React.PropTypes.array,
   width: React.PropTypes.number,
   required: React.PropTypes.bool,
+  default: React.PropTypes.string,
 };
 
 export default SelectField;
