@@ -7,7 +7,7 @@ export default {
   CO: 'Colorado',
   CT: 'Connecticut',
   DE: 'Delaware',
-  DC: 'Dist. of Columbia',
+  DC: 'District of Columbia',
   FL: 'Florida',
   GA: 'Georgia',
   HI: 'Hawaii',

@@ -29,12 +29,12 @@
   @include link();
 }
 
-.onlineReg {
-  text-align: center;
-  padding-top: 20px;
+.notRegText {
   font-size: 14px;
+  padding-top:10px;
+  padding-left: 3vw;
 }
 
-.voteOrg {
+.regText {
   text-align: center;
 }

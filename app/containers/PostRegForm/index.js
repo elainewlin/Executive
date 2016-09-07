@@ -78,15 +78,15 @@ export class PostRegForm extends React.Component {
 
     if (onlineLink) {
       onlineReg = (
-        <div className={styles.onlineReg}>
-          If you have a {stateNames[stateAbbreviation]} driver's license, <a href={onlineLink} className={styles.link}>{messages.unregistered.online}</a>
+        <div className={styles.notRegText}>
+          If you have a {stateNames[stateAbbreviation]} driver's license, <a href={onlineLink} className={styles.link}>{messages.unregistered.online}</a>.
         </div>);
     }
 
     const stateWebsite = stateSites[stateAbbreviation];
     console.log(stateWebsite);
     if (regState === 'not registered' && stateWebsite) {
-      stateSite = (<div className={styles.voteOrg}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>);
+      stateSite = (<div className={styles.notRegText}>Think you're registered? Check <a href={stateWebsite} className={styles.link}>your state site</a>.</div>);
     }
 
     switch (regState) {
@@ -100,7 +100,7 @@ export class PostRegForm extends React.Component {
             <a href={pollingPlaceLink} className={styles.button}>
               {voteButtonText}
             </a>
-            <div className={styles.voteOrg}>
+            <div className={styles.regText}>
               Not here? Get <a href="https://www.vote.org/absentee-ballot/" className={styles.link}>absentee ballot information</a>.
             </div>
           </div>
