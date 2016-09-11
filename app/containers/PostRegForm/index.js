@@ -54,7 +54,7 @@ export class PostRegForm extends React.Component {
     let voteInstructions = (
       <ol>
         <li>Find polling place</li>
-        <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a></li>
+        <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a> if required</li>
         <li>Vote {pollHours[stateAbbreviation]} </li>
       </ol>
     );
@@ -93,7 +93,7 @@ export class PostRegForm extends React.Component {
         return (
           <div>
             <div className={styles.instructions}>
-              <div>To vote in the national election,</div>
+              <div>To vote in person on Election Day,</div>
               {voteInstructions}
             </div>
             <a href={pollingPlaceLink} className={styles.button}>
