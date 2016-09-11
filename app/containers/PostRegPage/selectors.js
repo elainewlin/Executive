@@ -14,7 +14,7 @@ const selectState = () => createSelector(
 
 const selectRegistered = () => createSelector(
   selectPostRegPageDomain(),
-  (postRegDomain) => postRegDomain.get('params').registered
+  (postRegDomain) => postRegDomain.get('params').registered || 'false'
 );
 
 const selectFormDomain = () => (state) => state.get('form');
