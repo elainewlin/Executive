@@ -54,7 +54,7 @@ export class PostRegForm extends React.Component {
     let voteInstructions = (
       <ol>
         <li>Find polling place</li>
-        <li>Bring <a className={styles.link} href={`https://www.google.com/#q=${stateAbbreviation}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a> if required</li>
+        <li>Bring <a className={styles.link} target="_blank" href={`https://www.google.com/#q=${stateNames[stateAbbreviation]}%20voter%20id%20requirements&rct=j&eob=va/2/10`}>valid ID</a> if required</li>
         <li>Vote {pollHours[stateAbbreviation]} </li>
       </ol>
     );
