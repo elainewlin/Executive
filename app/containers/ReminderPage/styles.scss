@@ -1,14 +1,22 @@
 @import '../../variables.scss';
 
 .email {
-  width: 35%;
+  padding-top: 2vh;
+  width: 50%;
+  max-width: 400px;
   min-width: 290px;
   font-size: 16px;
-  @include centered();
+  margin: auto;
 }
 
+$reminder-font: (
+  null: 22px,
+  641px: 30px,
+  990px: 37px,
+);
+
 .heading {
-  @include font-size($header-font);
+  @include font-size($reminder-font);
   text-align: center;
   padding-bottom: 10px;
 }
