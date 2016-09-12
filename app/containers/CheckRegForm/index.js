@@ -11,6 +11,7 @@ import { reduxForm, change } from 'redux-form/immutable';
 import TextField from 'components/TextField';
 import SelectField from 'components/SelectField';
 import CheckField from 'components/CheckField';
+import stateSites from '../PostRegForm/state_sites';
 import * as c from './constants';
 
 export class CheckRegForm extends React.Component { // eslint-disable-line react/prefer-stateless-
@@ -121,11 +122,24 @@ export class CheckRegForm extends React.Component { // eslint-disable-line react
         <input type="text" />
       </div>));
 
+    const stateWebsite = stateSites[this.props.state];
+
     let termsStatement;
     if (this.props.voteOrg) {
+      let disclaimer;
+      if (stateWebsite) {
+        disclaimer = (
+          <p>Built on vote.org’s voter database. If you registered within the last few months, your info may not be in the database yet. In this case, please refer to <a className={styles.link} href={stateWebsite}>your state's voter registration site</a>.</p>
+        );
+      } else {
+        disclaimer = (
+          <p>Built on vote.org’s voter database. If you registered within the last few months, your info may not be in the database yet.</p>
+        );
+      }
       termsStatement = (
         <div className={styles.privacy} key="privacy">
-          Built on vote.org’s voter database. By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a> and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.
+          {disclaimer}
+          <p>By checking my registration, I agree to votemate's <a href="/terms" className={styles.link}>Terms of Service</a> and <a href="/privacy" className={styles.link}>Privacy Policy</a> and vote.org's <a href="https://www.vote.org/terms/" className={styles.link}>Terms of Service</a> and <a href="https://www.vote.org/privacy/" className={styles.link}>Privacy Policy</a>.</p>
         </div>
       );
     } else {
