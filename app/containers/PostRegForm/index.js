@@ -129,7 +129,7 @@ export class PostRegForm extends React.Component {
     let special;
 
     // same day voter registration for NH and WY
-    if (stateAbbreviation === 'NH' || stateAbbreviation === 'WY') {
+    if (['NH', 'WY', 'MN'].indexOf(stateAbbreviation) >= 0) {
       special = (<div>Same day registration</div>);
     }
 

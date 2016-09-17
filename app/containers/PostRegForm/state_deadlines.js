@@ -44,7 +44,7 @@ export default {
   UT: 'October 9',
   VT: 'November 2',
   VA: 'October 17',
-  WA: 'October 10',
+  WA: 'October 8',
   DC: 'October 11',
   WV: 'October 18',
   WI: 'October 19',

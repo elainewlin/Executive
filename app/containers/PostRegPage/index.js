@@ -40,7 +40,7 @@ export class PostRegPage extends React.Component { // eslint-disable-line react/
     let postRegForm = (<PostRegForm registered={registered} state={this.props.params.state} />);
 
     // same day voter registration
-    if (this.props.params.state === 'NH' || this.props.params.state === 'WY') {
+    if (['NH', 'WY', 'MN'].indexOf(this.props.params.state) >= 0) {
       postRegForm = (<PostRegForm registered="registered" state={this.props.params.state} />);
     }
 
