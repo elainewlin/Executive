@@ -7,6 +7,10 @@
   @include font-size($header-font);
 }
 
+.link {
+  @include link();
+}
+
 .registerText {
   text-align: center;
   font-size: 14px;

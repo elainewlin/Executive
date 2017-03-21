@@ -62,6 +62,9 @@ export class CheckRegPage extends React.Component { // eslint-disable-line react
           <button onClick={this.props.registerNow} className={styles.registerButton}>
             Register in {stateNames[this.props.currentState]}<i className="glyphicon glyphicon-arrow-right" />
           </button>
+          <br></br>
+          Looking for the unaffiliated VoteMate in British Columbia, Canada? Go to <a href="http://votemate.org" className={styles.link} rel="no-follow" target="_blank">votemate.org</a>.
+
         </div>
       );
     }
